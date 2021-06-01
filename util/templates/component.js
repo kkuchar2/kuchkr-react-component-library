@@ -1,17 +1,19 @@
 module.exports = (componentName) => ({
-  content: `// Generated with util/create-component.js
-import React from "react";
-
-import { ${componentName}Props } from "./${componentName}.types";
+  content: `import React from "react";
+import { ${componentName}Props, defaultProps } from "./${componentName}.types";
+import classNames from "classnames";
 
 import "./${componentName}.scss";
 
-const ${componentName}: React.FC<${componentName}Props> = ({ foo }) => (
-    <div data-testid="${componentName}" className="foo-bar">{foo}</div>
-);
+function ${componentName}(props : ${componentName}Props){
 
-export default ${componentName};
+    const { className } = props;
 
-`,
+    return <div data-testid="${componentName}" className={classNames('${componentName.toLowerCase()}', className)} />;
+}
+
+${componentName}.defaultProps = defaultProps;
+
+export default ${componentName};`,
   extension: `.tsx`
 });

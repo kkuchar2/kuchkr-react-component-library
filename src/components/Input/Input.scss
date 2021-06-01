@@ -1,0 +1,93 @@
+@import "../../styles/variables";
+@import "../../styles/typography";
+@import "../../styles/theme";
+@import "../../styles/fonts";
+.input {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+
+  @include theme-aware('background', 'input-background');
+  @include theme-aware('border', 'input-border');
+
+  font-family: $open-sans;
+
+  .formName {
+    font-size: 14px;
+    color: #6a6c7c;
+    margin-top: 5px;
+  }
+
+  .inputField {
+    @include theme-aware('color', 'input-color');
+    background: none;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    box-sizing: border-box;
+    height: 40px;
+    font-size: 18px;
+    outline: 0;
+    color: #c4c4c4;
+    padding-left: 12px;
+    caret-color: #535353;
+    font-family: inherit;
+
+    .title {
+      width: 150px;
+    }
+
+    &::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+      @include theme-aware('color', 'input-placeholder-color');
+    }
+
+    &:-ms-input-placeholder { /* Internet Explorer 10-11 */
+      @include theme-aware('color', 'input-placeholder-color');
+    }
+
+    input:focus::placeholder {
+      color: transparent;
+    }
+
+    &::-ms-input-placeholder { /* Microsoft Edge */
+      @include theme-aware('color', 'input-placeholder-color');
+    }
+
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover,
+    input:-webkit-autofill:focus,
+    input:-webkit-autofill:active {
+      font-size: 16px;
+      color: #ffffff;
+      font-family: inherit;
+      -webkit-text-fill-color: inherit;
+      -webkit-transition-delay: 9999s;
+      -webkit-box-shadow: 0 0 0 10px #3b3bb4 inset !important;
+    }
+
+    input:-webkit-autofill::first-line {
+      font-size: 16px;
+      outline: 0;
+      font-family: "Whitney Medium", sans-serif;
+      color: #ffffff;
+    }
+  }
+
+  .input.noError {
+    border: 1px solid #c1c1c1;
+  }
+
+  .input.error {
+    border: 2px solid rgb(186, 47, 47);
+  }
+
+  .icon {
+    margin-right: 15px;
+    margin-top: 3px;
+    opacity: 0.3;
+    @include theme-aware('color', 'text-color');
+  }
+}

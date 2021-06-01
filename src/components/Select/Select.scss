@@ -1,0 +1,119 @@
+@import "../../styles/variables.scss";
+@import "../../styles/typography.scss";
+@import "../../styles/theme";
+@import "../../styles/mixins";
+
+.select {
+  @media (max-height: 400px) {
+    width: 100%;
+  }
+
+  width: 250px;
+  height: 40px;
+  margin: 0;
+
+  @include theme-aware('border-radius', 'select-border-radius');
+
+  .noData {
+    @include theme-aware('background', 'select-options-background');
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .infiniteScroll {
+    width: 100%;
+    height: 400px;
+    position: relative;
+    top: 0;
+    @include theme-aware('background', 'select-options-background');
+
+    overflow: hidden;
+    ::-webkit-scrollbar {
+      width: 20px;
+    }
+
+    /* Track */
+    ::-webkit-scrollbar-track {
+      @include theme-aware('background', 'scrollbar-track-background');
+    }
+
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+      @include theme-aware('background', 'scrollbar-thumb-background');
+    }
+
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+      background: #555;
+    }
+  }
+
+  .select-control-button {
+    @include theme-aware('background', 'select-background');
+    @include disable_selection();
+    @include disable_mobile_tap_color();
+
+    height: 100%;
+    margin: 0;
+    cursor: pointer;
+    display: flex;
+
+    &:hover {
+      @include theme-aware('background', 'select-background-hover');
+    }
+
+    .selected-value {
+      margin-left: 10px;
+      margin-right: 10px;
+      @include theme-aware('color', 'select-text-color');
+      font-size: 18px;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      flex: 1;
+
+      span {
+        font-size: 14px;
+        font-weight: 700;
+        position: absolute;
+        left: 20px;
+      }
+    }
+
+    .arrowDown {
+      max-width: 50px;
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      @include theme-aware('color', 'select-text-color');
+    }
+  }
+
+  &.disabled {
+    .select-control-button {
+      background: rgb(31, 31, 31);
+      cursor: default;
+
+      &:hover {
+        filter: none;
+      }
+
+      .selected-value {
+        color: #575757;
+      }
+
+      .arrowDown {
+        color: #575757;
+      }
+    }
+  }
+
+  .searchInput {
+    margin-top: 2px;
+    margin-bottom: 2px;
+  }
+}
