@@ -50,6 +50,7 @@ function Select(props : SelectProps) {
                 height={400}
                 items={items}
                 onItemClick={onSelected}
+                fetchItems={fetchItems}
                 dataItemRenderer={item => <div>{item.title}</div>} />
 
     }, [opened, items, hasMore]);
