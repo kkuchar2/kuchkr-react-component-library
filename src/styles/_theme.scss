@@ -108,21 +108,26 @@ $switch-themes: (
 );
 
 
-@mixin theme-aware($key, $color) {
-  @include theme-aware-map($key, $color, $common-themes);
-  @include theme-aware-map($key, $color, $button-themes);
-  @include theme-aware-map($key, $color, $select-themes);
-  @include theme-aware-map($key, $color, $list-themes);
-  @include theme-aware-map($key, $color, $switch-themes);
+@mixin theme-aware($property, $value) {
+  @include theme-aware-map($property, $value, $common-themes);
+  @include theme-aware-map($property, $value, $button-themes);
+  @include theme-aware-map($property, $value, $select-themes);
+  @include theme-aware-map($property, $value, $list-themes);
+  @include theme-aware-map($property, $value, $switch-themes);
 }
 
 // Apply style based on provided theme and registered theme maps
-@mixin theme-aware-map($key, $color, $theme-map) {
+@mixin theme-aware-map($property, $value, $theme-map) {
+
+  // Styles for each theme class attribute added to body
   @each $theme-name, $theme-color in $theme-map {
     .theme-#{$theme-name} & {
-      #{$key}: map-get(map-get($theme-map, $theme-name), $color)
+      #{$property}: map-get(map-get($theme-map, $theme-name), $value)
     }
   }
+
+  // If no theme class added to body set light default theme
+  #{$property}: map-get(map-get($theme-map, 'light'), $value)
 }
 
 @mixin themed-scrollbar() {
