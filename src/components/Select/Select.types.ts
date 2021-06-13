@@ -5,9 +5,9 @@ export interface SelectProps {
     className?: string;
     title?: string;
     disabled?: boolean;
-    items: Array<unknown>
-    fetchItems: FetchingFunc,
-    itemRenderer: DataItemRenderer
+    items?: Array<unknown>
+    fetchItems?: FetchingFunc,
+    itemRenderer?: DataItemRenderer
 }
 
 export const defaultProps: SelectProps = {

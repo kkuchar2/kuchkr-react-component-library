@@ -16,9 +16,7 @@ export const parameters = {
         darkClass: 'theme-dark',
         lightClass: 'theme-light',
         stylePreview: true,
-
         dark: { ...themes.dark, appContentBg: '#1F1F24' },
-
         light: { ...themes.normal, appContentBgBg: 'white' }
     }
 };

@@ -19,8 +19,9 @@ $common-themes: (
                 input-shadow: 0 6px 10px 0 rgba(0, 0, 0, .1),
                 spinner-dot-background: #404040,
                 spinner-track-background: #000000,
-                scrollbar-track-background: #adadad,
-                scrollbar-thumb-background: #6a6a6a
+                scrollbar-track-background: #e2e2e2,
+                scrollbar-thumb-background: #c1c1c1,
+                scrollbar-thumb-background-hover: #007bff
         ),
         dark: (
                 text-color: #d4d4d4,
@@ -35,8 +36,9 @@ $common-themes: (
                 text-disabled-color: #575757,
                 spinner-dot-background: #ffffff,
                 spinner-track-background: #ffffff,
-                scrollbar-track-background: #282828,
-                scrollbar-thumb-background: #474747
+                scrollbar-track-background: #1d1d1d,
+                scrollbar-thumb-background: #3d3d3d,
+                scrollbar-thumb-background-hover: #ff9600
         )
 );
 
@@ -53,21 +55,28 @@ $button-themes: (
 
 $select-themes: (
         light: (
-                select-background: rgb(224, 224, 224),
-                select-background-hover: rgb(220, 220, 220),
-                select-options-background: rgb(224, 224, 224),
+                select-background: #ececec,
+                select-background-hover: #dedede,
+                select-border: none,
+                select-border-radius: 3px,
+                select-options-border: 1px solid rgb(193, 193, 193),
+                select-options-background: rgb(255, 255, 255),
                 select-options-background-hover: rgb(208, 208, 208),
                 select-options-text-color: #575757,
                 select-options-text-color-hover: #242424,
+                select-options-box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px,
                 select-text-color: #575757
         ),
         dark: (
                 select-background: rgb(40, 40, 40),
                 select-background-hover: rgb(38, 38, 38),
+                select-border: none,
+                select-border-radius: 0,
                 select-options-background: rgb(45, 45, 45),
                 select-options-background-hover: rgb(36, 36, 36),
                 select-options-text-color: #dcdcdc,
                 select-options-text-color-hover: #dcdcdc,
+                select-options-box-shadow: none,
                 select-text-color: #767676
         ),
 );
@@ -75,21 +84,15 @@ $select-themes: (
 $list-themes: (
         light: (
                 list-background: rgb(224, 224, 224),
-                select-background-hover: rgb(220, 220, 220),
-                select-options-background: rgb(224, 224, 224),
                 list-item-text-color: #575757,
                 list-item-text-color-hover: #242424,
                 list-item-background-hover: rgb(208, 208, 208),
-                select-text-color: #575757,
         ),
         dark: (
                 list-background: rgb(40, 40, 40),
-                select-background-hover: rgb(38, 38, 38),
-                select-options-background: rgb(45, 45, 45),
                 list-item-text-color: #dcdcdc,
                 list-item-text-color-hover: #dcdcdc,
                 list-item-background-hover: rgb(36, 36, 36),
-                select-text-color: #767676,
         ),
 );
 
@@ -123,6 +126,7 @@ $switch-themes: (
 }
 
 @mixin themed-scrollbar() {
+
   ::-webkit-scrollbar {
     width: 20px;
   }
@@ -136,6 +140,6 @@ $switch-themes: (
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: #555;
+    @include theme-aware('background', 'scrollbar-thumb-background-hover');
   }
 }
