@@ -1,16 +1,13 @@
 export interface TextProps {
-    className?: string;
-    style?: object;
     text?: string;
-    children?: object;
-    disabled?: boolean;
 }
 
-export const defaultProps: TextProps = {
-    className: null,
-    style: null,
-    text: "",
-    children: null,
+export interface StyledTextProps {
+    readonly disabled?: boolean;
+    readonly marginBottom?: number;
+}
+
+export const styledTextDefaultProps = {
     disabled: false,
+    marginBottom: 0
 }
-

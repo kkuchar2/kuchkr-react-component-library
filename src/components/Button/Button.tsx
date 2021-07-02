@@ -1,38 +1,43 @@
 import React from "react";
-import {ButtonProps, defaultProps} from "./Button.types";
-import classNames from "classnames";
-import Text from "../Text";
+import { ButtonProps} from "./Button.types";
+import { darkTheme, lightTheme } from "./themes";
+import { BaseComponent, BaseComponentProps } from "../../hoc";
+import { Text } from "../Text";
+import { StyledButton } from "./style";
 
-import "./Button.scss";
+export const _Button = (props: BaseComponentProps & ButtonProps) => {
 
-function Button(props : ButtonProps) {
+    const {disabled, onClick, text, theme } = props;
 
-    const {className, disabled, onClick, text, children} = props;
-
-    const onButtonClick = () => {
+    const onButtonClick = (e) => {
         if (disabled) {
             return;
         }
 
         if (onClick) {
-            onClick();
+            onClick(e);
         }
     };
 
-    const getAdditionalClassName = () => disabled ? "disabled" : "enabled";
-
-    return <button
-        className={classNames("button", className, getAdditionalClassName())}
+    return <StyledButton
         type={"submit"}
         onClick={onButtonClick}
-        aria-label={"submit-button"}>
+        aria-label={"submit-button"}
+        disabled={disabled}>
+
         <div className={"content"}>
-            <Text text={text}/>
-            {children}
+            <Text text={text} disabled={disabled} theme={{
+                textColor: theme.textColor,
+                disabledTextColor: theme.disabledTextColor
+            }} />
         </div>
-    </button>;
+    </StyledButton>
 }
 
-Button.defaultProps = defaultProps;
+_Button.defaultProps = {
+    text: 'Primary button',
+    children: null,
+    onClick: null,
+};
 
-export default Button;
+export const Button = BaseComponent<ButtonProps>(_Button, lightTheme, darkTheme);

@@ -1,12 +1,13 @@
-import React, {useCallback, useEffect, useState} from "react";
-import {SwitchProps, defaultProps} from "./Switch.types";
+import React, { useCallback, useEffect, useState } from "react";
+import { SwitchProps } from "./Switch.types";
 import classNames from "classnames";
+import { darkTheme, lightTheme } from "./themes";
+import { BaseComponent, BaseComponentProps } from "../../hoc";
+import { StyledSwitch } from "./style";
 
-import "./Switch.scss";
+export const _Switch = (props: BaseComponentProps & SwitchProps) => {
 
-function Switch(props: SwitchProps) {
-
-    const {className, switched, onSwitchedChange, leftRenderer, rightRenderer} = props;
+    const {switched, onSwitchedChange, leftRenderer, rightRenderer} = props;
 
     const [isSwitched, setIsSwitched] = useState(switched);
 
@@ -30,7 +31,7 @@ function Switch(props: SwitchProps) {
         }
     }, [rightRenderer])
 
-    return <div data-testid="Switch" className={classNames('switch', className)}>
+    return <StyledSwitch>
         <div className={classNames('left', {'switched': isSwitched})}>
             {renderLeft()}
         </div>
@@ -49,9 +50,14 @@ function Switch(props: SwitchProps) {
         <div className={classNames("right", {'switched': isSwitched})}>
             {renderRight()}
         </div>
-    </div>;
+    </StyledSwitch>;
 }
 
-Switch.defaultProps = defaultProps;
+_Switch.defaultProps = {
+    switched: false,
+    onSwitchedChange: null,
+    leftRenderer: null,
+    rightRenderer: null
+};
 
-export default Switch;
+export const Switch = BaseComponent<SwitchProps>(_Switch, lightTheme, darkTheme);

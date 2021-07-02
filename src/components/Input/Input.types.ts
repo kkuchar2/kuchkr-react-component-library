@@ -1,5 +1,6 @@
-export interface InputProps {
-    className?: string;
+import { BaseProps } from "../../hoc";
+
+export interface InputProps extends BaseProps {
     title?: string;
     type?: string;
     id?: string;
@@ -7,20 +8,11 @@ export interface InputProps {
     name?: string;
     autoComplete?: string;
     placeholder?: string;
-    disabled?: boolean;
-    onChange?: Function;
+    onChange?: (v: string) => void;
 }
 
-export const defaultProps: InputProps = {
-    className: null,
-    title: "",
-    type: "",
-    id: "",
-    value: "",
-    name: "",
-    autoComplete: "on",
-    placeholder: "",
-    disabled: false,
-    onChange: v => {}
+export interface StyledInputProps {
+    readonly disabled?: boolean;
 }
 
+export const defaultStyledInputProps = {}

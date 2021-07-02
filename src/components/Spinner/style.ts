@@ -1,15 +1,14 @@
-@import "../../styles/variables.scss";
-@import "../../styles/typography.scss";
-@import "../../styles/theme";
+import styled from "styled-components";
+import { defaultStyledSpinnerProps, StyledSpinnerProps } from "./Spinner.types";
 
-.spinner {
+export const StyledSpinner = styled.div<StyledSpinnerProps>`
   height: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
 
   .text {
-     margin-right: 8px;
+    margin-right: 8px;
   }
 
   span {
@@ -23,4 +22,6 @@
       opacity: 0.2;
     }
   }
-}
+`
+
+StyledSpinner.defaultProps = defaultStyledSpinnerProps;

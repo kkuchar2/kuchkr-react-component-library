@@ -1,85 +1,25 @@
-import React, {useEffect, useMemo, useState} from "react";
-import { SliderProps, defaultProps } from "./Slider.types";
-import classNames from "classnames";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
+import { SliderProps} from "./Slider.types";
+import { darkTheme, lightTheme } from "./themes";
+import { BaseComponent, BaseComponentProps } from "../../hoc";
 
-import { default as BaseSlider } from '@material-ui/core/Slider';
 import { withStyles } from '@material-ui/core/styles';
 
-import "./Slider.scss";
+import { default as BaseSlider } from '@material-ui/core/Slider';
+import { baseStyle, StyledSlider } from "./style";
 
 const markFunc = (v) => {
-    return { value: v, label: <div className={'mark'}>{v}</div> }
+    return {value: v, label: <div className={'mark'}>{v}</div>}
 }
 
-function Slider(props : SliderProps){
+export const _Slider = (props: BaseComponentProps & SliderProps) => {
 
-    const {style, className, logarithmic, markValues, value, min, max, disabled, onChange, darkTheme} = props;
+    const { logarithmic, markValues, defaultValue, min, max, disabled, onChange, theme } = props;
 
     const [marks, setMarks] = useState([]);
+    const [value, setValue] = useState(defaultValue);
 
-    const StyledBaseSlider = useMemo(() => withStyles({
-        root: {
-            color: "#3880ff",
-            height: 2,
-            padding: "15px 0"
-        },
-        thumb: {
-            height: 28,
-            width: 28,
-            backgroundColor: "#3880ff",
-            marginTop: -14,
-            marginLeft: -14,
-        },
-        active: {},
-        valueLabel: {
-            left: "calc(-50% + 8px)",
-            top: -26,
-            "& *": {
-                background: "#3880ff",
-                borderRadius: 6,
-                height: 22,
-                transform: 'unset',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                color: '#ffffff',
-                minWidth: 40
-            }
-        },
-        track: {
-            height: 2
-        },
-        rail: {
-            height: 2,
-            opacity: 1,
-            backgroundColor: "#bfbfbf"
-        },
-        mark: {
-            backgroundColor: "#bfbfbf",
-            height: 4,
-            width: 4,
-            borderRadius: 10,
-            marginTop: -1,
-            opacity: 1,
-            marginLeft: -2
-        },
-        markLabel: {
-            marginTop: 10,
-            color: darkTheme ? '#d4d4d4'  : '#535353'
-        },
-        markLabelActive: {
-            marginTop: 10,
-            color: "#3880ff",
-        },
-        markActive: {
-            backgroundColor: "#3880ff",
-            height: 6,
-            width: 6,
-            borderRadius: 10,
-            marginTop: -2,
-            opacity: 1
-        },
-    })(BaseSlider), [darkTheme]);
+    const StyledBaseSlider = useMemo(() => withStyles(baseStyle(theme))(BaseSlider), [theme]);
 
     useEffect(() => {
         const m = [ markFunc(min), markFunc(max)];
@@ -91,9 +31,17 @@ function Slider(props : SliderProps){
         setMarks(m);
     }, []);
 
+    const onSliderChange = useCallback((v) => {
+        if (onChange) {
+            onChange(v);
+        }
+        setValue(v);
+    }, [onChange])
 
-    return <div data-testid="Slider" style={style} className={classNames("slider", className, {disabled: disabled})}>
+
+    return <StyledSlider>
         <StyledBaseSlider
+            defaultValue={defaultValue}
             value={value}
             getAriaValueText={v => `${v}`}
             scale={(x) => x}
@@ -101,11 +49,19 @@ function Slider(props : SliderProps){
             max={max}
             valueLabelDisplay="auto"
             marks={marks}
-            onChange={(e, value) => onChange(value)}
-          />
-    </div>;
+            onChange={(e, value) => onSliderChange(value)}
+        />
+    </StyledSlider>;
 }
 
-Slider.defaultProps = defaultProps;
+_Slider.defaultProps = {
+    logarithmic: false,
+    markValues: [],
+    defaultValue: 0,
+    min: 0,
+    max: 100,
+    disabled: false,
+    onChange: v => {}
+};
 
-export default Slider;
+export const Slider = BaseComponent<SliderProps>(_Slider, lightTheme, darkTheme);

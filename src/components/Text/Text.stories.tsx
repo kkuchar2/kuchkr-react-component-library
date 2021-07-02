@@ -1,8 +1,6 @@
-import React from "react";
-import Text from "./Text";
+import { Text as TextComponent } from './Text';
+import { ComponentStory, generateStoryOptions } from "../../util/BaseComponentStory";
 
-export default {
-    title: "Text"
-};
+export default generateStoryOptions(TextComponent);
 
-export const Default = () => <Text text="Sample text" />;
+export const Text = ComponentStory(TextComponent)

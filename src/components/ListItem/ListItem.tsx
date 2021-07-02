@@ -1,24 +1,25 @@
-import React, {useCallback} from "react";
-import { ListItemProps, defaultProps } from "./ListItem.types";
-import classNames from "classnames";
+import React, { useCallback} from "react";
+import { ListItemProps} from "./ListItem.types";
+import { darkTheme, lightTheme } from "./themes";
+import { BaseComponent, BaseComponentProps } from "../../hoc";
+import { StyledListItem } from "./style";
 
-import "./ListItem.scss";
+const _ListItem = (props: BaseComponentProps & ListItemProps) => {
 
-function ListItem(props : ListItemProps){
+    const {index, children, onClick, disabled} = props;
 
-    const { className, index, children, style, onClick } = props;
+    const onItemClick = useCallback(() => onClick(index), [onClick, index])
 
-    const onItemClick = useCallback((e) => {
-        if (onClick) {
-            onClick(index)
-        }
-    }, [onClick, index])
-
-    return <div className={classNames("listItem", className)} style={style} onClick={onItemClick}>
+    return <StyledListItem disabled={disabled} onClick={onItemClick}>
         {children}
-    </div>
+    </StyledListItem>
 }
 
-ListItem.defaultProps = defaultProps;
+_ListItem.defaultProps = {
+    index: 0,
+    children: [],
+    onClick: null,
+    disabled: false
+};
 
-export default ListItem;
+export const ListItem = BaseComponent<ListItemProps>(_ListItem, lightTheme, darkTheme);

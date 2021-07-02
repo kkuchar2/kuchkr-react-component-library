@@ -1,19 +1,19 @@
-import React from "react";
-import classNames from "classnames";
-import {defaultProps, TextProps} from "./Text.types";
+import React from 'react';
+import { TextProps } from "./Text.types";
+import { darkTheme, lightTheme } from "./themes";
+import { BaseComponent, BaseComponentProps } from "../../hoc";
+import { StyledText } from './style';
 
-import "./Text.scss";
+export const _Text = (props: BaseComponentProps & TextProps) => {
 
-function Text(props: TextProps) {
+    const {text, disabled} = props;
 
-    const {className, style, text, children, disabled} = props;
-
-    return <div style={style} className={classNames("text", className, {disabled: disabled})}>
-        {text}
-        {children}
-    </div>;
+    return <StyledText disabled={disabled}>{text}</StyledText>;
 }
 
-Text.defaultProps = defaultProps;
+_Text.defaultProps = {
+    text: "Text",
+    children: null
+}
 
-export default Text;
+export const Text = BaseComponent<TextProps>(_Text, lightTheme, darkTheme);

@@ -1,35 +1,52 @@
-import Select from "./Select";
-import React, {useState} from "react";
-import Text from "../Text";
-import {name} from 'faker'
+import { Select as SelectComponent } from './Select';
+import {
+    DarkModeContainer,
+    defaultArgTypes,
+    generateStoryOptions,
+    LightModeContainer,
+    StyleContainer
+} from "../../util/BaseComponentStory";
+import React from "react";
+import { name } from 'faker'
 
-export default {
-    title: "Select"
-};
+export default generateStoryOptions(SelectComponent);
 
-export const InfiniteSelect = () => {
+const Component = (args) => <SelectComponent {...args} />;
 
-    const [items, setItems] = useState(Array.from({length: 20}).map(() => ({
-        title: name.findName()
-    })));
+Component.displayName = SelectComponent.displayName;
 
-    const fetch = () => {
-        setTimeout(() => {
-            const nextItems = items.concat(
-                Array.from({length: 20}).map(() => ({
-                    title: name.findName()
-                }))
-            )
-            setItems(nextItems)
-        }, 200)
-    }
+const staticItems = Array.from({length: 5}).map(() => ({
+    value: name.findName()
+}));
 
-    return <div>
-        <Text style={{marginBottom: 20}} text={"This is component Select:"}/>
-        <Select
-            title={'Select name'}
-            items={items}
-            fetchItems={fetch}
-            itemRenderer={item => <p>{item.title}</p>} />
-    </div>
+export const EmptySelect = (args) => {
+
+    return <StyleContainer>
+        <DarkModeContainer height={"200px"} alignItems={"flex-start"} padding={"20px"}>
+            <Component {...args} dataItemRenderer={item => <div>{item.value}</div>} theme={SelectComponent.darkTheme}/>
+        </DarkModeContainer>
+
+        <LightModeContainer height={"200px"} alignItems={"flex-start"} padding={"20px"}>
+            <Component {...args} dataItemRenderer={item => <div>{item.value}</div>} theme={SelectComponent.lightTheme}/>
+        </LightModeContainer>
+    </StyleContainer>
 }
+
+EmptySelect.args = SelectComponent.defaultProps
+EmptySelect.argTypes = defaultArgTypes;
+
+export const SelectWithItems = (args) => {
+
+    return <StyleContainer>
+        <DarkModeContainer height={"300px"} alignItems={"flex-start"} padding={"20px"}>
+            <Component {...args} dataItemRenderer={item => <div>{item.value}</div>} items={staticItems} theme={SelectComponent.darkTheme}/>
+        </DarkModeContainer>
+
+        <LightModeContainer height={"300px"} alignItems={"flex-start"} padding={"20px"}>
+            <Component {...args} dataItemRenderer={item => <div>{item.value}</div>} items={staticItems} theme={SelectComponent.lightTheme}/>
+        </LightModeContainer>
+    </StyleContainer>
+}
+
+SelectWithItems.args = SelectComponent.defaultProps
+SelectWithItems.argTypes = defaultArgTypes;

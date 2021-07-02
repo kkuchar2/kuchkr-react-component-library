@@ -1,25 +1,19 @@
-import React, {useCallback, useEffect, useState} from "react";
-import {defaultProps, InputProps} from "./Input.types";
-import classNames from "classnames";
-import Text from "../Text";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faSearch} from "@fortawesome/free-solid-svg-icons";
+import React, { useCallback, useEffect, useState } from "react";
+import { InputProps} from "./Input.types";
+import { darkTheme, lightTheme } from "./themes";
+import { BaseComponent, BaseComponentProps } from "../../hoc";
+import { Text } from "../Text";
+import { StyledInput } from "./style";
 
-import "./Input.scss";
+export const _Input = (props: BaseComponentProps & InputProps) => {
 
-function Input(props: InputProps) {
-
-    const {
-        className, title, type, id, value, name, autoComplete, placeholder, disabled, onChange
-    } = props;
+    const {title, type, id, value, name, autoComplete, placeholder, disabled, onChange} = props;
 
     const [inputValue, setInputValue] = useState(value);
 
     useEffect(() => {
-        if (onChange !== null) {
-            if (inputValue !== undefined) {
-                onChange(inputValue)
-            }
+        if (onChange && inputValue) {
+            onChange(inputValue);
         }
     }, [inputValue]);
 
@@ -27,8 +21,8 @@ function Input(props: InputProps) {
         setInputValue(e.target.value);
     }, [])
 
-    return <div className={classNames("input", className)}>
-        <Text className={"name"} text={title}/>
+    return <StyledInput>
+        <Text text={title}/>
         <input
             className={"inputField"}
             spellCheck="false"
@@ -40,12 +34,18 @@ function Input(props: InputProps) {
             placeholder={placeholder}
             disabled={disabled}
             onChange={onInputChange} required/>
-        <div className={"icon"}>
-            <FontAwesomeIcon icon={faSearch}/>
-        </div>
-    </div>;
+    </StyledInput>;
 }
 
-Input.defaultProps = defaultProps;
+_Input.defaultProps = {
+    title: "",
+    type: "",
+    id: "",
+    value: "",
+    name: "",
+    autoComplete: "off",
+    placeholder: "Enter text",
+    onChange: null
+}
 
-export default Input;
+export const Input = BaseComponent<InputProps>(_Input, lightTheme, darkTheme);

@@ -1,16 +1,15 @@
-export interface ButtonProps {
-    className?: string;
-    disabled?: boolean;
-    onClick?: Function;
+import { BaseProps } from "../../hoc";
+
+export interface ButtonProps extends BaseProps {
     text?: string;
     children?: object;
+    onClick?: (e: Event) => void;
 }
 
+export interface StyledButtonProps {
+    readonly disabled?: boolean;
+}
 
-export const defaultProps: ButtonProps = {
-    className: null,
-    disabled: false,
-    onClick: () => {},
-    text: null,
-    children: null
+export const styledButtonDefaultProps = {
+    disabled: false
 }

@@ -1,14 +1,6 @@
-import Spinner from "./Spinner";
-import React from "react";
-import Text from "../Text";
+import { Spinner as SpinnerComponent } from './Spinner';
+import { ComponentStory, generateStoryOptions } from "../../util/BaseComponentStory";
 
-export default {
-    title: "Spinner"
-};
+export default generateStoryOptions(SpinnerComponent);
 
-export const DefaultSpinner =  () => {
-    return <div>
-        <Text style={{marginBottom: 20}} text={"This is component Spinner:"} />
-        <Spinner visible={true} text={'Loading'} />
-    </div>
-}
+export const Spinner = ComponentStory(SpinnerComponent)

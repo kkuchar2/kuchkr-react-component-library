@@ -1,1 +1,1 @@
-export { default } from "./Select";
+export { _Select, Select } from "./Select";

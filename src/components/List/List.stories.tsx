@@ -1,52 +1,98 @@
-import List from "./List";
-import React, { useState} from "react";
-import Text from "../Text";
-import {name} from 'faker'
+import { List as ListComponent } from './List';
+import {
+    DarkModeContainer,
+    defaultArgTypes,
+    generateStoryOptions,
+    LightModeContainer,
+    StyleContainer
+} from "../../util/BaseComponentStory";
+import React, { useCallback, useEffect, useRef, useState } from "react";
+import { name } from 'faker'
 
-export default {
-    title: "List"
-};
+export default generateStoryOptions(ListComponent);
 
-export const InfiniteList = () => {
-    const [items, setItems] = useState(Array.from({length: 5}).map(() => ({
-        title: name.findName()
-    })));
+const Component1 = (args) => <ListComponent {...args} />;
 
-    const fetch = (start, stop) => {
+Component1.displayName = ListComponent.displayName;
+
+const staticItems = Array.from({length: 5}).map(() => ({
+    value: name.findName()
+}));
+
+export const StaticList = (args) => {
+
+    return <StyleContainer>
+        <DarkModeContainer>
+            <Component1 {...args}
+                       items={staticItems}
+                       dataItemRenderer={item => item.value}
+                       theme={ListComponent.darkTheme}/>
+        </DarkModeContainer>
+
+        <LightModeContainer>
+            <Component1 {...args}
+                       items={staticItems}
+                       dataItemRenderer={item => item.value}
+                       theme={ListComponent.lightTheme}/>
+        </LightModeContainer>
+    </StyleContainer>
+}
+
+StaticList.args = ListComponent.defaultProps
+StaticList.argTypes = defaultArgTypes;
+
+export const ListWithInfiniteScroll = () => {
+
+    const [items1, setItems1] = useState([]);
+    const [fetching1, setFetching1] = useState(true);
+
+    const [items2, setItems2] = useState([]);
+    const [fetching2, setFetching2] = useState(true);
+
+    const fetch1 = useCallback(() => {
+        setFetching1(true);
+
         setTimeout(() => {
-            console.log(`(${Date.now()}): Fetching items [${start},${stop}]`);
-            const fetchedItems = Array.from({length: (stop-start)}).map(() => ({
-                title: name.findName()
+            const fetchedItems = Array.from({length: 5}).map(() => ({
+                value: name.findName()
             }));
 
-            setItems(items.concat(fetchedItems));
-        }, 200)
-    }
+            setFetching1(false);
+            setItems1(items1.concat(fetchedItems));
+        }, 200);
+    }, [items1]);
 
-    return <div>
-        <Text style={{marginBottom: 20}} text={"This is component List using react-virtualized"}/>
-        <Text style={{marginBottom: 20}} text={"Tip: scroll down to load more items"}/>
-        <List
-            disabled={true}
-            height={400}
-            items={items}
-            onItemClick={v => console.log(v)}
-            fetchItems={(start, stop) => fetch(start, stop)}
-            dataItemRenderer={item => <p>{item.title}</p>}/>
-    </div>
+    const fetch2 = useCallback(() => {
+        setFetching2(true);
+
+        setTimeout(() => {
+            const fetchedItems = Array.from({length: 5}).map(() => ({
+                value: name.findName()
+            }));
+
+            setFetching2(false);
+            setItems2(items2.concat(fetchedItems));
+        }, 200);
+    }, [items2]);
+
+    return <StyleContainer>
+        <DarkModeContainer>
+            <ListComponent items={items1}
+                       fetchItems={fetch1}
+                       isFetching={fetching1}
+                       dataItemRenderer={item => item.value}
+                       theme={ListComponent.darkTheme}/>
+        </DarkModeContainer>
+
+        <LightModeContainer>
+            <ListComponent items={items2}
+                       fetchItems={fetch2}
+                       isFetching={fetching2}
+                       dataItemRenderer={item => item.value}
+                       theme={ListComponent.lightTheme}/>
+        </LightModeContainer>
+    </StyleContainer>
 }
 
-export const ConstantItemsList = () => {
-    const [items] = useState(Array.from({length: 500}).map(() => ({title: name.findName()})));
-
-    return <div>
-        <Text style={{marginBottom: 20}} text={"This is component List using react-virtualized"}/>
-        <Text style={{marginBottom: 20}} text={"Tip: scroll down to load more items"}/>
-        <List
-            disabled={true}
-            height={400}
-            rowHeight={60}
-            items={items}
-            dataItemRenderer={item => <p>{item.title}</p>}/>
-    </div>
-}
+ListWithInfiniteScroll.args = ListComponent.defaultProps
+ListWithInfiniteScroll.argTypes = defaultArgTypes;

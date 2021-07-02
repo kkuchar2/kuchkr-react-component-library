@@ -1,18 +1,16 @@
-@import "../../styles/variables";
-@import "../../styles/typography";
-@import "../../styles/theme";
-@import "../../styles/fonts";
-.input {
+import styled from "styled-components";
+import { defaultStyledInputProps, StyledInputProps } from "./Input.types";
+
+export const StyledInput = styled.div<StyledInputProps>`
   display: flex;
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
-
-  @include theme-aware('background', 'input-background');
-  @include theme-aware('border', 'input-border');
-
+  background: ${props => props.theme.backgroundColor};
+  border: ${props => props.theme.border};
   font-family: $open-sans;
-
+  border-radius: ${props => props.theme.borderRadius};
+  
   .formName {
     font-size: 14px;
     color: #6a6c7c;
@@ -20,7 +18,6 @@
   }
 
   .inputField {
-    @include theme-aware('color', 'input-color');
     background: none;
     border: none;
     display: flex;
@@ -29,31 +26,33 @@
     width: 100%;
     box-sizing: border-box;
     height: 40px;
-    font-size: 18px;
+    font-size: 16px;
+    line-height: 40px;
     outline: 0;
-    color: #c4c4c4;
+    color: ${props => props.theme.textColor};
     padding-left: 12px;
+    padding-right: 12px;
     caret-color: #535353;
-    font-family: inherit;
+    font-family: 'Arial';
 
     .title {
       width: 150px;
     }
 
     &::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-      @include theme-aware('color', 'input-placeholder-color');
+      color: ${props => props.theme.placeholderTextColor};
     }
 
     &:-ms-input-placeholder { /* Internet Explorer 10-11 */
-      @include theme-aware('color', 'input-placeholder-color');
+      color: ${props => props.theme.placeholderTextColor};
+    }
+
+    &::-ms-input-placeholder { /* Microsoft Edge */
+      color: ${props => props.theme.placeholderTextColor};
     }
 
     input:focus::placeholder {
       color: transparent;
-    }
-
-    &::-ms-input-placeholder { /* Microsoft Edge */
-      @include theme-aware('color', 'input-placeholder-color');
     }
 
     input:-webkit-autofill,
@@ -62,7 +61,6 @@
     input:-webkit-autofill:active {
       font-size: 16px;
       color: #ffffff;
-      font-family: inherit;
       -webkit-text-fill-color: inherit;
       -webkit-transition-delay: 9999s;
       -webkit-box-shadow: 0 0 0 10px #3b3bb4 inset !important;
@@ -75,19 +73,6 @@
       color: #ffffff;
     }
   }
+`
 
-  .input.noError {
-    border: 1px solid #c1c1c1;
-  }
-
-  .input.error {
-    border: 2px solid rgb(186, 47, 47);
-  }
-
-  .icon {
-    margin-right: 15px;
-    margin-top: 3px;
-    opacity: 0.3;
-    @include theme-aware('color', 'text-color');
-  }
-}
+StyledInput.defaultProps = defaultStyledInputProps;

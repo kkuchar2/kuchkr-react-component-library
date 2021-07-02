@@ -1,47 +1,32 @@
-import Slider from "./Slider";
-import React, {useCallback, useState} from "react";
-import Text from "../Text";
-import { useDarkMode } from 'storybook-dark-mode';
+import { Slider as SliderComponent } from './Slider';
+import {
+    DarkModeContainer,
+    defaultArgTypes,
+    generateStoryOptions,
+    LightModeContainer,
+    StyleContainer
+} from "../../util/BaseComponentStory";
+import React from "react";
+import { name } from 'faker'
 
-export default {
-    title: "Slider"
-};
+export default generateStoryOptions(SliderComponent);
 
-export const DefaultSlider = () => {
+const Component = (args) => <SliderComponent {...args} />;
 
-    const [value, setValue] = useState(65);
+Component.displayName = SliderComponent.displayName;
 
-    const onSliderChange = useCallback(setValue, []);
+export const Slider = (args) => {
 
-    return <div>
-        <Text
-            style={{marginBottom: 20}}
-            text={`Slider (linear) with value: ${value}`}/>
+    return <StyleContainer>
+        <DarkModeContainer height={"200px"}>
+            <Component {...args} theme={SliderComponent.darkTheme}/>
+        </DarkModeContainer>
 
-        <Slider
-            style={{width: 300}}
-            className={'additionalClassName'}
-            logarithmic={false}
-            markValues={[50, 75, 100, 150]}
-            value={value}
-            min={0}
-            max={200}
-            disabled={false}
-            onChange={onSliderChange}
-            darkTheme={useDarkMode()} />
-
-        {/*<Text style={{marginTop: 20, marginBottom: 20}}*/}
-        {/*      text={`Slider (logarithmic) with value: ${value}`}/>*/}
-
-        {/*<Slider*/}
-        {/*    style={{marginTop: 30, width: 300}}*/}
-        {/*    className={'additionalClassName'}*/}
-        {/*    logarithmic={true}*/}
-        {/*    markValues={[50, 75, 100, 150]}*/}
-        {/*    value={value}*/}
-        {/*    min={1}*/}
-        {/*    max={200}*/}
-        {/*    disabled={false}*/}
-        {/*    onChange={onSliderChange} />*/}
-    </div>
+        <LightModeContainer height={"200px"}>
+            <Component {...args} theme={SliderComponent.lightTheme}/>
+        </LightModeContainer>
+    </StyleContainer>
 }
+
+Slider.args = SliderComponent.defaultProps
+Slider.argTypes = defaultArgTypes;

@@ -1,18 +1,12 @@
-@import "../../styles/variables.scss";
-@import "../../styles/typography.scss";
-@import "../../styles/theme";
-@import "../../styles/mixins";
+import styled from "styled-components";
 
-$transition-time: 0.2s;
-
-.switch {
+export const StyledSwitch = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
   width: 150px;
   transform: scale(1.5);
-
-  @include theme-aware('color', 'text-color');
+  color: white;
 
   .react-switch-checkbox {
     height: 0;
@@ -22,7 +16,6 @@ $transition-time: 0.2s;
   }
 
   .react-switch-label {
-    transition: all $transition-time ease-in-out;
     margin-left: 5px;
     margin-right: 5px;
     display: flex;
@@ -32,33 +25,32 @@ $transition-time: 0.2s;
     cursor: pointer;
     width: 32px;
     height: 16px;
-    @include theme-aware('background', 'switch-track-background');
+    background: ${props => props.theme.trackBackgroundOff};
     border-radius: 50px;
     position: relative;
 
     &.switched {
       transition: all 0.4s ease-in-out;
-      background: #009755;
+      background: ${props => props.theme.trackBackgroundOn};
     }
   }
 
   .react-switch-label .react-switch-button {
-    transition: all $transition-time ease-in-out;
     content: '';
     margin-left: -50%;
     width: 12px;
     height: 12px;
     border-radius: 15px;
-    @include theme-aware('background', 'switch-knob-background');
+    background: ${props => props.theme.knobBackground};
   }
 
   .react-switch-checkbox:checked + .react-switch-label .react-switch-button {
     margin-left: 50%;
+    background: ${props => props.theme.knobBackgroundOn};
   }
 
   .right {
-    transition: all $transition-time ease-in-out;
-    @include theme-aware('color', 'text-color');
+  @include theme-aware('color', 'text-color');
     opacity: 0.3;
 
     &.switched {
@@ -67,12 +59,11 @@ $transition-time: 0.2s;
   }
 
   .left {
-    transition: all $transition-time ease-in-out;
-    @include theme-aware('color', 'text-color');
+  @include theme-aware('color', 'text-color');
     opacity: 1;
 
     &.switched {
       opacity: 0.3;
     }
   }
-}
+`

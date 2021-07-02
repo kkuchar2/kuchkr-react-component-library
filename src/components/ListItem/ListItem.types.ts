@@ -1,17 +1,14 @@
-type OnItemClickFunc = (v) => any;
-
 export interface ListItemProps {
-    className: string;
     index: number;
     children: unknown | Array<unknown>;
-    style: object;
-    onClick: OnItemClickFunc
+    onClick?: (index) => void,
+    disabled?: boolean
 }
 
-export const defaultProps: ListItemProps = {
-    className: null,
-    index: 0,
-    children: [],
-    style: {},
-    onClick: v => {}
+export interface StyledListItemProps {
+    readonly disabled?: boolean;
+}
+
+export const styledListItemDefaultProps = {
+    disabled: false
 }

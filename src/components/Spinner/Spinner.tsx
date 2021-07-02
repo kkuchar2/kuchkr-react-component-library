@@ -1,27 +1,25 @@
 import React from "react";
-import { SpinnerProps, defaultProps } from "./Spinner.types";
-import classNames from "classnames";
+import { SpinnerProps} from "./Spinner.types";
 import MoonLoader from "react-spinners/MoonLoader";
 import { css } from "@emotion/react";
-import Text from '../Text/Text'
+import { Text } from '../Text'
+import { BaseComponent, BaseComponentProps } from "../../hoc";
+import { darkTheme, lightTheme } from "./themes";
+import { StyledSpinner } from "./style";
 
-import "./Spinner.scss";
+export const _Spinner = (props: BaseComponentProps & SpinnerProps) => {
 
-const override = css`
-  display: block;
-  margin: 0;
-`;
+    const {visible, text} = props;
 
-function Spinner(props : SpinnerProps){
-
-    const { className, visible, text } = props;
-
-    return <div data-testid="Spinner" className={classNames('spinner', className)}>
-        <Text text={text} />
-        <MoonLoader css={override} loading={visible} size={20} />
-    </div>;
+    return <StyledSpinner>
+        <Text text={text}/>
+        <MoonLoader css={css`display: block; margin: 0;`} loading={visible} size={20}/>
+    </StyledSpinner>;
 }
 
-Spinner.defaultProps = defaultProps;
+_Spinner.defaultProps = {
+    visible: true,
+    text: null
+};
 
-export default Spinner;
+export const Spinner = BaseComponent<SpinnerProps>(_Spinner, lightTheme, darkTheme);

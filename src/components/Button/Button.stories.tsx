@@ -1,21 +1,6 @@
-import React, {useCallback, useState} from "react";
-import Button from "./Button";
-import Text from "../Text/Text";
+import { Button as ButtonComponent } from './Button';
+import { ComponentStory, generateStoryOptions } from "../../util/BaseComponentStory";
 
-import "../../Story.scss";
+export default generateStoryOptions(ButtonComponent);
 
-export default {
-    title: "Button"
-};
-
-export const DefaultButton = () => {
-
-    const onClick = useCallback((v) => {
-        console.log(`(${Date.now()}): Button clicked!`);
-    }, []);
-
-    return <div>
-        <Text style={{marginBottom: 20}} text={"This is component Button"}/>
-        <Button text={"Click me!"} onClick={onClick} />
-    </div>
-}
+export const Button = ComponentStory(ButtonComponent)

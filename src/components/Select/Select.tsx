@@ -1,27 +1,34 @@
-import React, {useState, useEffect, useCallback, useRef} from 'react'
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import Text from "../Text";
-import {SelectProps} from "./Select.types";
-import {faChevronDown} from "@fortawesome/free-solid-svg-icons";
-import List from "../List";
-import {useOnClickOutside} from '../../hooks/useOnClickOutside'
-import './Select.scss'
+import React, { useCallback, useEffect, useRef, useState } from 'react'
+import { SelectProps } from "./Select.types";
+import { BaseComponent, BaseComponentProps } from "../../hoc";
+import { List } from "../List";
+import { Text } from "../Text";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
+import { useOnClickOutside } from '../../hoc/useOnClickOutside'
+import {
+    AnimatedStyledList,
+    StyledArrowIcon,
+    StyledEmptyDataInfo,
+    StyledSelect,
+    StyledSelectButton,
+    StyledSelectedValueText
+} from './style';
+import { darkTheme, lightTheme } from "./themes";
 
-function Select(props: SelectProps) {
+export const _Select = (props: BaseComponentProps & SelectProps) => {
 
-    const {className, title, items, fetchItems, itemRenderer} = props;
-    const [hasMore, setHasMore] = useState(true)
+    const {theme, title, items, fetchItems, disabled, dataItemRenderer} = props;
+
     const [opened, setOpened] = useState(false);
     const [selectedIndex, setSelectedIndex] = useState(-1);
     const [visibleTitle, setVisibleTitle] = useState('');
+    const [animatedHeight, setAnimatedHeight] = useState(0);
 
     const ref = useRef();
 
-    useEffect(() => {
-        if (items.length >= 10000) {
-            setHasMore(false)
-        }
-    }, [items.length])
+    // Support clicking outside this component
+    useOnClickOutside(ref, () => setOpened(false));
 
     useEffect(() => {
         if (selectedIndex < 0) {
@@ -31,15 +38,18 @@ function Select(props: SelectProps) {
         }
     }, [title, selectedIndex, items])
 
-    useOnClickOutside(ref, () => setOpened(false));
 
     const onSelected = useCallback((v) => {
         setSelectedIndex(v);
         setOpened(false);
     }, []);
 
+    const onAnimationUpdate = (b) => {
+        setAnimatedHeight(b.height)
+    }
+
     const renderItems = useCallback(() => {
-        if (!opened) {
+        if (!opened || !items || items.length === 0) {
             return;
         }
 
@@ -49,28 +59,65 @@ function Select(props: SelectProps) {
             </div>
         }
 
-        return <List
-            height={400}
-            items={items}
-            onItemClick={onSelected}
-            fetchItems={fetchItems}
-            dataItemRenderer={item => <div>{item.title}</div>}/>
+        return <AnimatedStyledList
+            initial={{height: 0, opacity: 0}}
+            animate={{height: [0, 200], opacity: [0, 1]}}
+            onUpdate={onAnimationUpdate}
+            transition={{duration: 0.2}}>
+            <List
+                fixedHeight={animatedHeight}
+                items={items}
+                theme={theme.listStyle}
+                onItemClick={onSelected}
+                fetchItems={fetchItems}
+                dataItemRenderer={dataItemRenderer}/>
+        </AnimatedStyledList>
 
-    }, [opened, items, hasMore]);
+    }, [opened, items, animatedHeight]);
 
-    const onClick = useCallback(() => setOpened(!opened), [opened])
+    const renderEmptyDataInfo = useCallback(() => {
+        if (!opened  || items.length > 0) {
+            return;
+        }
 
-    return <div ref={ref} className={"select"}>
-        <div onClick={onClick} className="select-control-button">
-            <div className="selected-value">
-                <Text text={visibleTitle}/>
-            </div>
-            <div className={"arrowDown"}>
+        return <AnimatedStyledList
+            initial={{height: 0, opacity: 0}}
+            animate={{height: [0, 100], opacity: [0, 1]}} transition={{duration: 0.2}}>
+            <StyledEmptyDataInfo>No data</StyledEmptyDataInfo>
+        </AnimatedStyledList>
+    }, [opened, items])
+
+    const onClick = useCallback(() => {
+        if (disabled) {
+            return;
+        }
+        setOpened(!opened)
+    }, [items, opened, disabled])
+
+    const selectedValueTheme = {
+        textColor: theme.textColor,
+        disabledTextColor: theme.disabledTextColor
+    }
+
+    return <StyledSelect ref={ref} className={"select"}>
+        <StyledSelectButton disabled={disabled} onClick={onClick}>
+            <StyledSelectedValueText>
+                <Text text={visibleTitle} theme={selectedValueTheme} disabled={disabled}/>
+            </StyledSelectedValueText>
+            <StyledArrowIcon disabled={disabled}>
                 <FontAwesomeIcon icon={faChevronDown}/>
-            </div>
-        </div>
+            </StyledArrowIcon>
+        </StyledSelectButton>
+        {renderEmptyDataInfo()}
         {renderItems()}
-    </div>;
+    </StyledSelect>
 }
 
-export default Select
+_Select.defaultProps = {
+    title: 'Select value',
+    items: [],
+    fetchItems: null,
+    dataItemRenderer: null
+}
+
+export const Select = BaseComponent<SelectProps>(_Select, lightTheme, darkTheme);

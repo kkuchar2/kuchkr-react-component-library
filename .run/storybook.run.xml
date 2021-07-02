@@ -1,12 +1,12 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="storybook -debug-webpack" type="js.build_tools.npm" singleton="false" nameIsGenerated="true">
+  <configuration default="false" name="build" type="js.build_tools.npm" singleton="false" nameIsGenerated="true">
     <package-json value="$PROJECT_DIR$/package.json" />
     <command value="run" />
     <scripts>
-      <script value="storybook" />
+      <script value="build" />
     </scripts>
-    <arguments value="-debug-webpack " />
-    <node-interpreter value="project" />
+    <node-interpreter value="$USER_HOME$/.nvm/versions/node/v16.2.0/bin/node" />
+    <package-manager value="npm" />
     <envs />
     <method v="2" />
   </configuration>

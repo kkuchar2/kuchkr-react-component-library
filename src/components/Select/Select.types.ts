@@ -1,20 +1,38 @@
+import { ReactElement } from "react";
+
 type FetchingFunc = () => any;
-type DataItemRenderer = (item) => any
 
 export interface SelectProps {
-    className?: string;
     title?: string;
-    disabled?: boolean;
     items?: Array<unknown>
     fetchItems?: FetchingFunc,
-    itemRenderer?: DataItemRenderer
+    dataItemRenderer: (dataItem) => ReactElement
 }
 
-export const defaultProps: SelectProps = {
-    className: null,
-    title: 'Select value',
-    disabled: false,
-    items: [],
-    fetchItems: () => {},
-    itemRenderer: item => null
+export interface StyledSelectProps {}
+
+export interface StyledSelectButtonProps {
+    readonly disabled?: boolean;
 }
+
+export interface StyledArrowIconProps {
+    readonly disabled?: boolean;
+}
+
+export interface StyledSelectedValueTextProps {}
+
+export interface StyledEmptyDataInfoProps {}
+
+export const styledSelectDefaultProps = {}
+
+export const styledSelectButtonDefaultProps = {
+    disabled: false
+};
+
+export const styledArrowIconDefaultProps = {
+    disabled: false
+}
+
+export const styledSelectedValueTextDefaultProps = {};
+
+export const styledEmptyDataInfoDefaultProps = {};
