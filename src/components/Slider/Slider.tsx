@@ -14,12 +14,18 @@ const markFunc = (v) => {
 
 export const _Slider = (props: BaseComponentProps & SliderProps) => {
 
-    const { logarithmic, markValues, defaultValue, min, max, disabled, onChange, theme } = props;
+    const { logarithmic, markValues, defaultValue, value, min, max, disabled, onChange, theme } = props;
 
     const [marks, setMarks] = useState([]);
-    const [value, setValue] = useState(defaultValue);
+    const [internalValue, setInternalValue] = useState(defaultValue);
 
     const StyledBaseSlider = useMemo(() => withStyles(baseStyle(theme))(BaseSlider), [theme]);
+
+    useEffect(() => {
+        if (value) {
+            setInternalValue(value);
+        }
+    }, [value]);
 
     useEffect(() => {
         const m = [ markFunc(min), markFunc(max)];
@@ -35,21 +41,21 @@ export const _Slider = (props: BaseComponentProps & SliderProps) => {
         if (onChange) {
             onChange(v);
         }
-        setValue(v);
+        setInternalValue(v);
     }, [onChange])
 
 
     return <StyledSlider>
         <StyledBaseSlider
             defaultValue={defaultValue}
-            value={value}
+            value={internalValue}
             getAriaValueText={v => `${v}`}
             scale={(x) => x}
             min={min}
             max={max}
             valueLabelDisplay="auto"
             marks={marks}
-            onChange={(e, value) => onSliderChange(value)}
+            onChange={(e, v) => onSliderChange(v)}
         />
     </StyledSlider>;
 }
@@ -58,6 +64,7 @@ _Slider.defaultProps = {
     logarithmic: false,
     markValues: [],
     defaultValue: 0,
+    value: 0,
     min: 0,
     max: 100,
     disabled: false,

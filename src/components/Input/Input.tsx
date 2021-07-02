@@ -28,7 +28,7 @@ export const _Input = (props: BaseComponentProps & InputProps) => {
             spellCheck="false"
             type={type}
             id={id}
-            value={inputValue}
+            value={value ? value : inputValue}
             name={name}
             autoComplete={autoComplete}
             placeholder={placeholder}
