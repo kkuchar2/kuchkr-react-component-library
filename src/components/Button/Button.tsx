@@ -7,7 +7,7 @@ import { StyledButton } from "./style";
 
 export const _Button = (props: BaseComponentProps & ButtonProps) => {
 
-    const {disabled, onClick, text, theme } = props;
+    const {style, disabled, onClick, text, theme } = props;
 
     const onButtonClick = (e) => {
         if (disabled) {
@@ -20,6 +20,7 @@ export const _Button = (props: BaseComponentProps & ButtonProps) => {
     };
 
     return <StyledButton
+        style={style}
         type={"submit"}
         onClick={onButtonClick}
         aria-label={"submit-button"}
