@@ -5,7 +5,8 @@ import { Dictionary } from "../util/BaseTypes.types";
 export interface BaseComponentProps {
     displayName?: string,
     theme?: Dictionary<any>,
-    disabled?: boolean
+    disabled?: boolean,
+    style?: React.CSSProperties
 }
 
 export interface BaseProps {}

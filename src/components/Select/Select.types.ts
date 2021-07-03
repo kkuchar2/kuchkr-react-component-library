@@ -6,7 +6,8 @@ export interface SelectProps {
     title?: string;
     items?: Array<unknown>
     fetchItems?: FetchingFunc,
-    dataItemRenderer: (dataItem) => ReactElement
+    dataItemRenderer: (dataItem) => ReactElement,
+    itemValueProvider: (dataItem) => ReactElement
 }
 
 export interface StyledSelectProps {}

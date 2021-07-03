@@ -28,6 +28,7 @@ StyledSelect.defaultProps = styledSelectDefaultProps;
 export const StyledSelectButton = styled.div<StyledSelectButtonProps>`
   border-radius: ${props => props.theme.borderRadius};
   margin: 0;
+  width: ${props => props.theme.width};
   height: 50px;
   border-radius: ${props => props.theme.borderRadius};
   display: flex;

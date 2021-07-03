@@ -18,11 +18,11 @@ import { darkTheme, lightTheme } from "./themes";
 
 export const _Select = (props: BaseComponentProps & SelectProps) => {
 
-    const {theme, title, items, fetchItems, disabled, dataItemRenderer} = props;
+    const {style, theme, title, items, fetchItems, disabled, dataItemRenderer, itemValueProvider} = props;
 
     const [opened, setOpened] = useState(false);
     const [selectedIndex, setSelectedIndex] = useState(-1);
-    const [visibleTitle, setVisibleTitle] = useState('');
+    const [visibleTitle, setVisibleTitle] = useState(null);
     const [animatedHeight, setAnimatedHeight] = useState(0);
 
     const ref = useRef();
@@ -34,7 +34,7 @@ export const _Select = (props: BaseComponentProps & SelectProps) => {
         if (selectedIndex < 0) {
             setVisibleTitle(title);
         } else {
-            setVisibleTitle(items[selectedIndex]['title']);
+            setVisibleTitle(itemValueProvider(items[selectedIndex]));
         }
     }, [title, selectedIndex, items])
 
@@ -99,7 +99,7 @@ export const _Select = (props: BaseComponentProps & SelectProps) => {
         disabledTextColor: theme.disabledTextColor
     }
 
-    return <StyledSelect ref={ref} className={"select"}>
+    return <StyledSelect ref={ref} style={style} className={"select"}>
         <StyledSelectButton disabled={disabled} onClick={onClick}>
             <StyledSelectedValueText>
                 <Text text={visibleTitle} theme={selectedValueTheme} disabled={disabled}/>
@@ -117,7 +117,8 @@ _Select.defaultProps = {
     title: 'Select value',
     items: [],
     fetchItems: null,
-    dataItemRenderer: null
+    dataItemRenderer: null,
+    itemValueProvider: dataItem => <div>{dataItem.value}</div>
 }
 
 export const Select = BaseComponent<SelectProps>(_Select, lightTheme, darkTheme);
