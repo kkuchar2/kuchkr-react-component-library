@@ -29,7 +29,7 @@ export const StyledSelectButton = styled.div<StyledSelectButtonProps>`
   border-radius: ${props => props.theme.borderRadius};
   margin: 0;
   width: ${props => props.theme.width};
-  height: 50px;
+  height: ${props => props.theme.height};
   border-radius: ${props => props.theme.borderRadius};
   display: flex;
   font-family: 'Arial';

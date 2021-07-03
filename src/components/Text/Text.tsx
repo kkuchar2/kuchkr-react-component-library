@@ -6,9 +6,9 @@ import { StyledText } from './style';
 
 export const _Text = (props: BaseComponentProps & TextProps) => {
 
-    const {text, disabled} = props;
+    const {theme, text, disabled} = props;
 
-    return <StyledText disabled={disabled}>{text}</StyledText>;
+    return <StyledText theme={theme} disabled={disabled}>{text}</StyledText>;
 }
 
 _Text.defaultProps = {

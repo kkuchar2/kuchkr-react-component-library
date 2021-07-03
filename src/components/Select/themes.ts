@@ -1,5 +1,6 @@
 export const lightTheme = {
     width: "480px",
+    height: "50px",
     border: 'none',
     borderRadius: '8px',
     textColor: '#2b2b2b',
@@ -9,7 +10,6 @@ export const lightTheme = {
     hoverBackgroundColor: '#c9c9c9',
     iconColor: "#2b2b2b",
     disabledIconColor: "#959595",
-
     listStyle: {
         background: "#ffffff",
 
@@ -28,6 +28,7 @@ export const lightTheme = {
 
 export const darkTheme = {
     width: "480px",
+    height: "50px",
     border: 'none',
     borderRadius: '8px',
     textColor: '#959595',
