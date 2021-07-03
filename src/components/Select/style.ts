@@ -94,6 +94,7 @@ export const AnimatedStyledList = styled(motion.div)`
     margin-top: 10px;
     position: absolute;
     width: ${props => props.theme.width};
+    z-index: 1;
 `
 
 export const StyledEmptyDataInfo = styled.div<StyledEmptyDataInfoProps>`
