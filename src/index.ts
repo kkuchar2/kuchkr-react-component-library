@@ -1,5 +1,4 @@
 import { _Button, Button } from "./components/Button";
-import { _Link, Link } from "./components/Link";
 import { _Input, Input } from "./components/Input";
 import { _List, List } from "./components/List";
 import { _Select, Select } from "./components/Select";
@@ -10,7 +9,6 @@ import { _Text, Text } from "./components/Text";
 
 export {
     _Button, Button,
-    _Link, Link,
     _Input, Input,
     _List, List,
     _Select, Select,
