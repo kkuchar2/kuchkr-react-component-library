@@ -7,7 +7,7 @@ import { StyledInput } from "./style";
 
 export const _Input = (props: BaseComponentProps & InputProps) => {
 
-    const {title, type, id, value, name, autoComplete, placeholder, disabled, onChange} = props;
+    const {style, title, type, id, value, name, autoComplete, placeholder, disabled, onChange} = props;
 
     const [inputValue, setInputValue] = useState(value);
 
@@ -21,7 +21,7 @@ export const _Input = (props: BaseComponentProps & InputProps) => {
         setInputValue(e.target.value);
     }, [])
 
-    return <StyledInput>
+    return <StyledInput style={style}>
         <Text text={title}/>
         <input
             className={"inputField"}
