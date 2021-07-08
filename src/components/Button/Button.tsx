@@ -26,13 +26,8 @@ export const _Button = (props: BaseComponentProps & ButtonProps) => {
         return children;
     }, [text, children])
 
-    return <StyledButton
-        style={style}
-        type={"submit"}
-        onClick={onButtonClick}
-        aria-label={"submit-button"}
-        disabled={disabled}>
-        <div className={"content"}>{renderButtonContent()}</div>
+    return <StyledButton style={style} type={"submit"} onClick={onButtonClick} disabled={disabled}>
+       {renderButtonContent()}
     </StyledButton>
 }
 
