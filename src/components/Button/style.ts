@@ -5,7 +5,7 @@ export const StyledButton = styled.button<StyledButtonProps>`
   width: ${props => props.theme.width ? props.theme.width : "150px"};
   height: ${props => props.theme.height ? props.theme.height : "40px"};
   border: ${props => props.theme.border};
-  border-radius: 8px;
+  border-radius: ${props => props.theme.borderRadius};
   background: ${props => props.disabled ? props.theme.disabledBackground : props.theme.background};
   overflow: hidden;
   

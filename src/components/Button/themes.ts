@@ -5,6 +5,7 @@ export const lightTheme = {
     disabledBackground: "rgba(210,210,210,0.37)",
     hoverBackground: "#c6c6c6",
     border: "none",
+    borderRadius: "3px",
 
     text: {
         textColor: "#4e4e4e",
@@ -19,6 +20,7 @@ export const darkTheme = {
     disabledBackground: "rgba(47,47,47,0.43)",
     hoverBackground: "#393939",
     border: "none",
+    borderRadius: "3px",
 
     text: {
         textColor: "#e5e5e5",
