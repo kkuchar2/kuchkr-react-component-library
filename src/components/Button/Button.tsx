@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { ButtonProps} from "./Button.types";
 import { darkTheme, lightTheme } from "./themes";
 import { BaseComponent, BaseComponentProps } from "../../hoc";
@@ -7,7 +7,7 @@ import { StyledButton } from "./style";
 
 export const _Button = (props: BaseComponentProps & ButtonProps) => {
 
-    const {style, disabled, onClick, text, theme } = props;
+    const {style, disabled, onClick, text, theme, children} = props;
 
     const onButtonClick = (e) => {
         if (disabled) {
@@ -19,24 +19,25 @@ export const _Button = (props: BaseComponentProps & ButtonProps) => {
         }
     };
 
+    const renderButtonContent = useCallback(() => {
+        if (text) {
+            return <Text text={text} disabled={disabled} theme={theme.text} />
+        }
+        return children;
+    }, [text, children])
+
     return <StyledButton
         style={style}
         type={"submit"}
         onClick={onButtonClick}
         aria-label={"submit-button"}
         disabled={disabled}>
-
-        <div className={"content"}>
-            <Text text={text} disabled={disabled} theme={{
-                textColor: theme.textColor,
-                disabledTextColor: theme.disabledTextColor
-            }} />
-        </div>
+        <div className={"content"}>{renderButtonContent()}</div>
     </StyledButton>
 }
 
 _Button.defaultProps = {
-    text: 'Primary button',
+    text: null,
     children: null,
     onClick: null,
 };

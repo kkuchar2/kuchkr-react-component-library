@@ -3,4 +3,4 @@ import { ComponentStory, generateStoryOptions } from "../../util/BaseComponentSt
 
 export default generateStoryOptions(ButtonComponent);
 
-export const Button = ComponentStory(ButtonComponent)
+export const Button = ComponentStory(ButtonComponent, { text: "Please press me!" })
