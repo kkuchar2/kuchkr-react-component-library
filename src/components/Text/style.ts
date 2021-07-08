@@ -6,6 +6,7 @@ export const StyledText = styled.div<StyledTextProps>`
   color: ${props => props.disabled ? props.theme.disabledTextColor : props.theme.textColor};
   margin-bottom: ${props => props.theme.marginBottom};
   line-height: ${props => props.theme.lineHeight};
+  font-size: ${props => props.theme.fontSize};
 `
 
 StyledText.defaultProps = styledTextDefaultProps;
