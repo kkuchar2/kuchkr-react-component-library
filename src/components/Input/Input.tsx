@@ -7,7 +7,7 @@ import { StyledInput } from "./style";
 
 export const _Input = (props: BaseComponentProps & InputProps) => {
 
-    const {style, title, type, id, value, name, autoComplete, placeholder, disabled, onChange} = props;
+    const {style, title, type, id, value, name, autoComplete, placeholder, disabled, onChange, required} = props;
 
     const [inputValue, setInputValue] = useState(value);
 
@@ -33,7 +33,9 @@ export const _Input = (props: BaseComponentProps & InputProps) => {
             autoComplete={autoComplete}
             placeholder={placeholder}
             disabled={disabled}
-            onChange={onInputChange} required/>
+            onChange={onInputChange}
+            required={required}
+        />
     </StyledInput>;
 }
 
@@ -45,7 +47,8 @@ _Input.defaultProps = {
     name: "",
     autoComplete: "off",
     placeholder: "Enter text",
-    onChange: null
+    onChange: null,
+    required: false
 }
 
 export const Input = BaseComponent<InputProps>(_Input, lightTheme, darkTheme);

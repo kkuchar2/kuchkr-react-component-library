@@ -9,6 +9,7 @@ export interface InputProps extends BaseProps {
     autoComplete?: string;
     placeholder?: string;
     onChange?: (v: string) => void;
+    required?: boolean;
 }
 
 export interface StyledInputProps {
