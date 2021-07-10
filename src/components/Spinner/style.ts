@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { defaultStyledSpinnerProps, StyledSpinnerProps } from "./Spinner.types";
 
 export const StyledSpinner = styled.div<StyledSpinnerProps>`
-  height: 50px;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
