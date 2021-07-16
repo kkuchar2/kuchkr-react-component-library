@@ -10,18 +10,6 @@ export const StyledSpinner = styled.div<StyledSpinnerProps>`
   .text {
     margin-right: 8px;
   }
-
-  span {
-    span:first-child {
-      background: #00f7ff;
-      opacity: 1;
-    }
-
-    span:nth-child(2) {
-      border-color: #6a6a6a;
-      opacity: 0.2;
-    }
-  }
 `
 
 StyledSpinner.defaultProps = defaultStyledSpinnerProps;
