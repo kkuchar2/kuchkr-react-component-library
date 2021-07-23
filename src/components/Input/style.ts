@@ -25,9 +25,9 @@ export const StyledInput = styled.div<StyledInputProps>`
     justify-content: center;
     width: 100%;
     box-sizing: border-box;
-    height: 40px;
+    height: ${props => props.theme.height};
     font-size: 16px;
-    line-height: 40px;
+    line-height: ${props => props.theme.height};
     outline: 0;
     color: ${props => props.theme.textColor};
     padding-left: 12px;

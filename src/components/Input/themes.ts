@@ -3,7 +3,8 @@ export const lightTheme = {
     textColor: "#474747",
     placeholderTextColor: "#bababa",
     border: "none",
-    borderRadius: "2px"
+    borderRadius: "2px",
+    height: "40px"
 }
 
 export const darkTheme = {
@@ -11,5 +12,6 @@ export const darkTheme = {
     textColor: "#cbcbcb",
     placeholderTextColor: "#4c4c4c",
     border: "none",
-    borderRadius: "4px"
+    borderRadius: "4px",
+    height: "40px"
 }
