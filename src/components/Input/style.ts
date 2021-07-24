@@ -23,7 +23,7 @@ export const StyledInput = styled.div<StyledInputProps>`
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 100%;
+    width: ${props => props.theme.width ? props.theme.width : "100%"};
     box-sizing: border-box;
     height: ${props => props.theme.height};
     font-size: 16px;
