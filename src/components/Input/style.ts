@@ -10,6 +10,7 @@ export const StyledInput = styled.div<StyledInputProps>`
   border: ${props => props.theme.border};
   font-family: $open-sans;
   border-radius: ${props => props.theme.borderRadius};
+  width: ${props => props.theme.width ? props.theme.width : "100%"};
   
   .formName {
     font-size: 14px;

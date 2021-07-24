@@ -4,7 +4,8 @@ export const lightTheme = {
     placeholderTextColor: "#bababa",
     border: "none",
     borderRadius: "2px",
-    height: "40px"
+    height: "40px",
+    width: "280px"
 }
 
 export const darkTheme = {
@@ -13,5 +14,6 @@ export const darkTheme = {
     placeholderTextColor: "#4c4c4c",
     border: "none",
     borderRadius: "4px",
-    height: "40px"
+    height: "40px",
+    width: "280px"
 }

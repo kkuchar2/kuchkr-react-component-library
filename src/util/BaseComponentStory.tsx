@@ -12,6 +12,7 @@ export const defaultArgTypes = {
 }
 
 interface ModeContainerProps {
+    readonly width?: string;
     readonly height?: string;
     readonly alignItems?: string;
     readonly padding?: string;
