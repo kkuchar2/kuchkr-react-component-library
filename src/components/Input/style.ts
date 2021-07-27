@@ -1,17 +1,21 @@
 import styled from "styled-components";
 import { defaultStyledInputProps, StyledInputProps } from "./Input.types";
 
+export const StyledInputWrapper = styled.div`
+`;
+
 export const StyledInput = styled.div<StyledInputProps>`
   display: flex;
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
+  flex-direction: column;
   background: ${props => props.theme.backgroundColor};
   border: ${props => props.theme.border};
   font-family: $open-sans;
   border-radius: ${props => props.theme.borderRadius};
   width: ${props => props.theme.width ? props.theme.width : "100%"};
-  
+
   .formName {
     font-size: 14px;
     color: #6a6c7c;

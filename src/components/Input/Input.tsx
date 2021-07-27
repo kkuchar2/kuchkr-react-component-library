@@ -1,13 +1,13 @@
 import React, { useCallback, useEffect, useState } from "react";
-import { InputProps} from "./Input.types";
+import { InputProps } from "./Input.types";
 import { darkTheme, lightTheme } from "./themes";
 import { BaseComponent, BaseComponentProps } from "../../hoc";
+import { StyledInput, StyledInputWrapper} from "./style";
 import { Text } from "../Text";
-import { StyledInput } from "./style";
 
 export const _Input = (props: BaseComponentProps & InputProps) => {
 
-    const {style, title, type, id, value, name, autoComplete, placeholder, disabled, onChange, required} = props;
+    const {style, title, type, id, value, name, autoComplete, placeholder, disabled, onChange, required, theme} = props;
 
     const [inputValue, setInputValue] = useState(value);
 
@@ -21,32 +21,40 @@ export const _Input = (props: BaseComponentProps & InputProps) => {
         setInputValue(e.target.value);
     }, [])
 
-    return <StyledInput style={style}>
-        <Text text={title}/>
-        <input
-            className={"inputField"}
-            spellCheck="false"
-            type={type}
-            id={id}
-            value={value ? value : inputValue}
-            name={name}
-            autoComplete={autoComplete}
-            placeholder={placeholder}
-            disabled={disabled}
-            onChange={onInputChange}
-            required={required}
-        />
-    </StyledInput>;
+    const renderTitle = useCallback(() => {
+        if (title) {
+            return <Text style={{marginBottom: 10, fontWeight: 'bold'}} theme={theme.textTheme} text={title}/>;
+        }
+    }, [title, theme])
+
+    return <StyledInputWrapper>
+        {renderTitle()}
+        <StyledInput style={style}>
+            <input
+                className={"inputField"}
+                spellCheck="false"
+                type={type}
+                id={id}
+                value={value ? value : inputValue}
+                name={name}
+                autoComplete={autoComplete}
+                placeholder={placeholder}
+                disabled={disabled}
+                onChange={onInputChange}
+                required={required}
+            />
+        </StyledInput>
+    </StyledInputWrapper>;
 }
 
 _Input.defaultProps = {
-    title: "",
+    title: "Enter text:",
     type: "",
     id: "",
     value: "",
     name: "",
     autoComplete: "off",
-    placeholder: "Enter text",
+    placeholder: "",
     onChange: null,
     required: false
 }
