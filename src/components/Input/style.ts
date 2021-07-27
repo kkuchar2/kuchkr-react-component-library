@@ -11,11 +11,14 @@ export const StyledInput = styled.div<StyledInputProps>`
   box-sizing: border-box;
   flex-direction: column;
   background: ${props => props.theme.backgroundColor};
-  border: ${props => props.theme.border};
+  border: none;
   font-family: $open-sans;
   border-radius: ${props => props.theme.borderRadius};
   width: ${props => props.theme.width ? props.theme.width : "100%"};
+    
+  
 
+  
   .formName {
     font-size: 14px;
     color: #6a6c7c;
@@ -39,7 +42,14 @@ export const StyledInput = styled.div<StyledInputProps>`
     padding-right: 12px;
     caret-color: #535353;
     font-family: 'Arial';
-
+    outline: 0;
+    background: transparent;
+    border-bottom: ${props => props.theme.border};
+    
+    &:focus {
+      border-bottom: ${props => props.theme.borderFocus};
+    }
+    
     .title {
       width: 150px;
     }

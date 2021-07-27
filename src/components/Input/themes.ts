@@ -1,9 +1,10 @@
 export const lightTheme = {
-    backgroundColor: "#ffffff",
+    backgroundColor: "rgba(255,255,255,0)",
     textColor: "#474747",
     placeholderTextColor: "#bababa",
-    border: "none",
-    borderRadius: "2px",
+    border: "1px solid " + "#afafaf",
+    borderFocus: "1px solid " + "#666666",
+    borderRadius: "0",
     height: "40px",
     width: "280px",
     textTheme: {
@@ -13,11 +14,12 @@ export const lightTheme = {
 }
 
 export const darkTheme = {
-    backgroundColor: "#1f1f1f",
+    backgroundColor: "rgba(31,31,31,0)",
     textColor: "#cbcbcb",
     placeholderTextColor: "#4c4c4c",
-    border: "none",
-    borderRadius: "4px",
+    borderFocus: "1px solid " + "#c1c1c1",
+    border: "1px solid " + "#666666",
+    borderRadius: "0",
     height: "40px",
     width: "280px",
     textTheme: {
