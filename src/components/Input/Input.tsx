@@ -27,9 +27,9 @@ export const _Input = (props: BaseComponentProps & InputProps) => {
         }
     }, [title, theme])
 
-    return <StyledInputWrapper>
+    return <StyledInputWrapper style={style}>
         {renderTitle()}
-        <StyledInput style={style}>
+        <StyledInput>
             <input
                 className={"inputField"}
                 spellCheck="false"
