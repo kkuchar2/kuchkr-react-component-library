@@ -25,14 +25,13 @@ export const StyledInput = styled.div<StyledInputProps>`
 
   .inputField {
     background: none;
-    border: none;
     display: flex;
     align-items: center;
     justify-content: center;
     width: ${props => props.theme.width ? props.theme.width : "100%"};
     box-sizing: border-box;
     height: ${props => props.theme.height};
-    font-size: 16px;
+    font-size: ${props => props.theme.fontSize ? props.theme.fontSize : "16px"};
     outline: 0;
     color: ${props => props.theme.textColor};
     padding-right: 12px;
