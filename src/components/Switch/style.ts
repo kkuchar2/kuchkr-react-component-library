@@ -7,7 +7,8 @@ export const StyledSwitch = styled.div`
   width: 150px;
   transform: scale(1.5);
   color: white;
-
+  margin: ${props => props.theme.margin ? props.theme.margin : "0 0 0 0"};
+  
   .react-switch-checkbox {
     height: 0;
     width: 0;

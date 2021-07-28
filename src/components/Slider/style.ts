@@ -2,7 +2,8 @@ import styled from "styled-components";
 import { styledSliderDefaultProps, StyledSliderProps } from "./Slider.types";
 
 export const StyledSlider = styled.div<StyledSliderProps>`
-    width: 200px;
+  width: 200px;
+  margin: ${props => props.theme.margin ? props.theme.margin : "0 0 0 0"};
 `
 
 export const baseStyle = (theme) => {

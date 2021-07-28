@@ -23,7 +23,7 @@ export const _Input = (props: BaseComponentProps & InputProps) => {
 
     const renderTitle = useCallback(() => {
         if (title) {
-            return <Text style={{marginBottom: 10, fontWeight: 'bold'}} theme={theme.textTheme} text={title}/>;
+            return <Text theme={theme.textTheme} text={title}/>;
         }
     }, [title, theme])
 

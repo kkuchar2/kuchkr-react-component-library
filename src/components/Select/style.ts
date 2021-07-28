@@ -19,7 +19,7 @@ export const StyledSelect = styled(motion.div)<StyledSelectProps>`
   }
 
   width: ${props => props.theme.width};
-  margin: 0;
+  margin: ${props => props.theme.margin ? props.theme.margin : "0 0 0 0"};
   border: ${props => props.theme.border};
 `
 
@@ -32,7 +32,7 @@ export const StyledSelectButton = styled.div<StyledSelectButtonProps>`
   height: ${props => props.theme.height};
   border-radius: ${props => props.theme.borderRadius};
   display: flex;
-  font-family: 'Arial';
+  font-family: ${props => props.theme.fontFamily? props.theme.fontFamily : 'inherit'};
   background: ${props => {
     if (props.disabled) {
       return props.theme.disabledBackgroundColor;
@@ -101,7 +101,7 @@ export const StyledEmptyDataInfo = styled.div<StyledEmptyDataInfoProps>`
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: 'Arial';
+  font-family: ${props => props.theme.fontFamily? props.theme.fontFamily : 'inherit'};
   color: ${props => props.theme.disabledTextColor};
   height: 100%;
   width: 100%;

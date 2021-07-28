@@ -5,11 +5,14 @@ export const lightTheme = {
     border: "1px solid " + "#afafaf",
     borderFocus: "1px solid " + "#666666",
     borderRadius: "0",
-    height: "40px",
+    height: "30px",
     width: "280px",
+
     textTheme: {
         textColor: '#2f2f2f',
-        fontSize: '0.9em'
+        fontSize: '0.9em',
+        fontWeight: 'bold',
+        margin: "0px 0px 0px 0px"
     }
 }
 
@@ -20,10 +23,13 @@ export const darkTheme = {
     borderFocus: "1px solid " + "#c1c1c1",
     border: "1px solid " + "#666666",
     borderRadius: "0",
-    height: "40px",
+    height: "30px",
     width: "280px",
+
     textTheme: {
         textColor: '#a0a0a0',
-        fontSize: '0.9em'
+        fontSize: '0.9em',
+        fontWeight: 'bold',
+        margin: "0px 0px 0px 0px"
     }
 }

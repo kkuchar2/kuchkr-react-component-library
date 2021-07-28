@@ -8,6 +8,7 @@ export const StyledButton = styled.button<StyledButtonProps>`
   border-radius: ${props => props.theme.borderRadius};
   background: ${props => props.disabled ? props.theme.disabledBackground : props.theme.background};
   overflow: hidden;
+  margin: ${props => props.theme.margin ? props.theme.margin : "0 0 0 0"};
   
   &:hover {
     cursor: ${props => {

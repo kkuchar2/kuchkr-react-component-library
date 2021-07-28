@@ -6,7 +6,8 @@ export const StyledSpinner = styled.div<StyledSpinnerProps>`
   display: flex;
   align-items: center;
   justify-content: center;
-
+  margin: ${props => props.theme.margin ? props.theme.margin : "0 0 0 0"};
+  
   .text {
     margin-right: 8px;
   }

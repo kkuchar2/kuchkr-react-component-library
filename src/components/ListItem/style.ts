@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { styledListItemDefaultProps, StyledListItemProps } from "./ListItem.types";
 
 export const StyledListItem = styled.div<StyledListItemProps>`
-  font-family: "Arial";
+  font-family: ${props => props.theme.fontFamily? props.theme.fontFamily : 'inherit'};
   color: ${props => props.disabled ? props.theme.disabledTextColor : props.theme.textColor};
   width: 100%;
   height: 100%;
