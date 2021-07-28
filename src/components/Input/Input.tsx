@@ -54,7 +54,7 @@ _Input.defaultProps = {
     value: "",
     name: "",
     autoComplete: "off",
-    placeholder: "",
+    placeholder: "Placeholder",
     onChange: null,
     required: false
 }

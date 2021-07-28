@@ -25,13 +25,14 @@ export const StyledInput = styled.div<StyledInputProps>`
 
   .inputField {
     background: none;
+    border: none;
     display: flex;
     align-items: center;
     justify-content: center;
     width: ${props => props.theme.width ? props.theme.width : "100%"};
     box-sizing: border-box;
     height: ${props => props.theme.height};
-    font-size: ${props => props.theme.fontSize ? props.theme.fontSize : "16px"};
+    font-size: ${props => props.theme.fontSize ? props.theme.fontSize : "14px"};
     outline: 0;
     color: ${props => props.theme.textColor};
     padding-right: 12px;
@@ -50,6 +51,7 @@ export const StyledInput = styled.div<StyledInputProps>`
 
     &::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
       color: ${props => props.theme.placeholderTextColor};
+      font-size: ${props => props.theme.fontSize ? props.theme.fontSize : "14px"};
     }
 
     &:-ms-input-placeholder { /* Internet Explorer 10-11 */
@@ -68,7 +70,7 @@ export const StyledInput = styled.div<StyledInputProps>`
     input:-webkit-autofill:hover,
     input:-webkit-autofill:focus,
     input:-webkit-autofill:active {
-      font-size: 16px;
+      font-size: ${props => props.theme.fontSize ? props.theme.fontSize : "14px"};
       color: #ffffff;
       -webkit-text-fill-color: inherit;
       -webkit-transition-delay: 9999s;
@@ -76,7 +78,7 @@ export const StyledInput = styled.div<StyledInputProps>`
     }
 
     input:-webkit-autofill::first-line {
-      font-size: 16px;
+      font-size: ${props => props.theme.fontSize ? props.theme.fontSize : "14px"};
       outline: 0;
       font-family: ${props => props.theme.fontFamily? props.theme.fontFamily : 'inherit'};
       color: #ffffff;
