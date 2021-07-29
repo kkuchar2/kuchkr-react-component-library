@@ -1,13 +1,15 @@
 import styled from "styled-components";
 import { styledTextDefaultProps, StyledTextProps } from "./Text.types";
+import { conditionalProp, themeProp } from "../../util/StyledPropAccessor";
 
 export const StyledText = styled.div<StyledTextProps>`
-  font-family: ${props => props.theme.fontFamily? props.theme.fontFamily : 'inherit'};
-  color: ${props => props.disabled ? props.theme.disabledTextColor : props.theme.textColor};
-  line-height: ${props => props.theme.lineHeight};
-  font-size: ${props => props.theme.fontSize};
-  font-weight: ${props => props.theme.fontWeight ? props.theme.fontWeight : 'normal'};
-  margin: ${props => props.theme.margin ? props.theme.margin : "0 0 0 0"};
+  font-family: ${themeProp('fontFamily', 'inherit')};
+  color: ${conditionalProp(p => p.disabled, 'disabledTextColor', 'textColor')};
+  line-height: ${themeProp('lineHeight', 'inherit')};
+  font-size: ${themeProp('fontSize')};
+  font-weight: ${themeProp('fontWeight', 'normal')};
+  margin: ${themeProp('margin', '0 0 0 0')};
+  text-align: ${themeProp('textAlign', 'left')};
 `
 
 StyledText.defaultProps = styledTextDefaultProps;
