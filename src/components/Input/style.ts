@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { defaultStyledInputProps, StyledInputProps } from "./Input.types";
 
 export const StyledInputWrapper = styled.div`
+  margin: ${props => props.theme.margin ? props.theme.margin : "0 0 0 0"};
 `;
 
 export const StyledInput = styled.div<StyledInputProps>`
@@ -15,8 +16,7 @@ export const StyledInput = styled.div<StyledInputProps>`
   font-family: ${props => props.theme.fontFamily ? props.theme.fontFamily : 'inherit'};
   border-radius: ${props => props.theme.borderRadius};
   width: ${props => props.theme.width ? props.theme.width : "100%"};
-  margin: ${props => props.theme.margin ? props.theme.margin : "0 0 0 0"};
-
+  margin: ${props => props.theme.inputMargin ? props.theme.inputMargin : "0 0 0 0"};
   .formName {
     font-size: 14px;
     color: #6a6c7c;
