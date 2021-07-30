@@ -2,7 +2,8 @@ export const lightTheme = {
     textColor: "#313131",
     disabledTextColor: "#666666",
     fontSize: "20px",
-    margin: "0px 0px 0px 0px"
+    margin: "0px 0px 0px 0px",
+    hoverColor: 'red'
 }
 
 export const darkTheme = {

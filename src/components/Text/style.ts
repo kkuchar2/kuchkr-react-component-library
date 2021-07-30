@@ -10,6 +10,10 @@ export const StyledText = styled.div<StyledTextProps>`
   font-weight: ${themeProp('fontWeight', 'normal')};
   margin: ${themeProp('margin', '0 0 0 0')};
   text-align: ${themeProp('textAlign', 'left')};
+  
+  &:hover {
+    color: ${themeProp('hoverColor')};
+  }
 `
 
 StyledText.defaultProps = styledTextDefaultProps;
