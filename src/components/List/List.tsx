@@ -36,9 +36,7 @@ export const _List = (props: BaseComponentProps & ListProps) => {
     useEffect(() => fetchData(), [])
 
     const fetchData = useCallback((start = 0, stop = 1) => {
-        if (fetchItems) {
-            fetchItems();
-        }
+        fetchItems?.();
     }, [fetchItems]);
 
     const itemRenderer = useCallback((index) => {
@@ -74,10 +72,16 @@ export const _List = (props: BaseComponentProps & ListProps) => {
         </StyledSpinner>
     }, [isFetching, fetchItems])
 
-    return <StyledList listHeight={fixedHeight}>
+    let targetHeight = fixedHeight;
+
+    if (fixedHeight > items.length * rowHeight) {
+        targetHeight = items.length * rowHeight;
+    }
+
+    return <StyledList listHeight={targetHeight}>
         <InfiniteLoader isRowLoaded={isRowLoaded} loadMoreRows={fetchData} rowCount={items.length + 1}>
             {({onRowsRendered}) => {
-                return <div style={{height: fixedHeight}}>
+                return <div style={{height: targetHeight}}>
                     <AutoSizer>
                         {({height, width}) => {
                             return <Scrollbars

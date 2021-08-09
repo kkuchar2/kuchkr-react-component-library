@@ -8,7 +8,7 @@ const _ListItem = (props: BaseComponentProps & ListItemProps) => {
 
     const {index, children, onClick, disabled} = props;
 
-    const onItemClick = useCallback(() => onClick(index), [onClick, index])
+    const onItemClick = useCallback(() => onClick?.(index), [onClick, index])
 
     return <StyledListItem disabled={disabled} onClick={onItemClick}>
         {children}

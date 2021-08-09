@@ -41,7 +41,7 @@ export const _Select = (props: BaseComponentProps & SelectProps) => {
 
     const onSelected = useCallback((selectedIndex) => {
         setSelectedIndex(selectedIndex);
-        onChange(selectedIndex, items[selectedIndex]);
+        onChange?.(selectedIndex, items[selectedIndex]);
         setOpened(false);
     }, []);
 

@@ -7,8 +7,8 @@ export interface SelectProps {
     items?: Array<unknown>
     fetchItems?: FetchingFunc,
     dataItemRenderer: (dataItem) => ReactElement,
-    itemValueProvider: (dataItem) => ReactElement,
-    onChange: (index, dataItem) => void
+    itemValueProvider?: (dataItem) => ReactElement,
+    onChange?: (index, dataItem) => void
 }
 
 export interface StyledSelectProps {}
