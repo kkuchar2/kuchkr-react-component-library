@@ -36,6 +36,7 @@ export const _Select = (props: BaseComponentProps & SelectProps) => {
         } else {
             if (selectedIndex >= 0 && selectedIndex <= items.length - 1) {
                 setVisibleTitle(itemValueProvider(items[selectedIndex]));
+                onChange?.(selectedIndex, items[selectedIndex]);
             }
         }
     }, [title, selectedIndex, items])
