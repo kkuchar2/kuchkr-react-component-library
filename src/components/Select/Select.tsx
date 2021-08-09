@@ -37,16 +37,13 @@ export const _Select = (props: BaseComponentProps & SelectProps) => {
             if (selectedIndex >= 0 && selectedIndex <= items.length - 1) {
                 setVisibleTitle(itemValueProvider(items[selectedIndex]));
                 onChange?.(selectedIndex, items[selectedIndex]);
+                setOpened(false);
             }
         }
     }, [title, selectedIndex, items])
 
 
-    const onSelected = useCallback((selectedIndex) => {
-        setSelectedIndex(selectedIndex);
-        onChange?.(selectedIndex, items[selectedIndex]);
-        setOpened(false);
-    }, []);
+    const onSelected = useCallback(setSelectedIndex, []);
 
     const onAnimationUpdate = (b) => {
         setAnimatedHeight(b.height)
