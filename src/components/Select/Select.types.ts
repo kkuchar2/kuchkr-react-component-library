@@ -9,7 +9,8 @@ export interface SelectProps {
     dataItemRenderer: (dataItem) => ReactElement,
     itemValueProvider?: (dataItem) => ReactElement,
     onChange?: (index, dataItem) => void,
-    selectFirst?: boolean
+    selectFirst?: boolean,
+    initialIndex?: number
 }
 
 export interface StyledSelectProps {}
