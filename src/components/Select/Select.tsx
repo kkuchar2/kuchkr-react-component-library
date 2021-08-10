@@ -18,10 +18,10 @@ import { darkTheme, lightTheme } from "./themes";
 
 export const _Select = (props: BaseComponentProps & SelectProps) => {
 
-    const {style, theme, title, items, fetchItems, disabled, dataItemRenderer, itemValueProvider, onChange, selectFirst, initialIndex} = props;
+    const {style, theme, title, items, fetchItems, disabled, dataItemRenderer, itemValueProvider, onChange, initialIndex} = props;
 
     const [opened, setOpened] = useState(false);
-    const [selectedIndex, setSelectedIndex] = useState(selectFirst ? 0 : initialIndex ? initialIndex : -1);
+    const [selectedIndex, setSelectedIndex] = useState(initialIndex);
     const [visibleTitle, setVisibleTitle] = useState(null);
     const [animatedHeight, setAnimatedHeight] = useState(0);
 
@@ -41,7 +41,6 @@ export const _Select = (props: BaseComponentProps & SelectProps) => {
             }
         }
     }, [title, selectedIndex, items])
-
 
     const onSelected = useCallback(setSelectedIndex, []);
 
@@ -122,8 +121,7 @@ _Select.defaultProps = {
     dataItemRenderer: null,
     itemValueProvider: dataItem => <div>{dataItem.value}</div>,
     onChange: (index, dataItem) => {},
-    selectFirst: true,
-    initialIndex: -1
+    initialIndex: 0
 }
 
 export const Select = BaseComponent<SelectProps>(_Select, lightTheme, darkTheme);

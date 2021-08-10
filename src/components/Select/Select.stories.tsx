@@ -19,22 +19,6 @@ const staticItems = Array.from({length: 3}).map(() => ({
     value: name.findName()
 }));
 
-export const EmptySelect = (args) => {
-
-    return <StyleContainer>
-        <DarkModeContainer height={"200px"} alignItems={"flex-start"} padding={"20px"}>
-            <Component {...args} dataItemRenderer={item => <div>{item.value}</div>} theme={SelectComponent.darkTheme}/>
-        </DarkModeContainer>
-
-        <LightModeContainer height={"200px"} alignItems={"flex-start"} padding={"20px"}>
-            <Component {...args} dataItemRenderer={item => <div>{item.value}</div>} theme={SelectComponent.lightTheme}/>
-        </LightModeContainer>
-    </StyleContainer>
-}
-
-EmptySelect.args = SelectComponent.defaultProps
-EmptySelect.argTypes = defaultArgTypes;
-
 export const SelectWithItems = (args) => {
 
     return <StyleContainer>
