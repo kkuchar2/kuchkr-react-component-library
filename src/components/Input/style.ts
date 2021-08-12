@@ -17,6 +17,7 @@ export const StyledInput = styled.div<StyledInputProps>`
   border-radius: ${props => props.theme.borderRadius};
   width: ${props => props.theme.width ? props.theme.width : "100%"};
   margin: ${props => props.theme.inputMargin ? props.theme.inputMargin : "0 0 0 0"};
+
   .formName {
     font-size: 14px;
     color: #6a6c7c;
@@ -35,7 +36,7 @@ export const StyledInput = styled.div<StyledInputProps>`
     font-size: ${props => props.theme.fontSize ? props.theme.fontSize : "14px"};
     outline: 0;
     color: ${props => props.theme.textColor};
-    padding-right: 12px;
+    padding: ${props => props.theme.padding};
     caret-color: #535353;
     font-family: ${props => props.theme.fontFamily ? props.theme.fontFamily : 'inherit'};
     background: transparent;
@@ -80,7 +81,7 @@ export const StyledInput = styled.div<StyledInputProps>`
     input:-webkit-autofill::first-line {
       font-size: ${props => props.theme.fontSize ? props.theme.fontSize : "14px"};
       outline: 0;
-      font-family: ${props => props.theme.fontFamily? props.theme.fontFamily : 'inherit'};
+      font-family: ${props => props.theme.fontFamily ? props.theme.fontFamily : 'inherit'};
       color: #ffffff;
     }
   }

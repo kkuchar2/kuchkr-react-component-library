@@ -7,6 +7,7 @@ export const lightTheme = {
     borderRadius: "0",
     height: "30px",
     width: "280px",
+    padding: "0px",
 
     textTheme: {
         textColor: '#2f2f2f',
@@ -25,6 +26,7 @@ export const darkTheme = {
     borderRadius: "0",
     height: "30px",
     width: "280px",
+    padding: "0px",
 
     textTheme: {
         textColor: '#a0a0a0',
