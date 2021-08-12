@@ -7,9 +7,9 @@ import { Text } from "../Text";
 
 export const _Input = (props: BaseComponentProps & InputProps) => {
 
-    const {style, title, type, id, value, name, autoComplete, placeholder, disabled, onChange, required, theme} = props;
+    const {style, title, type, id, value, initialValue, name, autoComplete, placeholder, disabled, onChange, required, theme} = props;
 
-    const [inputValue, setInputValue] = useState(value);
+    const [inputValue, setInputValue] = useState(initialValue);
 
     useEffect(() => {
         if (onChange && inputValue) {
@@ -52,6 +52,7 @@ _Input.defaultProps = {
     type: "",
     id: "",
     value: "",
+    initialValue: "",
     name: "",
     autoComplete: "off",
     placeholder: "Placeholder",
