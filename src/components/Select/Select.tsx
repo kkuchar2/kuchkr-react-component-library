@@ -97,7 +97,8 @@ export const _Select = (props: BaseComponentProps & SelectProps) => {
     const selectedValueTheme = {
         textColor: theme.textColor,
         disabledTextColor: theme.disabledTextColor,
-        lineHeight: theme.height
+        lineHeight: theme.height,
+        fontSize: theme.fontSize
     }
 
     return <StyledSelect ref={ref} style={style} className={"select"}>

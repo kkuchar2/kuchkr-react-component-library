@@ -10,9 +10,10 @@ export const lightTheme = {
     hoverBackgroundColor: '#c9c9c9',
     iconColor: "#2b2b2b",
     disabledIconColor: "#959595",
+    fontSize: "1em",
+
     listStyle: {
         background: "#ffffff",
-
         listItemStyle: {
             textColor: "#2d2d2d",
             textColorHover: "#2d2d2d",
@@ -38,10 +39,10 @@ export const darkTheme = {
     hoverBackgroundColor: '#212121',
     iconColor: "#959595",
     disabledIconColor: "#4c4c4c",
+    fontSize: "1em",
 
     listStyle: {
         background: "#313131",
-
         listItemStyle: {
             textColor: "#868686",
             disabledTextColor: "#525252",
