@@ -59,9 +59,16 @@ export const _Select = (props: BaseComponentProps & SelectProps) => {
             </div>
         }
 
+        let targetHeight = 200;
+        let rowHeight = 50;
+
+        if (targetHeight > items.length * rowHeight) {
+            targetHeight = items.length * rowHeight;
+        }
+
         return <AnimatedStyledList
             initial={{height: 0, opacity: 0}}
-            animate={{height: [0, 200], opacity: [0, 1]}}
+            animate={{height: [0, targetHeight], opacity: [0, 1]}}
             onUpdate={onAnimationUpdate}
             transition={{duration: 0.2}}>
             <List
