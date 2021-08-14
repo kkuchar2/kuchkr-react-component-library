@@ -9,14 +9,15 @@ export const StyledButton = styled.button<StyledButtonProps>`
   background: ${props => props.disabled ? props.theme.disabledBackground : props.theme.background};
   overflow: hidden;
   margin: ${props => props.theme.margin ? props.theme.margin : "0 0 0 0"};
-  
+  font-family: inherit;
+
   &:hover {
     cursor: ${props => {
-    if (props.disabled) {
+      if (props.disabled) {
         return "unset";
-    }
-    return "pointer";
-}};
+      }
+      return "pointer";
+    }};
 
     background: ${props => props.disabled ? props.theme.disabledBackground : props.theme.hoverBackground};
   }
