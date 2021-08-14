@@ -94,7 +94,6 @@ export const AnimatedStyledList = styled(motion.div)`
     margin-top: 10px;
     position: absolute;
     width: ${props => props.theme.width};
-    z-index: 1;
     box-shadow: ${props => props.theme.boxShadow ? props.theme.boxShadow : "1px 2px 20px 0px rgb(0 0 0 / 7%)"}
 `
 

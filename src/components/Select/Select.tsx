@@ -5,7 +5,6 @@ import { List } from "../List";
 import { Text } from "../Text";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
-import { useOnClickOutside } from '../../hoc/useOnClickOutside'
 import {
     AnimatedStyledList,
     StyledArrowIcon,
@@ -14,21 +13,63 @@ import {
     StyledSelectButton,
     StyledSelectedValueText
 } from './style';
+
 import { darkTheme, lightTheme } from "./themes";
+import Portal from "../Portal/Portal.jsx";
 
 export const _Select = (props: BaseComponentProps & SelectProps) => {
 
-    const {style, theme, title, items, fetchItems, disabled, dataItemRenderer, itemValueProvider, onChange, initialIndex} = props;
+    const {
+        style,
+        theme,
+        title,
+        items,
+        fetchItems,
+        disabled,
+        dataItemRenderer,
+        itemValueProvider,
+        onChange,
+        initialIndex
+    } = props;
 
     const [opened, setOpened] = useState(false);
     const [selectedIndex, setSelectedIndex] = useState(initialIndex);
     const [visibleTitle, setVisibleTitle] = useState(null);
     const [animatedHeight, setAnimatedHeight] = useState(0);
 
-    const ref = useRef();
+    const [portalTopPosition, setPortalTopPosition] = useState(0)
+    const [portalLeftPosition, setPortalLeftPosition] = useState(0)
 
-    // Support clicking outside this component
-    useOnClickOutside(ref, () => setOpened(false));
+    const ref = useRef(null);
+
+    const updateSize = useCallback(() => {
+        if (!ref.current) return;
+
+        const rect = ref.current.getBoundingClientRect();
+        const top = rect ? rect.y : 0;
+        const left = rect ? rect.x : 0;
+
+        setPortalLeftPosition(left)
+        setPortalTopPosition(top);
+    }, []);
+
+    const onNewIndex = useCallback(newIndex => {
+        if (newIndex >= 0 && newIndex <= items.length - 1) {
+            setVisibleTitle(itemValueProvider(items[newIndex]));
+            onChange?.(newIndex, items[newIndex]);
+            setOpened(false);
+            setSelectedIndex(newIndex)
+        }
+        else {
+            setVisibleTitle(title);
+        }
+    }, [title, onChange, itemValueProvider, items]);
+
+    useEffect(() => {
+        window.addEventListener('resize', updateSize);
+        updateSize();
+        return () => window.removeEventListener('resize', updateSize);
+    }, [ref]);
 
     useEffect(() => {
         if (selectedIndex < 0) {
@@ -42,11 +83,14 @@ export const _Select = (props: BaseComponentProps & SelectProps) => {
         }
     }, [title, selectedIndex, items])
 
-    const onSelected = useCallback(setSelectedIndex, []);
 
-    const onAnimationUpdate = (b) => {
+    const onSelected = useCallback(newIndex => {
+        onNewIndex(newIndex);
+    }, []);
+
+    const onAnimationUpdate = useCallback((b) => {
         setAnimatedHeight(b.height)
-    }
+    }, []);
 
     const renderItems = useCallback(() => {
         if (!opened || !items || items.length === 0) {
@@ -66,32 +110,38 @@ export const _Select = (props: BaseComponentProps & SelectProps) => {
             targetHeight = items.length * rowHeight;
         }
 
-        return <AnimatedStyledList
-            initial={{height: 0, opacity: 0}}
-            animate={{height: [0, targetHeight], opacity: [0, 1]}}
-            onUpdate={onAnimationUpdate}
-            transition={{duration: 0.2}}>
-            <List
-                fixedHeight={animatedHeight}
-                items={items}
-                theme={theme.listStyle}
-                onItemClick={onSelected}
-                fetchItems={fetchItems}
-                dataItemRenderer={dataItemRenderer}/>
-        </AnimatedStyledList>
+        return <Portal onClickOutside={() => setOpened(false)}>
+            <AnimatedStyledList
+                style={{top: portalTopPosition + 50, left: portalLeftPosition}}
+                initial={{height: 0, opacity: 0}}
+                animate={{height: [0, targetHeight], opacity: [0, 1]}}
+                onUpdate={onAnimationUpdate}
+                transition={{duration: 0.2}}>
+                <List
+                    fixedHeight={animatedHeight}
+                    items={items}
+                    theme={theme.listStyle}
+                    onItemClick={onSelected}
+                    fetchItems={fetchItems}
+                    dataItemRenderer={dataItemRenderer}/>
+            </AnimatedStyledList>
+        </Portal>
 
-    }, [opened, items, animatedHeight]);
+    }, [opened, items, animatedHeight, portalLeftPosition, portalTopPosition]);
 
     const renderEmptyDataInfo = useCallback(() => {
-        if (!opened  || items.length > 0) {
+        if (!opened || items.length > 0) {
             return;
         }
 
-        return <AnimatedStyledList
-            initial={{height: 0, opacity: 0}}
-            animate={{height: [0, 100], opacity: [0, 1]}} transition={{duration: 0.2}}>
-            <StyledEmptyDataInfo>No data</StyledEmptyDataInfo>
-        </AnimatedStyledList>
+        return <Portal onClickOutside={() => setOpened(false)}>
+            <AnimatedStyledList
+                style={{top: portalTopPosition + 50, left: portalLeftPosition}}
+                initial={{height: 0, opacity: 0}}
+                animate={{height: [0, 100], opacity: [0, 1]}} transition={{duration: 0.2}}>
+                <StyledEmptyDataInfo>No data</StyledEmptyDataInfo>
+            </AnimatedStyledList>
+        </Portal>
     }, [opened, items])
 
     const onClick = useCallback(() => {
