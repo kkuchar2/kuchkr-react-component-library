@@ -42,6 +42,10 @@ export const _Select = (props: BaseComponentProps & SelectProps) => {
 
     const ref = useRef(null);
 
+    useEffect(() => {
+        onNewIndex(selectedIndex);
+    }, [title, selectedIndex, items])
+
     const updateSize = useCallback(() => {
         if (!ref.current) return;
 
@@ -70,19 +74,6 @@ export const _Select = (props: BaseComponentProps & SelectProps) => {
         updateSize();
         return () => window.removeEventListener('resize', updateSize);
     }, [ref]);
-
-    useEffect(() => {
-        if (selectedIndex < 0) {
-            setVisibleTitle(title);
-        } else {
-            if (selectedIndex >= 0 && selectedIndex <= items.length - 1) {
-                setVisibleTitle(itemValueProvider(items[selectedIndex]));
-                onChange?.(selectedIndex, items[selectedIndex]);
-                setOpened(false);
-            }
-        }
-    }, [title, selectedIndex, items])
-
 
     const onSelected = useCallback(newIndex => {
         onNewIndex(newIndex);
