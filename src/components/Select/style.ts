@@ -33,6 +33,8 @@ export const StyledSelectButton = styled.div<StyledSelectButtonProps>`
   height: ${props => props.theme.height};
   display: flex;
   font-family: ${props => props.theme.fontFamily? props.theme.fontFamily : 'inherit'};
+  font-size: ${props => props.theme.fontSize};
+  font-weight: ${props => props.theme.fontWeight};
   background: ${props => {
     if (props.disabled) {
       return props.theme.disabledBackgroundColor;
