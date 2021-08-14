@@ -15,7 +15,7 @@ import {
 } from './style';
 
 import { darkTheme, lightTheme } from "./themes";
-import Portal from "../Portal/Portal.jsx";
+import { Portal } from "../Portal";
 
 export const _Select = (props: BaseComponentProps & SelectProps) => {
 

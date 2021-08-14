@@ -6,6 +6,7 @@ import { _Slider, Slider } from "./components/Slider";
 import { _Spinner, Spinner } from "./components/Spinner";
 import { _Switch, Switch } from "./components/Switch";
 import { _Text, Text } from "./components/Text";
+import { Portal } from "./components/Portal";
 
 export {
     _Button, Button,
@@ -15,5 +16,6 @@ export {
     _Slider, Slider,
     _Spinner, Spinner,
     _Switch, Switch,
-    _Text, Text
+    _Text, Text,
+    Portal
 };
