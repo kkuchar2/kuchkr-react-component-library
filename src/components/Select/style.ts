@@ -21,6 +21,7 @@ export const StyledSelect = styled(motion.div)<StyledSelectProps>`
   width: ${props => props.theme.width};
   margin: ${props => props.theme.margin ? props.theme.margin : "0 0 0 0"};
   border: ${props => props.theme.border};
+  border-radius: ${props => props.theme.borderRadius};
 `
 
 StyledSelect.defaultProps = styledSelectDefaultProps;
@@ -30,7 +31,6 @@ export const StyledSelectButton = styled.div<StyledSelectButtonProps>`
   margin: 0;
   width: ${props => props.theme.width};
   height: ${props => props.theme.height};
-  border-radius: ${props => props.theme.borderRadius};
   display: flex;
   font-family: ${props => props.theme.fontFamily? props.theme.fontFamily : 'inherit'};
   background: ${props => {
