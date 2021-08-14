@@ -65,6 +65,7 @@ export const _Select = (props: BaseComponentProps & SelectProps) => {
             setSelectedIndex(newIndex)
         }
         else {
+            onChange?.(newIndex, null);
             setVisibleTitle(title);
         }
     }, [title, onChange, itemValueProvider, items]);
