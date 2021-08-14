@@ -58,10 +58,6 @@ export const _Select = (props: BaseComponentProps & SelectProps) => {
     }, []);
 
     const onNewIndex = useCallback(newIndex => {
-        console.log('Items:')
-        console.log(items);
-        console.log('Items length: ' + items.length);
-        console.log('new idx: ' + newIndex);
         if (newIndex >= 0 && newIndex <= items.length - 1) {
             setVisibleTitle(itemValueProvider(items[newIndex]));
             onChange?.(newIndex, items[newIndex]);
@@ -82,7 +78,7 @@ export const _Select = (props: BaseComponentProps & SelectProps) => {
 
     const onSelected = useCallback(newIndex => {
         onNewIndex(newIndex);
-    }, []);
+    }, [items]);
 
     const onAnimationUpdate = useCallback((b) => {
         setAnimatedHeight(b.height)
