@@ -5,6 +5,7 @@ export interface SliderProps {
     value?: number;
     min?: number;
     max?: number;
+    useMarks?: boolean;
     onChange?: (v) => void;
 }
 export interface StyledSliderProps {}

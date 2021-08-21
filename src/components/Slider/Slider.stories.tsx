@@ -17,13 +17,15 @@ Component.displayName = SliderComponent.displayName;
 
 export const Slider = (args) => {
 
+    const [markValues, ] = useState([25, 75]);
+
     return <StyleContainer>
         <DarkModeContainer height={"200px"}>
-            <Component {...args} theme={SliderComponent.darkTheme}/>
+            <Component {...args} markValues={markValues} theme={SliderComponent.darkTheme}/>
         </DarkModeContainer>
 
         <LightModeContainer height={"200px"}>
-            <Component {...args} theme={SliderComponent.lightTheme}/>
+            <Component {...args} markValues={markValues} theme={SliderComponent.lightTheme}/>
         </LightModeContainer>
     </StyleContainer>
 }
@@ -35,6 +37,7 @@ export const SliderWithControlledValueFromOtherComponent = (args) => {
 
     const [value1, setValue1] = useState(0);
     const [value2, setValue2] = useState(0);
+    const [markValues, ] = useState([25, 75]);
 
     const onSliderChange1 = useCallback((v) => setValue1(v), [])
     const onSliderChange2 = useCallback((v) => setValue2(v), [])
@@ -58,7 +61,7 @@ export const SliderWithControlledValueFromOtherComponent = (args) => {
                 <div style={{marginRight: 50}}>
                     <Input theme={Input.darkTheme} value={value1.toString()} onChange={onInputChange1}/>
                 </div>
-                <Component {...args} value={value1} onChange={onSliderChange1} theme={SliderComponent.darkTheme}/>
+                <Component {...args} value={value1} onChange={onSliderChange1} markValues={markValues} theme={SliderComponent.darkTheme}/>
             </div>
         </DarkModeContainer>
 
@@ -67,7 +70,7 @@ export const SliderWithControlledValueFromOtherComponent = (args) => {
                 <div style={{marginRight: 50}}>
                     <Input theme={Input.lightTheme} value={value2.toString()} onChange={onInputChange2}/>
                 </div>
-                <Component {...args} value={value2} onChange={onSliderChange2} theme={SliderComponent.lightTheme}/>
+                <Component {...args} value={value2} onChange={onSliderChange2} markValues={markValues} theme={SliderComponent.lightTheme}/>
             </div>
         </LightModeContainer>
     </StyleContainer>

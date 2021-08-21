@@ -14,7 +14,7 @@ const markFunc = (v) => {
 
 export const _Slider = (props: BaseComponentProps & SliderProps) => {
 
-    const { logarithmic, markValues, defaultValue, value, min, max, disabled, onChange, theme } = props;
+    const { logarithmic, markValues, defaultValue, value, min, max, disabled, useMarks, onChange, theme } = props;
 
     const [marks, setMarks] = useState([]);
     const [internalValue, setInternalValue] = useState(defaultValue);
@@ -30,12 +30,11 @@ export const _Slider = (props: BaseComponentProps & SliderProps) => {
     useEffect(() => {
         const m = [ markFunc(min), markFunc(max)];
 
-        for (let i = 0 ; i < markValues.length - 1; i++) {
+        for (let i = 0 ; i < markValues.length; i++) {
             m.push(markFunc(markValues[i]));
         }
-
         setMarks(m);
-    }, []);
+    }, [markValues]);
 
     const onSliderChange = useCallback((v) => {
         if (onChange) {
@@ -54,7 +53,7 @@ export const _Slider = (props: BaseComponentProps & SliderProps) => {
             min={min}
             max={max}
             valueLabelDisplay="auto"
-            marks={marks}
+            marks={useMarks ? marks: []}
             onChange={(e, v) => onSliderChange(v)}
         />
     </StyledSlider>;
@@ -68,6 +67,7 @@ _Slider.defaultProps = {
     min: 0,
     max: 100,
     disabled: false,
+    useMarks: true,
     onChange: v => {}
 };
 
