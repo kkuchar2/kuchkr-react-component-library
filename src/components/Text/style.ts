@@ -9,7 +9,7 @@ export const StyledText = styled.div<StyledTextProps>`
   font-size: ${themeProp('fontSize')};
   font-weight: ${themeProp('fontWeight', 'normal')};
   margin: ${themeProp('margin', '0 0 0 0')};
-  text-align: ${themeProp('textAlign', 'left')};
+  text-align: ${themeProp('textAlign', 'center')};
   
   &:hover {
     color: ${themeProp('hoverColor')};

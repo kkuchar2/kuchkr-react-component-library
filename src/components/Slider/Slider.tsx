@@ -52,6 +52,7 @@ export const _Slider = (props: BaseComponentProps & SliderProps) => {
             scale={(x) => x}
             min={min}
             max={max}
+            disabled={disabled}
             valueLabelDisplay="auto"
             marks={useMarks ? marks: []}
             onChange={(e, v) => onSliderChange(v)}

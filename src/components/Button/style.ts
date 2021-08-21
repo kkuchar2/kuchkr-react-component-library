@@ -10,7 +10,6 @@ export const StyledButton = styled.button<StyledButtonProps>`
   overflow: hidden;
   margin: ${props => props.theme.margin ? props.theme.margin : "0 0 0 0"};
   font-family: inherit;
-
   &:hover {
     cursor: ${props => {
       if (props.disabled) {
