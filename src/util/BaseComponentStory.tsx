@@ -23,6 +23,7 @@ export const DarkModeContainer = styled.div<ModeContainerProps>`
   display: flex;
   align-items: ${props => props.alignItems ? props.alignItems : 'center'};
   justify-content: center;
+  flex-direction: column;
   min-height: 100px;
   border-radius: 10px;
   padding: ${props => props.padding};
@@ -37,6 +38,7 @@ export const LightModeContainer = styled.div<ModeContainerProps>`
   display: flex;
   align-items: ${props => props.alignItems ? props.alignItems : 'center'};
   justify-content: center;
+  flex-direction: column;
   min-height: 100px;
   border-radius: 10px;
   padding: ${props => props.padding};

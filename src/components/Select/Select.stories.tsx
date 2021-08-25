@@ -1,3 +1,5 @@
+import React from "react";
+import { name } from 'faker'
 import { Select as SelectComponent } from './Select';
 import {
     DarkModeContainer,
@@ -6,8 +8,8 @@ import {
     LightModeContainer,
     StyleContainer
 } from "../../util/BaseComponentStory";
-import React from "react";
-import { name } from 'faker'
+
+
 
 export default generateStoryOptions(SelectComponent);
 
@@ -19,7 +21,7 @@ const staticItems = Array.from({length: 3}).map(() => ({
     value: name.findName()
 }));
 
-export const SelectWithItems = (args) => {
+export const Select = (args) => {
 
     return <StyleContainer>
         <DarkModeContainer height={"300px"} alignItems={"flex-start"} padding={"20px"}>
@@ -32,5 +34,5 @@ export const SelectWithItems = (args) => {
     </StyleContainer>
 }
 
-SelectWithItems.args = SelectComponent.defaultProps
-SelectWithItems.argTypes = defaultArgTypes;
+Select.args = SelectComponent.defaultProps
+Select.argTypes = defaultArgTypes;

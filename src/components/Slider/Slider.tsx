@@ -1,12 +1,12 @@
-import React, { useCallback, useEffect, useMemo, useState } from "react";
-import { SliderProps} from "./Slider.types";
-import { darkTheme, lightTheme } from "./themes";
-import { BaseComponent, BaseComponentProps } from "../../hoc";
+import React, {useCallback, useEffect, useMemo, useRef, useState} from "react";
+import {SliderProps} from "./Slider.types";
+import {darkTheme, lightTheme} from "./themes";
+import {BaseComponent, BaseComponentProps} from "../../hoc";
 
-import { withStyles } from '@material-ui/core/styles';
-
-import { default as BaseSlider } from '@material-ui/core/Slider';
-import { baseStyle, StyledSlider } from "./style";
+import {withStyles} from '@material-ui/core/styles';
+import {Text} from "../Text"
+import {default as BaseSlider} from '@material-ui/core/Slider';
+import {baseStyle, StyledCustomRail, StyledCustomTrack, StyledSlider} from "./style";
 
 const markFunc = (v) => {
     return {value: v, label: <div className={'mark'}>{v}</div>}
@@ -14,12 +14,30 @@ const markFunc = (v) => {
 
 export const _Slider = (props: BaseComponentProps & SliderProps) => {
 
-    const { logarithmic, markValues, defaultValue, value, min, max, disabled, useMarks, onChange, theme } = props;
+    const {
+        style,
+        logarithmic,
+        markValues,
+        defaultValue,
+        value,
+        min,
+        max,
+        disabled,
+        useMarks,
+        displayLabel,
+        innerModernSlider,
+        onChange,
+        theme
+    } = props;
 
     const [marks, setMarks] = useState([]);
     const [internalValue, setInternalValue] = useState(defaultValue);
 
-    const StyledBaseSlider = useMemo(() => withStyles(baseStyle(theme))(BaseSlider), [theme]);
+    const customRailRef = useRef(null)
+
+    const StyledBaseSlider = useMemo(() => {
+        return withStyles(baseStyle(theme, innerModernSlider))(BaseSlider)
+    }, [theme, innerModernSlider]);
 
     useEffect(() => {
         if (value) {
@@ -28,9 +46,9 @@ export const _Slider = (props: BaseComponentProps & SliderProps) => {
     }, [value]);
 
     useEffect(() => {
-        const m = [ markFunc(min), markFunc(max)];
+        const m = [markFunc(min), markFunc(max)];
 
-        for (let i = 0 ; i < markValues.length; i++) {
+        for (let i = 0; i < markValues.length; i++) {
             m.push(markFunc(markValues[i]));
         }
         setMarks(m);
@@ -43,8 +61,51 @@ export const _Slider = (props: BaseComponentProps & SliderProps) => {
         setInternalValue(v);
     }, [onChange])
 
+    const renderCustomRail = useCallback(() => {
+        if (innerModernSlider) {
+            return <StyledCustomTrack>
+                <StyledCustomRail color={theme.railColor} width={(internalValue / max) * 100} ref={customRailRef}/>
+            </StyledCustomTrack>
+        }
+    }, [innerModernSlider, theme, internalValue])
 
-    return <StyledSlider>
+    const renderCustomLeftMark = useCallback(() => {
+        if (innerModernSlider) {
+            return <Text style={{
+                position: 'absolute',
+                top: 0,
+                left: -30,
+                color: theme.markLabelFontColor,
+                zIndex: 2,
+                fontFamily: 'inherit',
+                fontSize: '1.5em',
+                height: theme.height,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+            }} text={min.toString()} />
+        }
+    }, [innerModernSlider, theme, internalValue, min])
+
+    const renderCustomRightMark = useCallback(() => {
+        if (innerModernSlider) {
+            return <Text style={{
+                position: 'absolute',
+                top: 0,
+                right: -50,
+                color: theme.markLabelFontColor,
+                zIndex: 2,
+                fontFamily: 'inherit',
+                fontSize: '1.5em',
+                height: theme.height,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+            }} text={max.toString()} />
+        }
+    }, [innerModernSlider, theme, internalValue, max])
+
+    return <StyledSlider style={style}>
         <StyledBaseSlider
             defaultValue={defaultValue}
             value={internalValue}
@@ -53,11 +114,15 @@ export const _Slider = (props: BaseComponentProps & SliderProps) => {
             min={min}
             max={max}
             disabled={disabled}
-            valueLabelDisplay="auto"
-            marks={useMarks ? marks: []}
+            valueLabelDisplay={displayLabel ? 'on' : 'off'}
+            marks={useMarks && !innerModernSlider ? marks : []}
             onChange={(e, v) => onSliderChange(v)}
         />
-    </StyledSlider>;
+        {renderCustomRightMark()}
+        {renderCustomLeftMark()}
+        {renderCustomRail()}
+</StyledSlider>
+    ;
 }
 
 _Slider.defaultProps = {
@@ -68,6 +133,8 @@ _Slider.defaultProps = {
     min: 0,
     max: 100,
     disabled: false,
+    displayLabel: false,
+    innerModernSlider: false,
     useMarks: true,
     onChange: v => {}
 };

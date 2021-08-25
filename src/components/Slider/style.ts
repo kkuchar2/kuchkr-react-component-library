@@ -1,17 +1,41 @@
 import styled from "styled-components";
-import { styledSliderDefaultProps, StyledSliderProps } from "./Slider.types";
+import {styledSliderDefaultProps, StyledSliderProps, StyledCustomRailProps} from "./Slider.types";
 
 export const StyledSlider = styled.div<StyledSliderProps>`
-  width:  ${props => props.theme.width ? props.theme.width : "200px"};
+  position: relative;
+  width: ${props => props.theme.width ? props.theme.width : "200px"};
   margin: ${props => props.theme.margin ? props.theme.margin : "0 0 0 0"};
 `
 
-export const baseStyle = (theme) => {
+export const StyledCustomTrack = styled.div`
+  width: 100%;
+  height: ${props => `${props.theme.height}px`};
+  border-radius: 100px;
+  background: ${props => props.theme.trackColor};
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  overflow: hidden;
+`;
+
+export const StyledCustomRail = styled.div<StyledCustomRailProps>`
+  width: ${props => `${props.width}%`};
+  height: 80px;
+  background: ${props => props.color};
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+`;
+
+export const baseStyle = (theme, customRail = false) => {
     return {
         root: {
+            zIndex: 2,
             color: theme.fillProgressColor,
-            height: 2,
-            padding: "15px 0"
+            height: theme.height,
+            padding: "0"
         },
         thumb: {
             height: theme.thumbSize,
@@ -20,13 +44,17 @@ export const baseStyle = (theme) => {
             marginTop: theme.thumbMargin.marginTop,
             marginRight: theme.thumbMargin.marginRight,
             marginBottom: theme.thumbMargin.marginBottom,
-            marginLeft: theme.thumbMargin.marginLeft
+            marginLeft: theme.thumbMargin.marginLeft,
+            '&:focus, &:hover, &$active': {
+                boxShadow: 'unset',
+            },
         },
         active: {},
         valueLabel: {
-            left: "calc(-50% + 8px)",
-            top: -26,
+            left: theme.valueLabelPositionLeft,
+            top: -25,
             "& *": {
+                padding: 4,
                 background: theme.valueLabelBackground,
                 borderRadius: 6,
                 height: 22,
@@ -34,16 +62,19 @@ export const baseStyle = (theme) => {
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
+                fontSize: '1.2em',
                 color: theme.valueLabelFontColor,
                 minWidth: 40
             }
         },
         track: {
-            height: theme.trackHeight
+            width: `${theme.width + 100}px !important`,
+            height: theme.trackHeight,
+            backgroundColor: customRail ? "transparent" : theme.trackColor
         },
         rail: {
             height: theme.railHeight,
-            backgroundColor: theme.railColor
+            backgroundColor: customRail ? "transparent" : theme.railColor
         },
         mark: {
             backgroundColor: theme.markColor,
