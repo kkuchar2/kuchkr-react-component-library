@@ -34,8 +34,8 @@ export const StyledCustomRail = styled.div<StyledCustomRailProps>`
 export const leftCustomMarkStyle = (theme: Dictionary<any>): CSSProperties => {
     return {
         position: 'absolute',
-        top: 0,
-        left: theme.modernMarkLabelLeftMargin,
+        top: theme.modernMinMarkLabelTopMargin,
+        left: theme.modernMinMarkLabelRightMargin,
         color: theme.markLabelFontColor,
         zIndex: 2,
         fontFamily: 'inherit',
@@ -50,8 +50,8 @@ export const leftCustomMarkStyle = (theme: Dictionary<any>): CSSProperties => {
 export const rightCustomMarkStyle = (theme: Dictionary<any>): CSSProperties => {
     return {
         position: 'absolute',
-        top: 0,
-        right: theme.modernMarkLabelRightMargin,
+        top: theme.modernMaxMarkLabelTopMargin,
+        right: theme.modernMaxMarkLabelRightMargin,
         color: theme.markLabelFontColor,
         zIndex: 2,
         fontFamily: 'inherit',
