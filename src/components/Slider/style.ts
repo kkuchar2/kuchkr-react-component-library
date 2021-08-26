@@ -55,7 +55,7 @@ export const rightCustomMarkStyle = (theme: Dictionary<any>): CSSProperties => {
         color: theme.markLabelFontColor,
         zIndex: 2,
         fontFamily: 'inherit',
-        fontSize: theme.modernMarkFontSize,
+        fontSize: theme.modernMarkLabelFontSize,
         height: theme.height,
         display: 'flex',
         alignItems: 'center',
