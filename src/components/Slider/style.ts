@@ -1,5 +1,7 @@
 import styled from "styled-components";
-import {styledSliderDefaultProps, StyledSliderProps, StyledCustomRailProps} from "./Slider.types";
+import {StyledCustomRailProps, styledSliderDefaultProps, StyledSliderProps} from "./Slider.types";
+import {CSSProperties} from "react";
+import {Dictionary} from "../../util/BaseTypes.types";
 
 export const StyledSlider = styled.div<StyledSliderProps>`
   position: relative;
@@ -28,6 +30,38 @@ export const StyledCustomRail = styled.div<StyledCustomRailProps>`
   left: 0;
   z-index: 0;
 `;
+
+export const leftCustomMarkStyle = (theme: Dictionary<any>): CSSProperties => {
+    return {
+        position: 'absolute',
+        top: 0,
+        left: theme.modernMarkLabelLeftMargin,
+        color: theme.markLabelFontColor,
+        zIndex: 2,
+        fontFamily: 'inherit',
+        fontSize: theme.modernMarkLabelFontSize,
+        height: theme.height,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+    }
+}
+
+export const rightCustomMarkStyle = (theme: Dictionary<any>): CSSProperties => {
+    return {
+        position: 'absolute',
+        top: 0,
+        right: theme.modernMarkLabelRightMargin,
+        color: theme.markLabelFontColor,
+        zIndex: 2,
+        fontFamily: 'inherit',
+        fontSize: theme.modernMarkFontSize,
+        height: theme.height,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+    }
+}
 
 export const baseStyle = (theme, customRail = false) => {
     return {

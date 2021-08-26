@@ -100,6 +100,9 @@ export const modernDarkTheme = {
     trackColor: 'rgb(49,49,49)',
     markSize: 8,
     markActiveSize: 8,
+    modernMarkLabelFontSize: "1em",
+    modernMarkLabelLeftMargin: -30,
+    modernMarkLabelRightMargin: -50,
     markMargin: {
         marginTop: -3,
         marginRight: 0,
@@ -131,7 +134,7 @@ export const modernLightTheme = {
     valueLabelPositionLeft: "calc(-50% + 15px)",
     valueLabelBackground: '#337dff',
     valueLabelFontColor: '#ffffff',
-    markLabelFontColor: '#6b6b6b',
+    markLabelFontColor: '#a1a1a1',
     markLabelActiveFontColor: '#337dff',
     markLabelActiveFontWeight: 700,
     markColor: '#adadad',
@@ -140,6 +143,9 @@ export const modernLightTheme = {
     trackColor: 'rgb(204,204,204)',
     markSize: 8,
     markActiveSize: 8,
+    modernMarkLabelFontSize: "1em",
+    modernMarkLabelLeftMargin: -30,
+    modernMarkLabelRightMargin: -50,
     markMargin: {
         marginTop: -3,
         marginRight: 0,
