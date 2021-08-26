@@ -9,7 +9,6 @@ export interface SliderProps {
     displayLabel?: boolean;
     innerModernSlider?: boolean;
     onChange?: (v) => void;
-    width: number;
 }
 
 export interface StyledCustomRailProps {
