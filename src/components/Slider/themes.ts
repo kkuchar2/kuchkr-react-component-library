@@ -1,5 +1,5 @@
 export const lightTheme = {
-    width: "400px",
+    width: "100%",
     trackHeight: 2,
     railHeight: 2,
     fillProgressColor: '#337dff',
@@ -37,7 +37,7 @@ export const lightTheme = {
 }
 
 export const darkTheme = {
-    width: "400px",
+    width: "100%",
     trackHeight: 2,
     railHeight: 2,
     fillProgressColor: '#337dff',
@@ -75,7 +75,7 @@ export const darkTheme = {
 }
 
 export const modernDarkTheme = {
-    width: "400px",
+    width: "100%",
     height: 40,
     trackHeight: 2,
     railHeight: 2,
@@ -120,7 +120,7 @@ export const modernDarkTheme = {
 };
 
 export const modernLightTheme = {
-    width: "400px",
+    width: "100%",
     height: 40,
     trackHeight: 2,
     railHeight: 2,
