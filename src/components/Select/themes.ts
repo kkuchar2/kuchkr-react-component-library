@@ -1,57 +1,38 @@
 export const lightTheme = {
-    width: "480px",
-    height: "50px",
+    width: "100%",
+    height: 50,
+    boxShadow: "none",
     border: 'none',
-    borderRadius: '8px',
-    textColor: '#2b2b2b',
-    disabledTextColor: '#959595',
     backgroundColor: '#cecece',
-    disabledBackgroundColor: '#dcdcdc',
-    hoverBackgroundColor: '#c9c9c9',
-    iconColor: "#2b2b2b",
-    disabledIconColor: "#959595",
-    fontSize: "1em",
-
-    listStyle: {
-        background: "#ffffff",
-        listItemStyle: {
-            textColor: "#2d2d2d",
-            textColorHover: "#2d2d2d",
-            disabledTextColor: "#9c9c9c",
-            background: "#ffffff",
-            disabledBackground: "#e5e5e5",
-            backgroundHover: "#cecece",
-            paddingLeft: "15px",
-            paddingRight: "15px"
-        }
-    }
+    placeholderTextColor: '#3a3a3a',
+    selectedSingleValueTextColor: '#2b2b2b',
+    arrowColor: '#5d5959',
+    arrowColorHover: '#5d5959',
+    indicatorSeparatorColor: '#afafaf',
+    borderRadius: 8,
+    listBackgroundColor: '#cecece',
+    listItemTextColor: "#343434",
+    itemHoverBackgroundColor: '#005ed9',
+    itemSelectedBackgroundColor: '#508ad5',
+    itemHoverTextColor:  '#ffffff',
+    listItemHeight: 50
 }
 
 export const darkTheme = {
-    width: "480px",
-    height: "50px",
+    width: "100%",
+    height: 50,
     border: 'none',
-    borderRadius: '8px',
-    textColor: '#959595',
-    disabledTextColor: '#616161',
     backgroundColor: '#1c1c1c',
-    disabledBackgroundColor: 'rgba(49,49,49,0.75)',
-    hoverBackgroundColor: '#212121',
-    iconColor: "#959595",
-    disabledIconColor: "#4c4c4c",
-    fontSize: "1em",
-
-    listStyle: {
-        background: "#313131",
-        listItemStyle: {
-            textColor: "#868686",
-            disabledTextColor: "#525252",
-            textColorHover: "#868686",
-            background: "#363636",
-            disabledBackground: "#2b2b2b",
-            backgroundHover: "#424242",
-            paddingLeft: "15px",
-            paddingRight: "15px"
-        }
-    }
+    placeholderTextColor: '#858585',
+    selectedSingleValueTextColor: '#858585',
+    arrowColor: '#b6b6b6',
+    arrowColorHover: '#b6b6b6',
+    indicatorSeparatorColor: '#afafaf',
+    borderRadius: 8,
+    listBackgroundColor: '#333333',
+    listItemTextColor: "#a2a2a2",
+    itemHoverBackgroundColor: '#005ed9',
+    itemSelectedBackgroundColor: '#1f4170',
+    itemHoverTextColor:  '#ffffff',
+    listItemHeight: 50
 }
