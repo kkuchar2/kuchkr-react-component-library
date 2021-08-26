@@ -70,8 +70,9 @@ export const _Slider = (props: BaseComponentProps & SliderProps) => {
 
     const renderCustomRail = useCallback(() => {
         if (innerModernSlider) {
+            const calculatedWidth = ((internalValue - min) / (max - min)) * 100
             return <StyledCustomTrack>
-                <StyledCustomRail color={theme.railColor} width={(internalValue / max) * 100} ref={customRailRef}/>
+                <StyledCustomRail color={theme.railColor} width={calculatedWidth} ref={customRailRef}/>
             </StyledCustomTrack>
         }
     }, [innerModernSlider, theme, internalValue])
