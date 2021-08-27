@@ -82,4 +82,9 @@ export const StyledSelect = styled(Select)<StyledSelectProps>`
   border: none;
 `
 
+export const StyledSelectWrapper = styled.div`
+  width: ${props => props.theme.width};
+  border: none;
+`
+
 StyledSelect.defaultProps = styledSelectDefaultProps;

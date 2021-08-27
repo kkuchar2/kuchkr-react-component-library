@@ -1,7 +1,7 @@
 import React from 'react'
 import {SelectProps} from "./Select.types";
 import {BaseComponent, BaseComponentProps} from "../../hoc";
-import {selectStyles, StyledSelect,} from './style';
+import {selectStyles, StyledSelect, StyledSelectWrapper} from './style';
 
 import {darkTheme, lightTheme} from "./themes";
 
@@ -17,16 +17,19 @@ export const _Select = (props: BaseComponentProps & SelectProps) => {
         onChange,
     } = props;
 
-    return <StyledSelect
-        styles={selectStyles(theme)}
-        style={style}
-        menuPortalTarget={document.body}
-        placeholder={placeholder}
-        disabled={disabled}
-        isSearchable={isSearchable}
-        options={options}
-        onChange={onChange}>
-    </StyledSelect>
+    console.log(style);
+
+    return <StyledSelectWrapper style={style}>
+        <StyledSelect
+            styles={selectStyles(theme)}
+            menuPortalTarget={document.body}
+            placeholder={placeholder}
+            disabled={disabled}
+            isSearchable={isSearchable}
+            options={options}
+            onChange={onChange}>
+        </StyledSelect>
+    </StyledSelectWrapper>
 }
 
 _Select.defaultProps = {
