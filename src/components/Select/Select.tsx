@@ -17,8 +17,6 @@ export const _Select = (props: BaseComponentProps & SelectProps) => {
         onChange,
     } = props;
 
-    console.log(style);
-
     return <StyledSelectWrapper style={style}>
         <StyledSelect
             styles={selectStyles(theme)}
