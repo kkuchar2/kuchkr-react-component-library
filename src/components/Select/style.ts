@@ -51,6 +51,7 @@ export const selectStyles = (theme) => {
         }),
         menuPortal: base => ({
             ...base,
+            zIndex: 9999
         }),
         valueContainer: base => ({
             ...base,
