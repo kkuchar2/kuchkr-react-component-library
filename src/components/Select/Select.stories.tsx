@@ -1,4 +1,5 @@
 import React from "react";
+import {name} from 'faker'
 import {Select as SelectComponent} from './Select';
 import {
     DarkModeContainer,
@@ -15,12 +16,9 @@ const Component = (args) => <SelectComponent {...args} />;
 
 Component.displayName = SelectComponent.displayName;
 
-const staticItems = [
-    {value: "MergeSort", label: "MergeSort"},
-    {value: "BubbleSort", label: "BubbleSort"},
-    {value: "InsertionSort", label: "InsertionSort"},
-    {value: "QuickSort", label: "QuickSort"}
-]
+const staticItems = Array.from({length: 10}).map(() => {
+    return {value: name.findName(), label: name.findName()};
+});
 
 export const Select = (args) => {
 

@@ -39,7 +39,7 @@ export const selectStyles = (theme) => {
         menuList: base => ({
             ...base,
             color: theme.listItemTextColor,
-            borderRadius: 10,
+            borderRadius: theme.listBorderRadius,
             border: 'none',
             paddingTop: 0,
             paddingBottom: 0
@@ -47,7 +47,8 @@ export const selectStyles = (theme) => {
         menu: base => ({
             ...base,
             backgroundColor: theme.listBackgroundColor,
-            borderRadius: 10,
+            borderRadius: theme.listBorderRadius,
+            boxShadow: 'none'
         }),
         menuPortal: base => ({
             ...base,
@@ -65,6 +66,7 @@ export const selectStyles = (theme) => {
             display: 'flex',
             alignItems: 'center',
             border: 'none',
+            borderRadius: theme.listBorderRadius,
             paddingTop: 0,
             paddingBottom: 0,
             backgroundColor: state.isSelected ? theme.itemSelectedBackgroundColor : theme.listBackgroundColor,
