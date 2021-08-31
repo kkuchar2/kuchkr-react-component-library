@@ -1,6 +1,6 @@
-import { OptionsType, ValueType, ActionMeta } from "react-select";
+import { OptionType, ValueType, ActionMeta } from "react-select";
 
-export interface IOptionsType extends OptionsType {
+export interface IOptionsType extends Array<OptionType> {
 
 }
 
