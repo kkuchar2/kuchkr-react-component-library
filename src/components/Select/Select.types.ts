@@ -1,14 +1,10 @@
-import { OptionType, ValueType, ActionMeta } from "react-select";
-
-export interface IOptionsType extends Array<OptionType> {
-
-}
+import {OptionsType} from "react-select";
 
 export interface SelectProps {
     placeholder?: string,
-    options?: IOptionsType,
+    options?: OptionsType<any>,
     isSearchable?: boolean,
-    onChange?: (value: ValueType, action: ActionMeta) => void,
+    onChange?: (value: any, action : any) => void,
 }
 
 export interface StyledSelectProps {}
