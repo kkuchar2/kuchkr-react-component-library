@@ -1,8 +1,10 @@
+import { OptionsType, ValueType, ActionMeta } from "react-select";
+
 export interface SelectProps {
-    placeholder?: string;
-    options?: Array<unknown>
+    placeholder?: string,
+    options?: OptionsType,
     isSearchable?: boolean,
-    onChange?: (index, dataItem) => void,
+    onChange?: (value: ValueType, action: ActionMeta) => void,
 }
 
 export interface StyledSelectProps {}
