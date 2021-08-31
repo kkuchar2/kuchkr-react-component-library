@@ -1,6 +1,6 @@
 {
   "name": "kuchkr-react-component-library",
-  "version": "2.1.11",
+  "version": "2.1.12",
   "main": "build/index.js",
   "module": "build/index.esm.js",
   "files": [
