@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { defaultStyledInputProps, StyledInputProps } from "./Input.types";
+import {defaultStyledInputProps, StyledInputProps} from "./Input.types";
 
 export const StyledInputWrapper = styled.div`
   margin: ${props => props.theme.margin ? props.theme.margin : "0 0 0 0"};
@@ -26,22 +26,25 @@ export const StyledInput = styled.div<StyledInputProps>`
 
   .inputField {
     background: none;
-    border: none;
     display: flex;
     align-items: center;
     justify-content: center;
     width: ${props => props.theme.width ? props.theme.width : "100%"};
     box-sizing: border-box;
     height: ${props => props.theme.height};
-    font-size: ${props => props.theme.fontSize ? props.theme.fontSize : "14px"};
+    font-size: ${props => props.theme.inputTextTheme.fontSize};
     outline: 0;
-    color: ${props => props.theme.textColor};
+    color: ${props => props.theme.inputTextTheme.textColor};
     padding: ${props => props.theme.padding};
-    caret-color: #535353;
-    font-family: ${props => props.theme.fontFamily ? props.theme.fontFamily : 'inherit'};
+    caret-color: ${props => props.theme.caretColor};
+    font-family: ${props => props.theme.inputTextTheme.fontFamily ? props.theme.inputTextTheme.fontFamily : 'inherit'};
     background: transparent;
+    border-top: none;
+    border-right: none;
+    border-left: none;
     border-bottom: ${props => props.theme.border};
-
+    transition: border ease-in-out 0.3s;
+    
     &:focus {
       border-bottom: ${props => props.theme.borderFocus};
     }
@@ -50,17 +53,25 @@ export const StyledInput = styled.div<StyledInputProps>`
       width: 150px;
     }
 
-    &::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-      color: ${props => props.theme.placeholderTextColor};
-      font-size: ${props => props.theme.fontSize ? props.theme.fontSize : "14px"};
+    &::placeholder {
+      color: ${props => props.theme.placeholderTextTheme.textColor};
+      font-size: ${props => props.theme.placeholderTextTheme.fontSize};
+      text-align: ${props => props.theme.placeholderTextTheme.textAlign};
+      font-weight: ${props => props.theme.placeholderTextTheme.fontWeight};
     }
 
-    &:-ms-input-placeholder { /* Internet Explorer 10-11 */
-      color: ${props => props.theme.placeholderTextColor};
+    &:-ms-input-placeholder {
+      color: ${props => props.theme.placeholderTextTheme.textColor};
+      font-size: ${props => props.theme.placeholderTextTheme.fontSize};
+      text-align: ${props => props.theme.placeholderTextTheme.textAlign};
+      font-weight: ${props => props.theme.placeholderTextTheme.fontWeight};
     }
 
-    &::-ms-input-placeholder { /* Microsoft Edge */
-      color: ${props => props.theme.placeholderTextColor};
+    &::-ms-input-placeholder {
+      color: ${props => props.theme.placeholderTextTheme.textColor};
+      font-size: ${props => props.theme.placeholderTextTheme.fontSize};
+      text-align: ${props => props.theme.placeholderTextTheme.textAlign};
+      font-weight: ${props => props.theme.placeholderTextTheme.fontWeight};
     }
 
     input:focus::placeholder {
@@ -71,7 +82,7 @@ export const StyledInput = styled.div<StyledInputProps>`
     input:-webkit-autofill:hover,
     input:-webkit-autofill:focus,
     input:-webkit-autofill:active {
-      font-size: ${props => props.theme.fontSize ? props.theme.fontSize : "14px"};
+      font-size: ${props => props.theme.inputTextTheme.fontSize};
       color: #ffffff;
       -webkit-text-fill-color: inherit;
       -webkit-transition-delay: 9999s;
@@ -79,9 +90,9 @@ export const StyledInput = styled.div<StyledInputProps>`
     }
 
     input:-webkit-autofill::first-line {
-      font-size: ${props => props.theme.fontSize ? props.theme.fontSize : "14px"};
+      font-size: ${props => props.theme.inputTextTheme.fontSize};
       outline: 0;
-      font-family: ${props => props.theme.fontFamily ? props.theme.fontFamily : 'inherit'};
+      font-family: ${props => props.theme.inputTextTheme.fontFamily ? props.theme.inputTextTheme.fontFamily : 'inherit'};
       color: #ffffff;
     }
   }

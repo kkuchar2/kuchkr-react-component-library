@@ -23,7 +23,7 @@ export const _Input = (props: BaseComponentProps & InputProps) => {
 
     const renderTitle = useCallback(() => {
         if (title) {
-            return <Text theme={theme.textTheme} text={title}/>;
+            return <Text theme={theme.titleTextTheme} text={title}/>;
         }
     }, [title, theme])
 
@@ -55,7 +55,7 @@ _Input.defaultProps = {
     initialValue: "",
     name: "",
     autoComplete: "off",
-    placeholder: "Placeholder",
+    placeholder: "Enter some text please",
     onChange: null,
     required: false
 }
