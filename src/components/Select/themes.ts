@@ -1,7 +1,6 @@
 export const lightTheme = {
     width: "100%",
     height: 50,
-    boxShadow: "none",
     border: 'none',
     backgroundColor: '#cecece',
     placeholderTextColor: '#3a3a3a',
@@ -16,7 +15,8 @@ export const lightTheme = {
     itemHoverBackgroundColor: '#005ed9',
     itemSelectedBackgroundColor: '#508ad5',
     itemHoverTextColor:  '#ffffff',
-    listItemHeight: 50
+    listItemHeight: 50,
+    boxShadow: "0 9px 15px 0 rgba(0, 0, 0, 0.12)"
 }
 
 export const darkTheme = {
@@ -36,5 +36,6 @@ export const darkTheme = {
     itemHoverBackgroundColor: '#005ed9',
     itemSelectedBackgroundColor: '#1f4170',
     itemHoverTextColor:  '#ffffff',
-    listItemHeight: 50
+    listItemHeight: 50,
+    boxShadow: "20px 20px 20px 0 rgba(0, 0, 0, 0.11)"
 }

@@ -9,10 +9,8 @@ export const selectStyles = (theme) => {
             ...base,
             height: theme.height,
             border: theme.border,
-            boxShadow: theme.boxShadow,
             background: theme.backgroundColor,
             borderRadius: theme.borderRadius,
-
         }),
 
         placeholder: base => ({
@@ -48,7 +46,7 @@ export const selectStyles = (theme) => {
             ...base,
             backgroundColor: theme.listBackgroundColor,
             borderRadius: theme.listBorderRadius,
-            boxShadow: 'none'
+            boxShadow: theme.boxShadow
         }),
         menuPortal: base => ({
             ...base,

@@ -27,7 +27,7 @@ export const Select = (args) => {
             <Component {...args} options={staticItems} theme={SelectComponent.darkTheme}/>
         </DarkModeContainer>
 
-        <LightModeContainer height={"300px"} alignItems={"center"} padding={"20px"}>
+        <LightModeContainer height={"800px"} alignItems={"center"} padding={"20px"}>
             <Component {...args} options={staticItems} theme={SelectComponent.lightTheme}/>
         </LightModeContainer>
     </StyleContainer>
