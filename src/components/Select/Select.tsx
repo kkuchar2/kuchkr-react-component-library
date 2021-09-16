@@ -14,6 +14,7 @@ export const _Select = (props: BaseComponentProps & SelectProps) => {
         placeholder,
         disabled,
         isSearchable,
+        components,
         onChange,
     } = props;
 
@@ -25,6 +26,7 @@ export const _Select = (props: BaseComponentProps & SelectProps) => {
             disabled={disabled}
             isSearchable={isSearchable}
             options={options}
+            components={components}
             onChange={onChange}>
         </StyledSelect>
     </StyledSelectWrapper>
