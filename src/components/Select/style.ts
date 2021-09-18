@@ -36,7 +36,6 @@ export const selectStyles = (theme) => {
         }),
         menuList: base => ({
             ...base,
-            color: theme.listItemTextColor,
             borderRadius: theme.listBorderRadius,
             border: 'none',
             paddingTop: 0,
@@ -46,11 +45,11 @@ export const selectStyles = (theme) => {
             ...base,
             backgroundColor: theme.listBackgroundColor,
             borderRadius: theme.listBorderRadius,
-            boxShadow: theme.boxShadow
+            boxShadow: theme.boxShadow,
         }),
         menuPortal: base => ({
             ...base,
-            zIndex: 9999
+            zIndex: 9999,
         }),
         valueContainer: base => ({
             ...base,
@@ -64,15 +63,19 @@ export const selectStyles = (theme) => {
             display: 'flex',
             alignItems: 'center',
             border: 'none',
-            borderRadius: theme.listBorderRadius,
             paddingTop: 0,
             paddingBottom: 0,
             backgroundColor: state.isSelected ? theme.itemSelectedBackgroundColor : theme.listBackgroundColor,
+            color: state.isSelected ? theme.listItemSelectedTextColor : theme.listItemTextColor,
 
             '&:hover': {
                 backgroundColor: theme.itemHoverBackgroundColor,
                 color: theme.itemHoverTextColor,
-            }
+            },
+
+            '&:last-child': {
+                borderBottomLeftRadius: theme.listBorderRadius,
+            },
         })
     }
 }
