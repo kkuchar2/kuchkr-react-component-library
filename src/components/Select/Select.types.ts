@@ -5,8 +5,9 @@ export interface SelectProps {
     options?: OptionsType<any>,
     isSearchable?: boolean,
     defaultValue?: OptionsType,
-    onChange?: (value: any, action : any) => void,
+    onChange?: (v: OptionsType) => void,
     components?: any,
+    triggerOnDefault?: boolean
 }
 
 export interface StyledSelectProps {}

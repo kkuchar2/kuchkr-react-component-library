@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useCallback} from "react";
 import {name} from 'faker'
 import {Select as SelectComponent} from './Select';
 import {
@@ -22,13 +22,21 @@ const staticItems = Array.from({length: 10}).map(() => {
 
 export const Select = (args) => {
 
+
+    const onChange = useCallback((v) => {
+        console.log('On change: ', v)
+    }, []);
+
+
     return <StyleContainer>
         <DarkModeContainer height={"300px"} alignItems={"center"} padding={"20px"}>
-            <Component {...args} options={staticItems} defaultValue={staticItems[0]} theme={SelectComponent.darkTheme}/>
+            <Component {...args} onChange={onChange} triggerOnDefault options={staticItems} defaultValue={staticItems[0]}
+                       theme={SelectComponent.darkTheme}/>
         </DarkModeContainer>
 
         <LightModeContainer height={"800px"} alignItems={"center"} padding={"20px"}>
-            <Component {...args} options={staticItems} defaultValue={staticItems[0]} theme={SelectComponent.lightTheme}/>
+            <Component {...args} onChange={onChange} options={staticItems} defaultValue={staticItems[0]}
+                       theme={SelectComponent.lightTheme}/>
         </LightModeContainer>
     </StyleContainer>
 }

@@ -1,34 +1,29 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import {SelectProps} from "./Select.types";
 import {BaseComponent, BaseComponentProps} from "../../hoc";
 import {selectStyles, StyledSelect, StyledSelectWrapper} from './style';
-import { Scrollbars } from "react-custom-scrollbars";
+import {Scrollbars} from "react-custom-scrollbars";
 
 import {darkTheme, lightTheme} from "./themes";
 
-export const MenuList = (props: any) => {
-    return (
-        <div style={{ height: 200 }}>
+const MenuList = (props: any) => {
+    return <div style={{height: 200}}>
             <Scrollbars renderThumbVertical={renderThumbVertical}>
                 {props.children}
             </Scrollbars>
-        </div>
-    );
+        </div>;
 };
 
-// scrollbar styles
-function renderThumbVertical({ style, ...props }: { style: any }) {
-    return (
-        <div
-            {...props}
-            style={{
-                ...style,
-                backgroundColor: "#707070",
-                width: "0.8rem",
-                opacity: "0.6",
-            }}
-        />
-    );
+const renderThumbVertical = ({style, ...props}: { style: any }) => {
+    return <div
+        {...props}
+        style={{
+            ...style,
+            backgroundColor: "#707070",
+            width: "0.8rem",
+            opacity: "0.6",
+        }}
+    />
 }
 
 export const _Select = (props: BaseComponentProps & SelectProps) => {
@@ -42,8 +37,15 @@ export const _Select = (props: BaseComponentProps & SelectProps) => {
         isSearchable,
         components,
         onChange,
-        defaultValue
+        defaultValue,
+        triggerOnDefault
     } = props;
+
+    useEffect(() => {
+        if (triggerOnDefault) {
+            onChange?.(defaultValue);
+        }
+    }, [triggerOnDefault])
 
     return <StyledSelectWrapper style={style}>
         <StyledSelect
@@ -54,7 +56,7 @@ export const _Select = (props: BaseComponentProps & SelectProps) => {
             disabled={disabled}
             isSearchable={isSearchable}
             options={options}
-            components={{ MenuList }}
+            components={{MenuList}}
             onChange={onChange}>
         </StyledSelect>
     </StyledSelectWrapper>
@@ -66,7 +68,9 @@ _Select.defaultProps = {
     fetchItems: null,
     dataItemRenderer: null,
     isSearchable: false,
-    initialIndex: 0
+    initialIndex: 0,
+    defaultValue: null,
+    triggerOnDefault: false
 }
 
 export const Select = BaseComponent<SelectProps>(_Select, lightTheme, darkTheme);
