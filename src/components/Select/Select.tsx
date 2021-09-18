@@ -7,7 +7,9 @@ import {Scrollbars} from "react-custom-scrollbars";
 import {darkTheme, lightTheme} from "./themes";
 
 const MenuList = (props: any) => {
-    return <div style={{height: 200}}>
+    const {...data} = props;
+
+    return <div style={{height: data.selectProps.maxMenuHeight}}>
             <Scrollbars renderThumbVertical={renderThumbVertical}>
                 {props.children}
             </Scrollbars>
@@ -38,7 +40,8 @@ export const _Select = (props: BaseComponentProps & SelectProps) => {
         components,
         onChange,
         defaultValue,
-        triggerOnDefault
+        triggerOnDefault,
+        maxMenuHeight
     } = props;
 
     useEffect(() => {
@@ -54,6 +57,7 @@ export const _Select = (props: BaseComponentProps & SelectProps) => {
             menuPortalTarget={document.body}
             placeholder={placeholder}
             disabled={disabled}
+            maxMenuHeight={maxMenuHeight}
             isSearchable={isSearchable}
             options={options}
             components={{MenuList}}
@@ -70,7 +74,8 @@ _Select.defaultProps = {
     isSearchable: false,
     initialIndex: 0,
     defaultValue: null,
-    triggerOnDefault: false
+    triggerOnDefault: false,
+    maxMenuHeight: 200
 }
 
 export const Select = BaseComponent<SelectProps>(_Select, lightTheme, darkTheme);

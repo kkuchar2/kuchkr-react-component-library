@@ -7,7 +7,8 @@ export interface SelectProps {
     defaultValue?: OptionsType,
     onChange?: (v: OptionsType) => void,
     components?: any,
-    triggerOnDefault?: boolean
+    triggerOnDefault?: boolean,
+    maxMenuHeight?: number
 }
 
 export interface StyledSelectProps {}
