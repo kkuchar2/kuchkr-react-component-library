@@ -4,6 +4,7 @@ export interface SelectProps {
     placeholder?: string,
     options?: OptionsType<any>,
     isSearchable?: boolean,
+    defaultValue?: OptionsType,
     onChange?: (value: any, action : any) => void,
     components?: any,
 }

@@ -10,6 +10,10 @@ export const lightTheme = {
     text: {
         textColor: "#4e4e4e",
         disabledTextColor: "rgba(78,78,78,0.2)",
+    },
+
+    additionalStyles: {
+        border: "2px solid red"
     }
 }
 

@@ -24,11 +24,11 @@ export const Select = (args) => {
 
     return <StyleContainer>
         <DarkModeContainer height={"300px"} alignItems={"center"} padding={"20px"}>
-            <Component {...args} options={staticItems} theme={SelectComponent.darkTheme}/>
+            <Component {...args} options={staticItems} defaultValue={staticItems[0]} theme={SelectComponent.darkTheme}/>
         </DarkModeContainer>
 
         <LightModeContainer height={"800px"} alignItems={"center"} padding={"20px"}>
-            <Component {...args} options={staticItems} theme={SelectComponent.lightTheme}/>
+            <Component {...args} options={staticItems} defaultValue={staticItems[0]} theme={SelectComponent.lightTheme}/>
         </LightModeContainer>
     </StyleContainer>
 }

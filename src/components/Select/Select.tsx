@@ -16,10 +16,12 @@ export const _Select = (props: BaseComponentProps & SelectProps) => {
         isSearchable,
         components,
         onChange,
+        defaultValue
     } = props;
 
     return <StyledSelectWrapper style={style}>
         <StyledSelect
+            defaultValue={defaultValue}
             styles={selectStyles(theme)}
             menuPortalTarget={document.body}
             placeholder={placeholder}

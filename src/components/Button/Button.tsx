@@ -26,7 +26,9 @@ export const _Button = (props: BaseComponentProps & ButtonProps) => {
         return children;
     }, [text, children])
 
-    return <StyledButton style={style} type={"submit"} onClick={onButtonClick} disabled={disabled}>
+    const mergedStyles = Object.assign(style ? style : {}, theme.additionalStyles ? theme.additionalStyles : {});
+
+    return <StyledButton style={mergedStyles} type={"submit"} onClick={onButtonClick} disabled={disabled}>
        {renderButtonContent()}
     </StyledButton>
 }
