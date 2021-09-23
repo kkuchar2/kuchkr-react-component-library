@@ -22,7 +22,7 @@ export const Slider = (args) => {
     const [currentValue, setCurrentValue] = useState(20);
 
     return <StyleContainer>
-        <DarkModeContainer height={"400px"} padding={"30px"}>
+        <DarkModeContainer height={"200px"} padding={"30px"}>
             <Component {...args} value={currentValue} markValues={markValues} onChange={setCurrentValue}
                        theme={SliderComponent.darkTheme}/>
             <Text style={{marginTop: 50, color: '#337dff'}} text={`Value: ${currentValue.toString()}`}/>
@@ -30,7 +30,7 @@ export const Slider = (args) => {
                        onChange={setCurrentValue} innerModernSlider={true} theme={modernDarkTheme}/>
         </DarkModeContainer>
 
-        <LightModeContainer height={"400px"} padding={"30px"}>
+        <LightModeContainer height={"200px"} padding={"30px"}>
             <Component {...args} value={currentValue} markValues={markValues} onChange={setCurrentValue}
                        theme={SliderComponent.lightTheme}/>
             <Text style={{marginTop: 50, color: '#337dff'}} text={`Value: ${currentValue.toString()}`}/>

@@ -22,12 +22,12 @@ const staticItems = Array.from({length: 2}).map(() => {
 
 export const Select = (args) => {
     return <StyleContainer>
-        <DarkModeContainer height={"300px"} alignItems={"center"} padding={"20px"}>
+        <DarkModeContainer height={"200px"} alignItems={"center"} padding={"20px"}>
             <Component {...args} triggerOnDefault options={staticItems} defaultValue={staticItems[0]}
                        theme={SelectComponent.darkTheme}/>
         </DarkModeContainer>
 
-        <LightModeContainer height={"800px"} alignItems={"center"} padding={"20px"}>
+        <LightModeContainer height={"200px"} alignItems={"center"} padding={"20px"}>
             <Component {...args} options={staticItems} defaultValue={staticItems[0]}
                        theme={SelectComponent.lightTheme}/>
         </LightModeContainer>

@@ -50,6 +50,13 @@ export const _Select = (props: BaseComponentProps & SelectProps) => {
         }
     }, [triggerOnDefault])
 
+    const numberOfItems = options.length;
+    let maxHeightForMenu = maxMenuHeight;
+
+    if (numberOfItems * theme.listItemHeight < maxMenuHeight) {
+        maxHeightForMenu = numberOfItems * theme.listItemHeight;
+    }
+
     return <StyledSelectWrapper style={style}>
         <StyledSelect
             defaultValue={defaultValue}
@@ -57,7 +64,7 @@ export const _Select = (props: BaseComponentProps & SelectProps) => {
             menuPortalTarget={document.body}
             placeholder={placeholder}
             disabled={disabled}
-            maxMenuHeight={maxMenuHeight}
+            maxMenuHeight={maxHeightForMenu}
             isSearchable={isSearchable}
             options={options}
             components={{MenuList}}
