@@ -12,7 +12,7 @@ export const StyledListItem = styled.div<StyledListItemProps>`
   background: ${props => props.disabled ? props.theme.disabledBackground : props.theme.background};
   padding-left: ${props => props.theme.paddingLeft};
   padding-right: ${props => props.theme.paddingRight};
-
+  
   &:hover {
     color: ${props => props.disabled ? props.theme.disabledTextColor : props.theme.textColorHover};
     background: ${props => props.theme.backgroundHover};

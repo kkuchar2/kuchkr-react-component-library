@@ -78,16 +78,16 @@ export const _Slider = (props: BaseComponentProps & SliderProps) => {
     }, [innerModernSlider, theme, internalValue])
 
     const renderCustomLeftMark = useCallback(() => {
-        if (innerModernSlider) {
+        if (innerModernSlider && useMarks) {
             return <Text style={leftCustomMarkStyle(theme)} text={min.toString()}/>
         }
-    }, [innerModernSlider, theme, internalValue, min])
+    }, [innerModernSlider, theme, internalValue, min, useMarks])
 
     const renderCustomRightMark = useCallback(() => {
-        if (innerModernSlider) {
+        if (innerModernSlider && useMarks) {
             return <Text style={rightCustomMarkStyle(theme)} text={max.toString()}/>
         }
-    }, [innerModernSlider, theme, internalValue, max])
+    }, [innerModernSlider, theme, internalValue, max, useMarks])
 
     return <StyledSlider style={style}>
         <StyledBaseSlider
