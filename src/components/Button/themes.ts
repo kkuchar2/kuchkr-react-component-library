@@ -13,7 +13,7 @@ export const lightTheme = {
     },
 
     additionalStyles: {
-        border: "2px solid red"
+
     }
 }
 
