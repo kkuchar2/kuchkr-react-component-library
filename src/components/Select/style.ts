@@ -32,7 +32,8 @@ export const selectStyles = (theme) => {
         }),
         indicatorSeparator: base => ({
             ...base,
-             backgroundColor: theme.indicatorSeparatorColor
+             backgroundColor: theme.indicatorSeparatorColor,
+            display: theme.indicatorSeparatorDisplay
         }),
         menuList: base => ({
             ...base,

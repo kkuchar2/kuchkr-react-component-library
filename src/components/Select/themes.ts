@@ -17,7 +17,8 @@ export const lightTheme = {
     itemSelectedBackgroundColor: '#ffcfa1',
     itemHoverTextColor:  '#ffffff',
     listItemHeight: 50,
-    boxShadow: "0 9px 15px 0 rgba(0, 0, 0, 0.12)"
+    boxShadow: "0 9px 15px 0 rgba(0, 0, 0, 0.12)",
+    indicatorSeparatorDisplay: 'none'
 }
 
 export const darkTheme = {
@@ -39,5 +40,6 @@ export const darkTheme = {
     itemSelectedBackgroundColor: '#c56400',
     itemHoverTextColor:  '#ffffff',
     listItemHeight: 50,
-    boxShadow: "20px 20px 20px 0 rgba(0, 0, 0, 0.11)"
+    boxShadow: "20px 20px 20px 0 rgba(0, 0, 0, 0.11)",
+    indicatorSeparatorDisplay: 'none'
 }

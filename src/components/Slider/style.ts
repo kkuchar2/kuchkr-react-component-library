@@ -139,7 +139,7 @@ export const baseStyle = (theme, customRail = false) => {
             marginBottom: theme.markMargin.marginBottom,
             marginLeft: theme.markMargin.marginLeft,
             opacity: 1
-        },
+        }
     }
 }
 
