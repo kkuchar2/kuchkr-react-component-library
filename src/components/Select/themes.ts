@@ -40,6 +40,7 @@ export const lightTheme = {
     backgroundColor: '#ffffff',
     borderRadius: 8,
     boxShadow: "0 9px 15px 0 rgba(0, 0, 0, 0.12)",
+    cursorOnHover: 'pointer'
 }
 
 export const darkTheme = {
@@ -83,5 +84,6 @@ export const darkTheme = {
     border: 'none',
     backgroundColor: '#1c1c1c',
     borderRadius: 8,
-    boxShadow: "20px 20px 20px 0 rgba(0, 0, 0, 0.11)"
+    boxShadow: "20px 20px 20px 0 rgba(0, 0, 0, 0.11)",
+    cursorOnHover: 'pointer'
 }

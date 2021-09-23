@@ -11,7 +11,11 @@ export const selectStyles = (theme) => {
             border: theme.border,
             background: theme.backgroundColor,
             borderRadius: theme.borderRadius,
-            boxShadow: 'none'
+            boxShadow: 'none',
+
+            '&:hover': {
+                cursor: theme.cursorOnHover
+            }
         }),
 
         placeholder: base => ({
@@ -46,7 +50,11 @@ export const selectStyles = (theme) => {
             borderRadius: theme.listBorderRadius,
             border: 'none',
             paddingTop: 0,
-            paddingBottom: 0
+            paddingBottom: 0,
+
+            '&:hover': {
+                cursor: theme.cursorOnHover
+            }
         }),
         menu: base => ({
             ...base,
@@ -80,6 +88,7 @@ export const selectStyles = (theme) => {
             '&:hover': {
                 backgroundColor: theme.itemHoverBackgroundColor,
                 color: theme.itemHoverTextColor,
+                cursor: theme.cursorOnHover
             }
         })
     }
