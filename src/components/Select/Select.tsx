@@ -9,8 +9,6 @@ import {darkTheme, lightTheme} from "./themes";
 const MenuList = (props: any) => {
     const {...data} = props;
 
-    console.log("BR", data.selectProps.listBorderRadius);
-
     return <div style={{
         height: data.selectProps.maxMenuHeight,
         overflow: 'hidden',
