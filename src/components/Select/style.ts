@@ -11,6 +11,7 @@ export const selectStyles = (theme) => {
             border: theme.border,
             background: theme.backgroundColor,
             borderRadius: theme.borderRadius,
+            boxShadow: 'none'
         }),
 
         placeholder: base => ({
