@@ -17,6 +17,8 @@ export const selectStyles = (theme) => {
         placeholder: base => ({
             ...base,
             color: theme.placeholderTextColor,
+            fontSize: theme.placeholderFontSize,
+            fontWeight: theme.placeholderFontWeight
         }),
 
         singleValue: base => ({

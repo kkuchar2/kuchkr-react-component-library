@@ -25,16 +25,19 @@ export const lightTheme = {
     // Arrow
     arrowColor: '#5d5959',
     arrowColorHover: '#5d5959',
-    arrowThickness: '10px',
 
     // Separator line
     indicatorSeparatorColor: '#afafaf',
     indicatorSeparatorDisplay: 'none',
 
+    // Placeholder
+    placeholderTextColor: '#3a3a3a',
+    placeholderFontSize: '1.1em',
+    placeholderFontWeight: 600,
+
     // Other
     border: 'none',
     backgroundColor: '#ffffff',
-    placeholderTextColor: '#3a3a3a',
     borderRadius: 8,
     boxShadow: "0 9px 15px 0 rgba(0, 0, 0, 0.12)",
 }
@@ -71,10 +74,14 @@ export const darkTheme = {
     indicatorSeparatorColor: '#afafaf',
     indicatorSeparatorDisplay: 'none',
 
+    // Placeholder
+    placeholderTextColor: '#858585',
+    placeholderFontSize: '1.1em',
+    placeholderFontWeight: 600,
+
     // Other
     border: 'none',
     backgroundColor: '#1c1c1c',
-    placeholderTextColor: '#858585',
     borderRadius: 8,
     boxShadow: "20px 20px 20px 0 rgba(0, 0, 0, 0.11)"
 }
