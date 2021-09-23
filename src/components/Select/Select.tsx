@@ -9,11 +9,17 @@ import {darkTheme, lightTheme} from "./themes";
 const MenuList = (props: any) => {
     const {...data} = props;
 
-    return <div style={{height: data.selectProps.maxMenuHeight}}>
-            <Scrollbars renderThumbVertical={renderThumbVertical}>
-                {props.children}
-            </Scrollbars>
-        </div>;
+    console.log("BR", data.selectProps.listBorderRadius);
+
+    return <div style={{
+        height: data.selectProps.maxMenuHeight,
+        overflow: 'hidden',
+        borderRadius: data.selectProps.listBorderRadius
+    }}>
+        <Scrollbars renderThumbVertical={renderThumbVertical}>
+            {props.children}
+        </Scrollbars>
+    </div>;
 };
 
 const renderThumbVertical = ({style, ...props}: { style: any }) => {
@@ -53,8 +59,8 @@ export const _Select = (props: BaseComponentProps & SelectProps) => {
     const numberOfItems = options.length;
     let maxHeightForMenu = maxMenuHeight;
 
-    if (numberOfItems * theme.listItemHeight < maxMenuHeight) {
-        maxHeightForMenu = numberOfItems * theme.listItemHeight;
+    if (numberOfItems * theme.itemHeight < maxMenuHeight) {
+        maxHeightForMenu = numberOfItems * theme.itemHeight;
     }
 
     return <StyledSelectWrapper style={style}>
@@ -65,6 +71,7 @@ export const _Select = (props: BaseComponentProps & SelectProps) => {
             placeholder={placeholder}
             disabled={disabled}
             maxMenuHeight={maxHeightForMenu}
+            listBorderRadius={theme.borderRadius}
             isSearchable={isSearchable}
             options={options}
             components={{MenuList}}

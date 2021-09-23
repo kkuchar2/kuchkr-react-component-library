@@ -16,7 +16,7 @@ const Component = (args) => <SelectComponent {...args} />;
 
 Component.displayName = SelectComponent.displayName;
 
-const staticItems = Array.from({length: 2}).map(() => {
+const staticItems = Array.from({length: 120}).map(() => {
     return {value: name.findName(), label: name.findName()};
 });
 

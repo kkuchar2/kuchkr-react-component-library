@@ -1,45 +1,80 @@
 export const lightTheme = {
+    // Size
     width: "100%",
     height: 50,
+
+    // List
+    listBorderRadius: 14,
+    listBackgroundColor: '#ffffff',
+
+    // List item
+    itemHeight: 50,
+    itemTextColor: "#343434",
+    itemSelectedTextColor: "#000000",
+    itemHoverBackgroundColor: '#d0d0d0',
+    itemSelectedBackgroundColor: '#e3e3e3',
+    itemHoverTextColor:  '#000000',
+    itemFontSize: '0.9em',
+    itemFontWeight: 600,
+
+    // Selected value
+    selectedValueTextColor: '#2b2b2b',
+    selectedValueFontWeight: 600,
+    selectedValueFontSize: '1em',
+
+    // Arrow
+    arrowColor: '#5d5959',
+    arrowColorHover: '#5d5959',
+    arrowThickness: '10px',
+
+    // Separator line
+    indicatorSeparatorColor: '#afafaf',
+    indicatorSeparatorDisplay: 'none',
+
+    // Other
     border: 'none',
     backgroundColor: '#ffffff',
     placeholderTextColor: '#3a3a3a',
-    selectedSingleValueTextColor: '#2b2b2b',
-    arrowColor: '#5d5959',
-    arrowColorHover: '#5d5959',
-    indicatorSeparatorColor: '#afafaf',
-    borderRadius: 4,
-    listBorderRadius: 14,
-    listBackgroundColor: '#ffffff',
-    listItemTextColor: "#343434",
-    listItemSelectedTextColor: "#343434",
-    itemHoverBackgroundColor: '#ff9300',
-    itemSelectedBackgroundColor: '#ffcfa1',
-    itemHoverTextColor:  '#ffffff',
-    listItemHeight: 50,
+    borderRadius: 8,
     boxShadow: "0 9px 15px 0 rgba(0, 0, 0, 0.12)",
-    indicatorSeparatorDisplay: 'none'
 }
 
 export const darkTheme = {
+    // Size
     width: "100%",
     height: 50,
+
+    // List
+    listBorderRadius: 4,
+    listBackgroundColor: '#1c1c1c',
+
+    // List item
+    itemHeight: 50,
+    itemTextColor: "#a2a2a2",
+    itemSelectedTextColor: "#ffffff",
+    itemHoverBackgroundColor: '#3d3d3d',
+    itemSelectedBackgroundColor: '#2d2d2d',
+    itemHoverTextColor:  '#ffffff',
+    itemFontSize: '0.9em',
+    itemFontWeight: 600,
+
+    // Selected value
+    selectedValueTextColor: '#858585',
+    selectedValueFontWeight: 600,
+    selectedValueFontSize: '1em',
+
+    // Arrow
+    arrowColor: '#b6b6b6',
+    arrowColorHover: '#b6b6b6',
+
+    // Separator line
+    indicatorSeparatorColor: '#afafaf',
+    indicatorSeparatorDisplay: 'none',
+
+    // Other
     border: 'none',
     backgroundColor: '#1c1c1c',
     placeholderTextColor: '#858585',
-    selectedSingleValueTextColor: '#858585',
-    arrowColor: '#b6b6b6',
-    arrowColorHover: '#b6b6b6',
-    indicatorSeparatorColor: '#afafaf',
-    borderRadius: 4,
-    listBorderRadius: 4,
-    listBackgroundColor: '#333333',
-    listItemTextColor: "#a2a2a2",
-    listItemSelectedTextColor: "#ffffff",
-    itemHoverBackgroundColor: '#ff9300',
-    itemSelectedBackgroundColor: '#c56400',
-    itemHoverTextColor:  '#ffffff',
-    listItemHeight: 50,
-    boxShadow: "20px 20px 20px 0 rgba(0, 0, 0, 0.11)",
-    indicatorSeparatorDisplay: 'none'
+    borderRadius: 8,
+    boxShadow: "20px 20px 20px 0 rgba(0, 0, 0, 0.11)"
 }

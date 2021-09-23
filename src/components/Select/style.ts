@@ -21,12 +21,15 @@ export const selectStyles = (theme) => {
 
         singleValue: base => ({
             ...base,
-            color: theme.selectedSingleValueTextColor,
+            color: theme.selectedValueTextColor,
+            fontWeight: theme.selectedValueFontWeight,
+            fontSize: theme.selectedValueFontSize
         }),
 
         dropdownIndicator: base => ({
             ...base,
             color: theme.arrowColor,
+
             '&:hover': {
                 color: theme.arrowColorHover,
             }
@@ -46,7 +49,7 @@ export const selectStyles = (theme) => {
         menu: base => ({
             ...base,
             backgroundColor: theme.listBackgroundColor,
-            borderRadius: theme.listBorderRadius,
+            borderRadius: 20,
             boxShadow: theme.boxShadow,
         }),
         menuPortal: base => ({
@@ -61,23 +64,21 @@ export const selectStyles = (theme) => {
         }),
         option: (base, state) => ({
             ...base,
-            height: theme.listItemHeight,
+            height: theme.itemHeight,
             display: 'flex',
             alignItems: 'center',
             border: 'none',
             paddingTop: 0,
             paddingBottom: 0,
+            fontSize: theme.itemFontSize,
+            fontWeight: theme.itemFontWeight,
             backgroundColor: state.isSelected ? theme.itemSelectedBackgroundColor : theme.listBackgroundColor,
-            color: state.isSelected ? theme.listItemSelectedTextColor : theme.listItemTextColor,
+            color: state.isSelected ? theme.itemSelectedTextColor : theme.itemTextColor,
 
             '&:hover': {
                 backgroundColor: theme.itemHoverBackgroundColor,
                 color: theme.itemHoverTextColor,
-            },
-
-            '&:last-child': {
-                borderBottomLeftRadius: theme.listBorderRadius,
-            },
+            }
         })
     }
 }
