@@ -1,13 +1,28 @@
-import React, { useCallback, useEffect, useState } from "react";
-import { InputProps } from "./Input.types";
-import { darkTheme, lightTheme } from "./themes";
-import { BaseComponent, BaseComponentProps } from "../../hoc";
-import { StyledInput, StyledInputWrapper} from "./style";
-import { Text } from "../Text";
+import React, {useCallback, useEffect, useState} from "react";
+import {InputProps} from "./Input.types";
+import {darkTheme, lightTheme} from "./themes";
+import {BaseComponent, BaseComponentProps} from "../../hoc";
+import {StyledInput, StyledInputWrapper} from "./style";
+import {Text} from "../Text";
 
 export const _Input = (props: BaseComponentProps & InputProps) => {
 
-    const {style, title, type, id, value, initialValue, name, autoComplete, placeholder, disabled, onChange, required, theme} = props;
+    const {
+        style,
+        title,
+        type,
+        id,
+        value,
+        initialValue,
+        name,
+        autoComplete,
+        placeholder,
+        disabled,
+        onChange,
+        onEnter,
+        required,
+        theme
+    } = props;
 
     const [inputValue, setInputValue] = useState(initialValue);
 
@@ -27,6 +42,12 @@ export const _Input = (props: BaseComponentProps & InputProps) => {
         }
     }, [title, theme])
 
+    const onKeyDown = useCallback((event) => {
+        if (event.key === 'Enter') {
+            onEnter?.();
+        }
+    }, [onEnter]);
+
     return <StyledInputWrapper style={style}>
         {renderTitle()}
         <StyledInput>
@@ -41,6 +62,7 @@ export const _Input = (props: BaseComponentProps & InputProps) => {
                 placeholder={placeholder}
                 disabled={disabled}
                 onChange={onInputChange}
+                onKeyDown={onKeyDown}
                 required={required}
             />
         </StyledInput>
@@ -57,6 +79,7 @@ _Input.defaultProps = {
     autoComplete: "off",
     placeholder: "Enter some text please",
     onChange: null,
+    onEnter: null,
     required: false
 }
 

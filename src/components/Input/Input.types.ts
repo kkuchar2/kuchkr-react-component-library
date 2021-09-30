@@ -10,6 +10,7 @@ export interface InputProps extends BaseProps {
     autoComplete?: string;
     placeholder?: string;
     onChange?: (v: string) => void;
+    onEnter?: () => void;
     required?: boolean;
 }
 
