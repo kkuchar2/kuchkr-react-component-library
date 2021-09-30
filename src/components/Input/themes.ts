@@ -64,3 +64,40 @@ export const darkTheme = {
         textAlign: 'left'
     }
 }
+
+export const withIconTestTheme = {
+    backgroundColor: "rgb(255,255,255)",
+    textColor: "#474747",
+    border: 'none',
+    borderFocus: "none",
+    borderRadius: "5px",
+    height: "40px",
+    width: "280px",
+    padding: "0px 0px 0px 40px",
+    caretColor: "#646464",
+    iconPositionLeft: 10,
+    iconColor: "rgba(0,102,255,0.44)",
+    iconFontSize: 'small',
+
+    titleTextTheme: {
+        textColor: '#2f2f2f',
+        fontSize: '0.9em',
+        fontWeight: '500',
+        textAlign: 'left',
+        margin: "0px 0px 0px 0px"
+    },
+
+    inputTextTheme: {
+        textColor: '#2f2f2f',
+        fontSize: '0.9em',
+        fontWeight: 'bold',
+        textAlign: 'left',
+        margin: "0px 0px 0px 0px"
+    },
+
+    placeholderTextTheme: {
+        textColor: '#888888',
+        fontSize: '1em',
+        textAlign: 'left'
+    }
+}

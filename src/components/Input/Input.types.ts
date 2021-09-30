@@ -12,6 +12,7 @@ export interface InputProps extends BaseProps {
     onChange?: (v: string) => void;
     onEnter?: () => void;
     required?: boolean;
+    withIcon?: boolean;
 }
 
 export interface StyledInputProps {

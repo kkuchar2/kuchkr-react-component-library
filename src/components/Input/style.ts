@@ -10,7 +10,8 @@ export const StyledInput = styled.div<StyledInputProps>`
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
-  flex-direction: column;
+  flex-direction: row;
+  position: relative;
   background: ${props => props.theme.backgroundColor};
   border: none;
   font-family: ${props => props.theme.fontFamily ? props.theme.fontFamily : 'inherit'};
@@ -44,6 +45,7 @@ export const StyledInput = styled.div<StyledInputProps>`
     border-left: none;
     border-bottom: ${props => props.theme.border};
     transition: border ease-in-out 0.3s;
+    line-height: ${props => props.theme.height};
     
     &:focus {
       border-bottom: ${props => props.theme.borderFocus};

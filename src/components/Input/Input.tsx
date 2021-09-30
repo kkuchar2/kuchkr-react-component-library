@@ -4,6 +4,7 @@ import {darkTheme, lightTheme} from "./themes";
 import {BaseComponent, BaseComponentProps} from "../../hoc";
 import {StyledInput, StyledInputWrapper} from "./style";
 import {Text} from "../Text";
+import SendIcon from '@material-ui/icons/Send';
 
 export const _Input = (props: BaseComponentProps & InputProps) => {
 
@@ -21,6 +22,7 @@ export const _Input = (props: BaseComponentProps & InputProps) => {
         onChange,
         onEnter,
         required,
+        withIcon,
         theme
     } = props;
 
@@ -48,9 +50,20 @@ export const _Input = (props: BaseComponentProps & InputProps) => {
         }
     }, [onEnter]);
 
+    const renderIcon = useCallback(() => {
+        if (withIcon) {
+            return <SendIcon style={{
+                position: "absolute",
+                left: theme.iconPositionLeft
+            }} htmlColor={theme.iconColor} fontSize={theme.iconFontSize}/>
+        }
+        return null;
+    }, [withIcon, theme]);
+
     return <StyledInputWrapper style={style}>
         {renderTitle()}
         <StyledInput>
+            {renderIcon()}
             <input
                 className={"inputField"}
                 spellCheck="false"
@@ -77,10 +90,11 @@ _Input.defaultProps = {
     initialValue: "",
     name: "",
     autoComplete: "off",
-    placeholder: "Enter some text please",
+    placeholder: "Aa",
     onChange: null,
     onEnter: null,
-    required: false
+    required: false,
+    withIcon: false
 }
 
 export const Input = BaseComponent<InputProps>(_Input, lightTheme, darkTheme);

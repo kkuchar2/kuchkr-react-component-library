@@ -7,6 +7,7 @@ import {
     StyleContainer
 } from "../../util/BaseComponentStory";
 import React from "react";
+import {withIconTestTheme} from "./themes";
 
 export default generateStoryOptions(InputComponent);
 
@@ -20,6 +21,10 @@ export const InputStory = (args) => {
         <DarkModeContainer padding={"50px"}>
             <Component1 {...args} theme={InputComponent.darkTheme}/>
         </DarkModeContainer>
+
+        <LightModeContainer padding={"50px"}>
+            <Component1 {...args} theme={withIconTestTheme} withIcon={true}/>
+        </LightModeContainer>
 
         <LightModeContainer padding={"50px"}>
             <Component1 {...args} theme={InputComponent.lightTheme}/>
