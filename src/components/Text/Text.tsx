@@ -1,14 +1,17 @@
 import React from 'react';
-import { TextProps } from "./Text.types";
-import { darkTheme, lightTheme } from "./themes";
-import { BaseComponent, BaseComponentProps } from "../../hoc";
-import { StyledText } from './style';
+import {TextProps} from "./Text.types";
+import {darkTheme, lightTheme} from "./themes";
+import {BaseComponent, BaseComponentProps} from "../../hoc";
+import {StyledText} from './style';
+import {Scrollbars} from 'react-custom-scrollbars';
 
 export const _Text = (props: BaseComponentProps & TextProps) => {
 
     const {style, theme, text, disabled} = props;
 
-    return <StyledText style={style} theme={theme} disabled={disabled}>{text}</StyledText>;
+    return <Scrollbars  autoHeight style={{...style, maxWidth: theme.maxWidth}}>
+        <StyledText theme={theme} disabled={disabled}>{text}</StyledText>
+    </Scrollbars>;
 }
 
 _Text.defaultProps = {

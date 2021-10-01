@@ -19,11 +19,13 @@ Component.displayName = TextComponent.displayName;
 export const Text = (args) => {
     return <StyleContainer>
         <DarkModeContainer height={"400px"} alignItems={"center"} padding={"20px"}>
-            <Component text={lorem.paragraph()} theme={TextComponent.darkTheme}/>
+            <Component text={"Some short text"} theme={TextComponent.darkTheme}/>
+            <Component style={{marginTop: 20}} text={lorem.paragraph()} theme={TextComponent.darkTheme}/>
         </DarkModeContainer>
 
         <LightModeContainer height={"400px"} alignItems={"center"} padding={"20px"}>
-            <Component text={lorem.paragraph()} theme={TextComponent.lightTheme}/>
+            <Component text={"Some short text"} theme={TextComponent.lightTheme}/>
+            <Component style={{marginTop: 20}} text={lorem.paragraph()} theme={TextComponent.lightTheme}/>
         </LightModeContainer>
     </StyleContainer>
 }

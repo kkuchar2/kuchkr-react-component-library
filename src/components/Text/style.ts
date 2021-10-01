@@ -13,7 +13,7 @@ export const StyledText = styled.div<StyledTextProps>`
   max-width: ${themeProp('maxWidth', 'none')};
   max-height: ${themeProp('maxHeight', 'none')};
   word-wrap: break-word;
-  overflow: auto;
+  overflow: hidden;
   
   &:hover {
     color: ${themeProp('hoverColor')};
