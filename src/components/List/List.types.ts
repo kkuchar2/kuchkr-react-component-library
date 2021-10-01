@@ -3,7 +3,7 @@ export interface ListProps {
     rowHeight: number;
     disabled: boolean;
     items: Array<unknown>
-    dataItemRenderer: (index, disabled, dataItem) => Element
+    dataItemRenderer: (index, disabled, dataItem) => JSX.Element
     fetchItems?: () => void,
     onItemClick?: (index) => void,
     isFetching?: boolean
