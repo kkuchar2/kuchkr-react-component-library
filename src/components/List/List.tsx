@@ -1,14 +1,14 @@
-import React, { useCallback, useEffect, useRef } from 'react';
-import { ListProps } from "./List.types";
-import { darkTheme, lightTheme } from "./themes";
-import { BaseComponent, BaseComponentProps } from "../../hoc";
-import { ListItem } from "../ListItem";
-import { StyledList } from './style';
-import { Spinner } from "../Spinner";
+import React, {useCallback, useEffect, useRef} from 'react';
+import {ListProps} from "./List.types";
+import {darkTheme, lightTheme} from "./themes";
+import {BaseComponent, BaseComponentProps} from "../../hoc";
+import {StyledList} from './style';
+import {Spinner} from "../Spinner";
 import AutoSizer from 'react-virtualized/dist/commonjs/AutoSizer'
-import { InfiniteLoader, List as VirtualizedList } from 'react-virtualized';
-import { Scrollbars } from 'react-custom-scrollbars';
+import {CellMeasurer, CellMeasurerCache, InfiniteLoader, List as VirtualizedList} from 'react-virtualized';
 import styled from "styled-components";
+import {v4 as uuidv4} from 'uuid';
+import {ListItem} from "../ListItem";
 
 const StyledSpinner = styled.div`
   position: absolute;
@@ -16,6 +16,9 @@ const StyledSpinner = styled.div`
   width: 100%;
   pointer-events: none;
 `
+
+const cache = new CellMeasurerCache({minHeight: 50, fixedWidth: true});
+
 
 export const _List = (props: BaseComponentProps & ListProps) => {
 
@@ -31,27 +34,51 @@ export const _List = (props: BaseComponentProps & ListProps) => {
         isFetching
     } = props;
 
+
     const listRef = useRef(null);
 
-    useEffect(() => fetchData(), [])
+    useEffect(() => {
+        fetchData()
+    }, [])
+
+    useEffect(() => {
+        cache.clearAll();
+        listRef.current?.recomputeRowHeights();
+    }, [items]);
+
+
+    cache.clearAll();
+    listRef.current?.forceUpdateGrid();
+
 
     const fetchData = useCallback((start = 0, stop = 1) => {
         fetchItems?.();
     }, [fetchItems]);
 
-    const itemRenderer = useCallback((index) => {
-        return <ListItem index={index} onClick={onItemClick} disabled={disabled} theme={theme.listItemStyle}>
-            {dataItemRenderer ? dataItemRenderer(items[index]) : ''}
-        </ListItem>
-    }, [items, onItemClick, theme]);
+    const rowRenderer = useCallback((args) => {
 
-    const rowRenderer = useCallback(({key, index, style}) => {
-        return (
-            <div key={key} style={{...style, display: 'flex', alignItems: 'center', justifyContent: 'flex-start'}}>
-                {itemRenderer(index)}
-            </div>
-        )
-    }, [items]);
+        const {index, parent, style} = args;
+
+        return <CellMeasurer
+            cache={cache}
+            columnIndex={0}
+            key={uuidv4()}
+            parent={parent}
+            rowIndex={index}>
+            {({measure, registerChild}) => (
+                <ListItem
+                    ref={registerChild}
+                    key={uuidv4()}
+                    index={index}
+                    onClick={onItemClick}
+                    disabled={disabled}
+                    theme={theme.listItemStyle}
+                    style={style}>
+                    {dataItemRenderer(index, disabled, items[index])}
+                </ListItem>
+            )}
+        </CellMeasurer>
+    }, [items, onItemClick, theme, disabled, dataItemRenderer]);
 
     const isRowLoaded = ({index}) => !!items[index];
 
@@ -72,35 +99,25 @@ export const _List = (props: BaseComponentProps & ListProps) => {
         </StyledSpinner>
     }, [isFetching, fetchItems])
 
-    let targetHeight = fixedHeight;
-
-    if (fixedHeight > items.length * rowHeight) {
-        targetHeight = items.length * rowHeight;
-    }
-
-    return <StyledList listHeight={targetHeight}>
+    return <StyledList listHeight={fixedHeight}>
         <InfiniteLoader isRowLoaded={isRowLoaded} loadMoreRows={fetchData} rowCount={items.length + 1}>
             {({onRowsRendered}) => {
-                return <div style={{height: targetHeight}}>
+                return <div style={{height: fixedHeight}}>
                     <AutoSizer>
                         {({height, width}) => {
-                            return <Scrollbars
-                                    onScroll={handleScroll}
-                                    style={{height, width}}
-                                    renderTrackHorizontal={props => <div {...props} style={{display: 'none'}} className="track-horizontal"/>}>
-                                <VirtualizedList
-                                    ref={listRef}
-                                    width={width}
-                                    height={height}
-                                    style={{overflowX: false, overflowY: false}}
-                                    onRowsRendered={onRowsRendered}
-                                    rowCount={items.length}
-                                    universal={true}
-                                    rowHeight={rowHeight}
-                                    rowRenderer={rowRenderer}
-                                    noRowsRenderer={() => <div>Loading...</div>}
-                                />
-                            </Scrollbars>
+                            return <VirtualizedList
+                                ref={listRef}
+                                deferredMeasurementCache={cache}
+                                width={width}
+                                height={height}
+                                onRowsRendered={onRowsRendered}
+                                rowCount={items.length}
+                                universal={true}
+                                overscanRowCount={0}
+                                rowHeight={cache.rowHeight}
+                                rowRenderer={rowRenderer}
+                                noRowsRenderer={() => <div>Loading...</div>}
+                            />
                         }}
                     </AutoSizer>
                 </div>
@@ -111,7 +128,7 @@ export const _List = (props: BaseComponentProps & ListProps) => {
 }
 
 _List.defaultProps = {
-    fixedHeight: 200,
+    fixedHeight: 400,
     rowHeight: 50,
     disabled: false,
     items: [],

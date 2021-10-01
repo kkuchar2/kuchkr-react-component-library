@@ -14,7 +14,8 @@ export const lightTheme = {
         disabledBackground: "#e5e5e5",
         backgroundHover: "#cecece",
         paddingLeft: "15px",
-        paddingRight: "15px"
+        paddingRight: "15px",
+        hoverCursor: "unset"
     }
 }
 
@@ -34,6 +35,7 @@ export const darkTheme = {
         disabledBackground: "#2b2b2b",
         backgroundHover: "#1d1d1d",
         paddingLeft: "15px",
-        paddingRight: "15px"
+        paddingRight: "15px",
+        hoverCursorPointer: "pointer"
     }
 }

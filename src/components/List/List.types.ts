@@ -1,11 +1,9 @@
-import { ReactElement } from "react";
-
 export interface ListProps {
     fixedHeight: number;
     rowHeight: number;
     disabled: boolean;
     items: Array<unknown>
-    dataItemRenderer: (dataItem) => ReactElement
+    dataItemRenderer: (index, disabled, dataItem) => Element
     fetchItems?: () => void,
     onItemClick?: (index) => void,
     isFetching?: boolean
@@ -17,6 +15,6 @@ export interface StyledListProps {
 }
 
 export const styledListDefaultProps = {
-    listHeight: 200,
+    listHeight: 400,
     disabled: false
 }

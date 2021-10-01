@@ -5,7 +5,6 @@ export const StyledListItem = styled.div<StyledListItemProps>`
   font-family: ${props => props.theme.fontFamily? props.theme.fontFamily : 'inherit'};
   color: ${props => props.disabled ? props.theme.disabledTextColor : props.theme.textColor};
   width: 100%;
-  height: 100%;
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -16,7 +15,14 @@ export const StyledListItem = styled.div<StyledListItemProps>`
   &:hover {
     color: ${props => props.disabled ? props.theme.disabledTextColor : props.theme.textColorHover};
     background: ${props => props.theme.backgroundHover};
-    cursor: ${props => props.disabled ? "unset" : "pointer"};
+    cursor: ${props => {
+        if (!props.theme.hoverCursor) {
+            return props.disabled ? "unset" : "pointer";
+        }
+        
+        return props.theme.hoverCursor;
+    }};
+    
   }
 `
 

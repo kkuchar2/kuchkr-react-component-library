@@ -6,11 +6,11 @@ import { StyledListItem } from "./style";
 
 const _ListItem = (props: BaseComponentProps & ListItemProps) => {
 
-    const {index, children, onClick, disabled} = props;
+    const {index, children, onClick, disabled, style} = props;
 
     const onItemClick = useCallback(() => onClick?.(index), [onClick, index])
 
-    return <StyledListItem disabled={disabled} onClick={onItemClick}>
+    return <StyledListItem style={style} className={"styledListItem"} disabled={disabled} onClick={onItemClick}>
         {children}
     </StyledListItem>
 }
