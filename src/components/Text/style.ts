@@ -10,6 +10,10 @@ export const StyledText = styled.div<StyledTextProps>`
   font-weight: ${themeProp('fontWeight', 'normal')};
   margin: ${themeProp('margin', '0 0 0 0')};
   text-align: ${themeProp('textAlign', 'center')};
+  max-width: ${themeProp('maxWidth', 'none')};
+  max-height: ${themeProp('maxHeight', 'none')};
+  word-wrap: break-word;
+  overflow: auto;
   
   &:hover {
     color: ${themeProp('hoverColor')};

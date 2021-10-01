@@ -9,6 +9,7 @@ import {CellMeasurer, CellMeasurerCache, InfiniteLoader, List as VirtualizedList
 import styled from "styled-components";
 import {v4 as uuidv4} from 'uuid';
 import {ListItem} from "../ListItem";
+import {Scrollbars} from 'react-custom-scrollbars';
 
 const StyledSpinner = styled.div`
   position: absolute;
@@ -45,10 +46,6 @@ export const _List = (props: BaseComponentProps & ListProps) => {
         cache.clearAll();
         listRef.current?.recomputeRowHeights();
     }, [items]);
-
-
-    cache.clearAll();
-    listRef.current?.forceUpdateGrid();
 
 
     const fetchData = useCallback((start = 0, stop = 1) => {
@@ -105,19 +102,26 @@ export const _List = (props: BaseComponentProps & ListProps) => {
                 return <div style={{height: fixedHeight}}>
                     <AutoSizer>
                         {({height, width}) => {
-                            return <VirtualizedList
-                                ref={listRef}
-                                deferredMeasurementCache={cache}
-                                width={width}
-                                height={height}
-                                onRowsRendered={onRowsRendered}
-                                rowCount={items.length}
-                                universal={true}
-                                overscanRowCount={0}
-                                rowHeight={cache.rowHeight}
-                                rowRenderer={rowRenderer}
-                                noRowsRenderer={() => <div>Loading...</div>}
-                            />
+                            return <Scrollbars
+                                onScroll={handleScroll}
+                                style={{height, width}}
+                                renderTrackHorizontal={props => <div {...props} style={{display: 'none'}}
+                                                                     className="track-horizontal"/>}>
+                                <VirtualizedList
+                                    ref={listRef}
+                                    deferredMeasurementCache={cache}
+                                    width={width}
+                                    height={height}
+                                    style={{overflowX: false, overflowY: false}}
+                                    onRowsRendered={onRowsRendered}
+                                    rowCount={items.length}
+                                    universal={true}
+                                    overscanRowCount={0}
+                                    rowHeight={cache.rowHeight}
+                                    rowRenderer={rowRenderer}
+                                    noRowsRenderer={() => <div>Loading...</div>}
+                                />
+                            </Scrollbars>
                         }}
                     </AutoSizer>
                 </div>

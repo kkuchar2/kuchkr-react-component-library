@@ -1,5 +1,4 @@
 import {List as ListComponent} from './List';
-import {v4 as uuidv4} from 'uuid';
 
 import {
     DarkModeContainer,
@@ -34,14 +33,13 @@ export const StaticList = (args) => {
 
     const provideItem = useCallback((index, disabled, dataItem) => {
         return <div style={{
-            border: '1px solid green',
             height: staticHeights[index],
             display: 'flex',
             justifyContent: 'flex',
             alignItems: 'flex-start',
             boxSizing: 'border-box'
         }}>
-            <Text theme={{ fontSize: "1.2em" }} text={dataItem.value}/>
+            <Text theme={{fontSize: "1.2em"}} text={dataItem.value}/>
         </div>
     }, []);
 
@@ -91,18 +89,17 @@ export const ListWithInfiniteScroll = () => {
 
     const provideItem = useCallback((index, disabled, dataItem) => {
         return <div style={{
-            border: '1px solid green',
             height: 20,
             display: 'flex',
             justifyContent: 'flex',
             alignItems: 'flex-start'
         }}>
-            <Text theme={{ fontSize: "1.2em" }} text={dataItem.value}/>
+            <Text theme={{fontSize: "1.2em"}} text={dataItem.value}/>
         </div>
     }, []);
 
     return <StyleContainer>
-        <DarkModeContainer height={"800px"}>
+        <DarkModeContainer>
             <Component1 items={items1}
                         fetchItems={fetch1}
                         isFetching={fetching1}
@@ -113,9 +110,9 @@ export const ListWithInfiniteScroll = () => {
         <LightModeContainer>
             <Component1 items={items2}
                         fetchItems={fetch2}
-                        isFetching={fetching1}
+                        isFetching={fetching2}
                         dataItemRenderer={provideItem}
-                        theme={ListComponent.darkTheme}/>
+                        theme={ListComponent.lightTheme}/>
         </LightModeContainer>
     </StyleContainer>
 }
