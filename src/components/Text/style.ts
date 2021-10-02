@@ -9,11 +9,11 @@ export const StyledText = styled.div<StyledTextProps>`
   font-size: ${themeProp('fontSize')};
   font-weight: ${themeProp('fontWeight', 'normal')};
   margin: ${themeProp('margin', '0 0 0 0')};
-  text-align: ${themeProp('textAlign', 'center')};
+  text-align: ${themeProp('textAlign', 'initial')};
   max-width: ${themeProp('maxWidth', 'none')};
   max-height: ${themeProp('maxHeight', 'none')};
-  word-wrap: break-word;
-  overflow: hidden;
+  word-wrap: ${themeProp('word-wrap', 'none')};
+  overflow: ${themeProp('overflow', 'hidden')};
   
   &:hover {
     color: ${themeProp('hoverColor')};
