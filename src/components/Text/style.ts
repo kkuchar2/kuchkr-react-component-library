@@ -12,7 +12,7 @@ export const StyledText = styled.div<StyledTextProps>`
   text-align: ${themeProp('textAlign', 'initial')};
   max-width: ${themeProp('maxWidth', 'none')};
   max-height: ${themeProp('maxHeight', 'none')};
-  word-wrap: ${themeProp('word-wrap', 'none')};
+  word-wrap: ${themeProp('wordWrap', 'none')};
   overflow-x: ${themeProp('overflowX', 'hidden')};
   overflow-y: ${themeProp('overflowY', 'hidden')};
   
