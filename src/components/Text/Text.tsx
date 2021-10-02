@@ -7,15 +7,20 @@ import {Scrollbars} from 'react-custom-scrollbars';
 
 export const _Text = (props: BaseComponentProps & TextProps) => {
 
-    const {style, theme, text, disabled} = props;
+    const {style, theme, text, disabled, useOverflow} = props;
 
-    return <Scrollbars  autoHeight style={{...style, maxWidth: theme.maxWidth}}>
-        <StyledText theme={theme} disabled={disabled}>{text}</StyledText>
-    </Scrollbars>;
+    if (useOverflow) {
+        return <Scrollbars autoHeight style={{...style, maxWidth: theme.maxWidth}}>
+            <StyledText theme={theme} disabled={disabled}>{text}</StyledText>
+        </Scrollbars>
+    }
+
+    return <StyledText theme={theme} disabled={disabled}>{text}</StyledText>
 }
 
 _Text.defaultProps = {
     text: "Text",
+    useOverflow: false,
     children: null
 }
 

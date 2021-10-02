@@ -1,5 +1,6 @@
 export interface TextProps {
     text?: string;
+    useOverflow?: boolean;
 }
 
 export interface StyledTextProps {
