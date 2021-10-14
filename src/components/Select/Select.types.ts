@@ -1,8 +1,8 @@
-import {OptionsType} from "react-select";
+import OptionsType from "react-select";
 
 export interface SelectProps {
     placeholder?: string,
-    options?: OptionsType<any>,
+    options?: any,
     isSearchable?: boolean,
     defaultValue?: OptionsType,
     onChange?: (v: OptionsType) => void,

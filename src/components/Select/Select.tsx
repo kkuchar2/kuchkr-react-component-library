@@ -67,14 +67,11 @@ export const _Select = (props: BaseComponentProps & SelectProps) => {
             styles={selectStyles(theme)}
             menuPortalTarget={document.body}
             placeholder={placeholder}
-            disabled={disabled}
             maxMenuHeight={maxHeightForMenu}
-            listBorderRadius={theme.borderRadius}
             isSearchable={isSearchable}
             options={options}
             components={{MenuList}}
-            onChange={onChange}>
-        </StyledSelect>
+            onChange={onChange} />
     </StyledSelectWrapper>
 }
 
