@@ -62,18 +62,15 @@ export const _List = (props: BaseComponentProps & ListProps) => {
             key={uuidv4()}
             parent={parent}
             rowIndex={index}>
-            {({measure, registerChild}) => (
-                <ListItem
-                    ref={registerChild}
-                    key={uuidv4()}
-                    index={index}
-                    onClick={onItemClick}
-                    disabled={disabled}
-                    theme={theme.listItemStyle}
-                    style={style}>
-                    {dataItemRenderer(index, disabled, items[index])}
-                </ListItem>
-            )}
+            <ListItem
+                key={uuidv4()}
+                index={index}
+                onClick={onItemClick}
+                disabled={disabled}
+                theme={theme.listItemStyle}
+                style={style}>
+                {dataItemRenderer(index, disabled, items[index])}
+            </ListItem>
         </CellMeasurer>
     }, [items, onItemClick, theme, disabled, dataItemRenderer]);
 
@@ -84,6 +81,7 @@ export const _List = (props: BaseComponentProps & ListProps) => {
         if (listRef.current) {
             const {Grid} = listRef.current;
             Grid.handleScrollEvent({scrollTop, scrollLeft});
+            cache.clearAll();
         }
     };
 
