@@ -4,7 +4,8 @@ import { Dictionary } from "../util/BaseTypes.types";
 
 export interface BaseComponentProps {
     displayName?: string,
-    theme?: Dictionary<any>,
+    theme?: Dictionary<any>
+    dataTestId?: string
     disabled?: boolean,
     style?: React.CSSProperties
 }
@@ -15,12 +16,12 @@ export const BaseComponent = <WrappedComponentProps extends BaseProps>(Component
 
     function wrapped (props : (BaseComponentProps & WrappedComponentProps)) {
 
-        const {theme, disabled, ...rest} = props;
+        const {theme, disabled, dataTestId, ...rest} = props;
 
         const appliedTheme = theme ? theme : lightTheme;
 
         return <ThemeProvider theme={appliedTheme}>
-            <Component theme={appliedTheme} disabled={disabled} {...rest} />
+            <Component theme={appliedTheme} disabled={disabled} dataTestId={dataTestId} {...rest} />
         </ThemeProvider>
     }
 

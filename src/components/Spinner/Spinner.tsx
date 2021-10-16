@@ -8,7 +8,7 @@ import { GridLoader } from "react-spinners";
 
 export const _Spinner = (props: BaseComponentProps & SpinnerProps) => {
 
-    const {theme, visible, text, size, disabled} = props;
+    const {theme, visible, text, size, disabled, dataTestId} = props;
 
     const color = disabled ? theme.disabledColor : theme.color;
     const speed = disabled ? 0 : 1;
@@ -19,7 +19,7 @@ export const _Spinner = (props: BaseComponentProps & SpinnerProps) => {
         }
     }, [text, visible])
 
-    return <StyledSpinner>
+    return <StyledSpinner data-testid={dataTestId}>
         {renderText()}
         <GridLoader color={color} loading={visible} size={size} speedMultiplier={speed}/>
     </StyledSpinner>;

@@ -23,7 +23,7 @@ const staticItems = Array.from({length: 120}).map(() => {
 export const Select = (args) => {
     return <StyleContainer>
         <DarkModeContainer height={"200px"} alignItems={"center"} padding={"20px"}>
-            <Component {...args} triggerOnDefault options={staticItems} defaultValue={staticItems[0]}
+            <Component {...args} dataTestId={'select_test_id1'} triggerOnDefault options={staticItems} defaultValue={staticItems[0]}
                        theme={SelectComponent.darkTheme}/>
         </DarkModeContainer>
 

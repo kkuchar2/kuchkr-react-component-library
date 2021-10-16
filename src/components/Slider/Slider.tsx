@@ -34,7 +34,8 @@ export const _Slider = (props: BaseComponentProps & SliderProps) => {
         displayLabel,
         innerModernSlider,
         onChange,
-        theme
+        theme,
+        dataTestId
     } = props;
 
     const [marks, setMarks] = useState([]);
@@ -89,7 +90,7 @@ export const _Slider = (props: BaseComponentProps & SliderProps) => {
         }
     }, [innerModernSlider, theme, internalValue, max, useMarks])
 
-    return <StyledSlider style={style}>
+    return <StyledSlider data-testid={dataTestId} style={style}>
         <StyledBaseSlider
             defaultValue={defaultValue}
             value={internalValue}

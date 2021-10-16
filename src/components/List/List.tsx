@@ -32,7 +32,8 @@ export const _List = (props: BaseComponentProps & ListProps) => {
         dataItemRenderer,
         fetchItems,
         onItemClick,
-        isFetching
+        isFetching,
+        dataTestId
     } = props;
 
 
@@ -94,7 +95,7 @@ export const _List = (props: BaseComponentProps & ListProps) => {
         </StyledSpinner>
     }, [isFetching, fetchItems])
 
-    return <StyledList listHeight={fixedHeight}>
+    return <StyledList data-testid={dataTestId} listHeight={fixedHeight}>
         <InfiniteLoader isRowLoaded={isRowLoaded} loadMoreRows={fetchData} rowCount={items.length + 1}>
             {({onRowsRendered}) => {
                 return <div style={{height: fixedHeight}}>

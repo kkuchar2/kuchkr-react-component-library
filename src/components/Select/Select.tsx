@@ -45,7 +45,8 @@ export const _Select = (props: BaseComponentProps & SelectProps) => {
         onChange,
         defaultValue,
         triggerOnDefault,
-        maxMenuHeight
+        maxMenuHeight,
+        dataTestId
     } = props;
 
     useEffect(() => {
@@ -61,7 +62,7 @@ export const _Select = (props: BaseComponentProps & SelectProps) => {
         maxHeightForMenu = numberOfItems * theme.itemHeight;
     }
 
-    return <StyledSelectWrapper style={style}>
+    return <StyledSelectWrapper data-testid={dataTestId} style={style}>
         <StyledSelect
             defaultValue={defaultValue}
             styles={selectStyles(theme)}

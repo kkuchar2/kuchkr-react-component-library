@@ -7,7 +7,7 @@ import { StyledSwitch } from "./style";
 
 export const _Switch = (props: BaseComponentProps & SwitchProps) => {
 
-    const {switched, onSwitchedChange, leftRenderer, rightRenderer} = props;
+    const {switched, onSwitchedChange, leftRenderer, rightRenderer, dataTestId} = props;
 
     const [isSwitched, setIsSwitched] = useState(switched);
 
@@ -31,7 +31,7 @@ export const _Switch = (props: BaseComponentProps & SwitchProps) => {
         }
     }, [rightRenderer])
 
-    return <StyledSwitch>
+    return <StyledSwitch data-testid={dataTestId}>
         <div className={classNames('left', {'switched': isSwitched})}>
             {renderLeft()}
         </div>

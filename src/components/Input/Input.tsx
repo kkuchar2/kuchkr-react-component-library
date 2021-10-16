@@ -23,7 +23,8 @@ export const _Input = (props: BaseComponentProps & InputProps) => {
         onEnter,
         required,
         withIcon,
-        theme
+        theme,
+        dataTestId
     } = props;
 
     const [inputValue, setInputValue] = useState(initialValue);
@@ -60,7 +61,7 @@ export const _Input = (props: BaseComponentProps & InputProps) => {
         return null;
     }, [withIcon, theme]);
 
-    return <StyledInputWrapper style={style}>
+    return <StyledInputWrapper data-testid={dataTestId} style={style}>
         {renderTitle()}
         <StyledInput>
             {renderIcon()}
