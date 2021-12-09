@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React, {useCallback, useEffect, useState} from 'react'
 import {SelectProps} from "./Select.types";
 import {BaseComponent, BaseComponentProps} from "../../hoc";
 import {selectStyles, StyledSelect, StyledSelectWrapper} from './style';
@@ -46,14 +46,10 @@ export const _Select = (props: BaseComponentProps & SelectProps) => {
         defaultValue,
         triggerOnDefault,
         maxMenuHeight,
-        dataTestId
+        dataTestId,
+        emptyPlaceholder,
+        selectFirstAfterLoad
     } = props;
-
-    useEffect(() => {
-        if (triggerOnDefault) {
-            onChange?.(defaultValue);
-        }
-    }, [triggerOnDefault])
 
     const numberOfItems = options.length;
     let maxHeightForMenu = maxMenuHeight;
@@ -62,17 +58,45 @@ export const _Select = (props: BaseComponentProps & SelectProps) => {
         maxHeightForMenu = numberOfItems * theme.itemHeight;
     }
 
+    let shouldDisable = disabled;
+    let targetDefaultValue = defaultValue;
+
+    if (numberOfItems === 0) {
+        shouldDisable = true;
+        targetDefaultValue = null;
+    }
+
+    if (!targetDefaultValue && selectFirstAfterLoad) {
+        targetDefaultValue = options[0];
+        console.log(targetDefaultValue);
+    }
+
+    const [value, setValue] = useState(null);
+
+    useEffect(() => {
+        if (triggerOnDefault) {
+            onChange?.(defaultValue);
+        }
+    }, [triggerOnDefault])
+
+    const onSelectValue = useCallback((v) => {
+        setValue(v);
+        onChange?.(v);
+    }, [onChange]);
+
     return <StyledSelectWrapper data-testid={dataTestId} style={style}>
         <StyledSelect
-            defaultValue={defaultValue}
-            styles={selectStyles(theme)}
+            value={!value ? targetDefaultValue : value}
+            defaultValue={targetDefaultValue}
+            styles={selectStyles(theme, shouldDisable)}
             menuPortalTarget={document.body}
-            placeholder={placeholder}
+            placeholder={numberOfItems === 0 ? emptyPlaceholder : placeholder}
             maxMenuHeight={maxHeightForMenu}
+            isDisabled={disabled}
             isSearchable={isSearchable}
             options={options}
             components={{MenuList}}
-            onChange={onChange} />
+            onChange={onSelectValue} />
     </StyledSelectWrapper>
 }
 
@@ -85,7 +109,9 @@ _Select.defaultProps = {
     initialIndex: 0,
     defaultValue: null,
     triggerOnDefault: false,
-    maxMenuHeight: 200
+    maxMenuHeight: 200,
+    emptyPlaceholder: 'No items',
+    selectFirstAfterLoad: true
 }
 
 export const Select = BaseComponent<SelectProps>(_Select, lightTheme, darkTheme);

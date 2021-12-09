@@ -25,6 +25,7 @@ export const lightTheme = {
     // Arrow
     arrowColor: '#5d5959',
     arrowColorHover: '#5d5959',
+    arrowColorDisabled: 'rgba(93,89,89,0.25)',
 
     // Separator line
     indicatorSeparatorColor: '#afafaf',
@@ -32,12 +33,14 @@ export const lightTheme = {
 
     // Placeholder
     placeholderTextColor: '#3a3a3a',
+    placeholderTextColorDisabled: 'rgba(58,58,58,0.27)',
     placeholderFontSize: '1.1em',
     placeholderFontWeight: 600,
 
     // Other
     border: 'none',
     backgroundColor: '#ffffff',
+    backgroundColorDisabled: 'rgba(192,192,192,0.33)',
     borderRadius: 8,
     boxShadow: "0 9px 15px 0 rgba(0, 0, 0, 0.12)",
     cursorOnHover: 'pointer'
@@ -70,6 +73,7 @@ export const darkTheme = {
     // Arrow
     arrowColor: '#b6b6b6',
     arrowColorHover: '#b6b6b6',
+    arrowColorDisabled: 'rgba(182,182,182,0.4)',
 
     // Separator line
     indicatorSeparatorColor: '#afafaf',
@@ -77,12 +81,14 @@ export const darkTheme = {
 
     // Placeholder
     placeholderTextColor: '#858585',
+    placeholderTextColorDisabled: 'rgba(133,133,133,0.37)',
     placeholderFontSize: '1.1em',
     placeholderFontWeight: 600,
 
     // Other
     border: 'none',
     backgroundColor: '#1c1c1c',
+    backgroundColorDisabled: 'rgba(28,28,28,0.42)',
     borderRadius: 8,
     boxShadow: "20px 20px 20px 0 rgba(0, 0, 0, 0.11)",
     cursorOnHover: 'pointer'

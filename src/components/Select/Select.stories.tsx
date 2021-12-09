@@ -1,4 +1,4 @@
-import React, {useCallback} from "react";
+import React, {useCallback, useEffect, useState} from "react";
 import {name} from 'faker'
 import {Select as SelectComponent} from './Select';
 import {
@@ -21,14 +21,32 @@ const staticItems = Array.from({length: 120}).map(() => {
 });
 
 export const Select = (args) => {
+
+    const [items, setItems] = useState([]);
+
+    useEffect(() => {
+        setTimeout(() => {
+            setItems(staticItems);
+        }, 2000);
+    }, []);
+
     return <StyleContainer>
         <DarkModeContainer height={"200px"} alignItems={"center"} padding={"20px"}>
-            <Component {...args} dataTestId={'select_test_id1'} triggerOnDefault options={staticItems} defaultValue={staticItems[0]}
+            <Component {...args}
+                       dataTestId={'select_test_id1'}
+                       disabled={false}
+                       triggerOnDefault
+                       options={items}
+                       selectFirstAfterLoad={true}
+                       emptyPlaceholder={"No items loaded yet"}
                        theme={SelectComponent.darkTheme}/>
         </DarkModeContainer>
 
         <LightModeContainer height={"200px"} alignItems={"center"} padding={"20px"}>
-            <Component {...args} options={staticItems} defaultValue={staticItems[0]}
+            <Component {...args}
+                       options={items}
+                       selectFirstAfterLoad={true}
+                       emptyPlaceholder={"No items loaded yet"}
                        theme={SelectComponent.lightTheme}/>
         </LightModeContainer>
     </StyleContainer>

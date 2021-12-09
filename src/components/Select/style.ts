@@ -3,24 +3,24 @@ import Select from "react-select";
 
 import {styledSelectDefaultProps, StyledSelectProps} from "./Select.types";
 
-export const selectStyles = (theme) => {
+export const selectStyles = (theme, disabled) => {
     return {
         control: base => ({
             ...base,
             height: theme.height,
             border: theme.border,
-            background: theme.backgroundColor,
+            background: disabled ? theme.backgroundColorDisabled : theme.backgroundColor,
             borderRadius: theme.borderRadius,
             boxShadow: 'none',
 
             '&:hover': {
-                cursor: theme.cursorOnHover
+                cursor: disabled ? 'unset' : theme.cursorOnHover
             }
         }),
 
         placeholder: base => ({
             ...base,
-            color: theme.placeholderTextColor,
+            color: disabled ? theme.placeholderTextColorDisabled : theme.placeholderTextColor,
             fontSize: theme.placeholderFontSize,
             fontWeight: theme.placeholderFontWeight
         }),
@@ -34,10 +34,10 @@ export const selectStyles = (theme) => {
 
         dropdownIndicator: base => ({
             ...base,
-            color: theme.arrowColor,
+            color: disabled ? theme.arrowColorDisabled : theme.arrowColor,
 
             '&:hover': {
-                color: theme.arrowColorHover,
+                color: disabled ? theme.arrowColorDisabled : theme.arrowColorHover
             }
         }),
         indicatorSeparator: base => ({

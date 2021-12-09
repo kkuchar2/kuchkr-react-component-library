@@ -8,7 +8,9 @@ export interface SelectProps {
     onChange?: (v: OptionsType) => void,
     components?: any,
     triggerOnDefault?: boolean,
-    maxMenuHeight?: number
+    maxMenuHeight?: number,
+    emptyPlaceholder?: OptionsType,
+    selectFirstAfterLoad?: boolean
 }
 
 export interface StyledSelectProps {}
