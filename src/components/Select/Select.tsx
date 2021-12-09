@@ -68,7 +68,6 @@ export const _Select = (props: BaseComponentProps & SelectProps) => {
 
     if (!targetDefaultValue && selectFirstAfterLoad) {
         targetDefaultValue = options[0];
-        console.log(targetDefaultValue);
     }
 
     const [value, setValue] = useState(null);
@@ -77,12 +76,17 @@ export const _Select = (props: BaseComponentProps & SelectProps) => {
         if (triggerOnDefault) {
             onChange?.(defaultValue);
         }
-    }, [triggerOnDefault])
+    }, [triggerOnDefault]);
 
     const onSelectValue = useCallback((v) => {
         setValue(v);
         onChange?.(v);
     }, [onChange]);
+
+    // When we want to trigger on default and value is loaded with delay
+    if (triggerOnDefault && !value) {
+        onChange?.(targetDefaultValue);
+    }
 
     return <StyledSelectWrapper data-testid={dataTestId} style={style}>
         <StyledSelect

@@ -24,6 +24,11 @@ export const Select = (args) => {
 
     const [items, setItems] = useState([]);
 
+    const onChange = useCallback((v) => {
+        if (!v) return;
+        console.log('Value changed to: ' + v.label);
+    }, []);
+
     useEffect(() => {
         setTimeout(() => {
             setItems(staticItems);
@@ -35,8 +40,9 @@ export const Select = (args) => {
             <Component {...args}
                        dataTestId={'select_test_id1'}
                        disabled={false}
-                       triggerOnDefault
                        options={items}
+                       onChange={onChange}
+                       triggerOnDefault={true}
                        selectFirstAfterLoad={true}
                        emptyPlaceholder={"No items loaded yet"}
                        theme={SelectComponent.darkTheme}/>
