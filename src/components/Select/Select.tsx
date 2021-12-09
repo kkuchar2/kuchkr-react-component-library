@@ -77,7 +77,7 @@ export const _Select = (props: BaseComponentProps & SelectProps) => {
         if (triggerOnDefault && !value) {
             onChange?.(targetDefaultValue);
         }
-    }, [triggerOnDefault, value, onChange]);
+    }, [options, triggerOnDefault, value, onChange]);
 
     useEffect(() => {
         if (triggerOnDefault) {
