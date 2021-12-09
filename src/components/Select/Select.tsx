@@ -72,6 +72,13 @@ export const _Select = (props: BaseComponentProps & SelectProps) => {
 
     const [value, setValue] = useState(null);
 
+    // When we want to trigger on default and value is loaded with delay
+    useEffect(() => {
+        if (triggerOnDefault && !value) {
+            onChange?.(targetDefaultValue);
+        }
+    }, [triggerOnDefault, value, onChange]);
+
     useEffect(() => {
         if (triggerOnDefault) {
             onChange?.(defaultValue);
@@ -82,11 +89,6 @@ export const _Select = (props: BaseComponentProps & SelectProps) => {
         setValue(v);
         onChange?.(v);
     }, [onChange]);
-
-    // When we want to trigger on default and value is loaded with delay
-    if (triggerOnDefault && !value) {
-        onChange?.(targetDefaultValue);
-    }
 
     return <StyledSelectWrapper data-testid={dataTestId} style={style}>
         <StyledSelect
