@@ -1,4 +1,5 @@
 import OptionsType from "react-select";
+import {ReactNode} from "react";
 
 export interface SelectProps {
     placeholder?: string,
@@ -6,9 +7,9 @@ export interface SelectProps {
     isSearchable?: boolean,
     defaultValue?: OptionsType,
     onChange?: (v: OptionsType) => void,
-    components?: any,
     triggerOnDefault?: boolean,
     maxMenuHeight?: number,
+    customOptionRenderer?: (option : OptionsType) => ReactNode,
     emptyPlaceholder?: OptionsType,
     selectFirstAfterLoad?: boolean
 }

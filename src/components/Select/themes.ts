@@ -10,9 +10,11 @@ export const lightTheme = {
     // List item
     itemHeight: 50,
     itemTextColor: "#343434",
-    itemSelectedTextColor: "#000000",
+    itemSelectedTextColor: "#ffffff",
     itemHoverBackgroundColor: '#d0d0d0',
-    itemSelectedBackgroundColor: '#e3e3e3',
+    itemSelectedBackgroundColor: '#387fc5',
+    itemHoverSelectedBackgroundColor: '#387fc5',
+    itemHoverSelectedTextColor: '#ffffff',
     itemHoverTextColor:  '#000000',
     itemFontSize: '0.9em',
     itemFontWeight: 600,
@@ -41,7 +43,8 @@ export const lightTheme = {
     border: 'none',
     backgroundColor: '#ffffff',
     backgroundColorDisabled: 'rgba(192,192,192,0.33)',
-    borderRadius: 8,
+    menuBorderRadius: 5,
+    optionBorderRadius: 3,
     boxShadow: "0 9px 15px 0 rgba(0, 0, 0, 0.12)",
     cursorOnHover: 'pointer'
 }
@@ -52,7 +55,7 @@ export const darkTheme = {
     height: 50,
 
     // List
-    listBorderRadius: 4,
+    listBorderRadius: 10,
     listBackgroundColor: '#1c1c1c',
 
     // List item
@@ -60,7 +63,9 @@ export const darkTheme = {
     itemTextColor: "#a2a2a2",
     itemSelectedTextColor: "#ffffff",
     itemHoverBackgroundColor: '#3d3d3d',
-    itemSelectedBackgroundColor: '#2d2d2d',
+    itemSelectedBackgroundColor: '#26561b',
+    itemHoverSelectedBackgroundColor: '#26561b',
+    itemHoverSelectedTextColor: '#ffffff',
     itemHoverTextColor:  '#ffffff',
     itemFontSize: '0.9em',
     itemFontWeight: 600,
@@ -89,7 +94,8 @@ export const darkTheme = {
     border: 'none',
     backgroundColor: '#1c1c1c',
     backgroundColorDisabled: 'rgba(28,28,28,0.42)',
-    borderRadius: 8,
+    menuBorderRadius: 5,
+    optionBorderRadius: 3,
     boxShadow: "20px 20px 20px 0 rgba(0, 0, 0, 0.11)",
     cursorOnHover: 'pointer'
 }

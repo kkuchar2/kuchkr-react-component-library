@@ -8,6 +8,8 @@ import {
     LightModeContainer,
     StyleContainer
 } from "../../util/BaseComponentStory";
+import OptionsType from "react-select";
+import styled from "styled-components";
 
 
 export default generateStoryOptions(SelectComponent);
@@ -17,8 +19,50 @@ const Component = (args) => <SelectComponent {...args} />;
 Component.displayName = SelectComponent.displayName;
 
 const staticItems = Array.from({length: 120}).map(() => {
-    return {value: name.findName(), label: name.findName()};
+    return {value: name.firstName(), label: name.lastName()};
 });
+
+const StyledOption = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
+
+const StyledOptionValue = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-left: 10px;
+`;
+
+const StyledOptionIcon = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+`;
+
+
+const StyledLabel = styled.div`
+  font-size: 1em;
+`;
+
+
+const StyledValue = styled.div`
+  font-size: 0.7em;
+`;
+
+
+const customOptionRenderer = (label: string, value: any) => {
+    return <StyledOption>
+        <StyledOptionIcon>
+            🎅
+        </StyledOptionIcon>
+        <StyledOptionValue>
+            <StyledLabel>{label}</StyledLabel>
+            <StyledValue>{value}</StyledValue>
+        </StyledOptionValue>
+    </StyledOption>
+}
 
 export const Select = (args) => {
 
@@ -32,7 +76,7 @@ export const Select = (args) => {
     useEffect(() => {
         setTimeout(() => {
             setItems(staticItems);
-        }, 2000);
+        }, 1000);
     }, []);
 
     return <StyleContainer>
@@ -43,6 +87,7 @@ export const Select = (args) => {
                        options={items}
                        onChange={onChange}
                        triggerOnDefault={true}
+                       customOptionRenderer={customOptionRenderer}
                        selectFirstAfterLoad={true}
                        emptyPlaceholder={"No items loaded yet"}
                        theme={SelectComponent.darkTheme}/>
@@ -52,6 +97,7 @@ export const Select = (args) => {
             <Component {...args}
                        options={items}
                        selectFirstAfterLoad={true}
+                       customOptionRenderer={customOptionRenderer}
                        emptyPlaceholder={"No items loaded yet"}
                        theme={SelectComponent.lightTheme}/>
         </LightModeContainer>

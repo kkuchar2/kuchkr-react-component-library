@@ -20,6 +20,13 @@ const MenuList = (props: any) => {
     </div>;
 };
 
+const formatOptionLabel = (customOptionRenderer) => {
+    if (!customOptionRenderer) {
+        return null;
+    }
+    return ({value, label, customAbbreviation}) => customOptionRenderer(label, value);
+}
+
 const renderThumbVertical = ({style, ...props}: { style: any }) => {
     return <div
         {...props}
@@ -41,7 +48,7 @@ export const _Select = (props: BaseComponentProps & SelectProps) => {
         placeholder,
         disabled,
         isSearchable,
-        components,
+        customOptionRenderer,
         onChange,
         defaultValue,
         triggerOnDefault,
@@ -101,6 +108,7 @@ export const _Select = (props: BaseComponentProps & SelectProps) => {
             isDisabled={disabled}
             isSearchable={isSearchable}
             options={options}
+            formatOptionLabel={formatOptionLabel(customOptionRenderer)}
             components={{MenuList}}
             onChange={onSelectValue} />
     </StyledSelectWrapper>
@@ -110,7 +118,7 @@ _Select.defaultProps = {
     placeholder: 'Select value',
     options: [],
     fetchItems: null,
-    dataItemRenderer: null,
+    customOptionRenderer: null,
     isSearchable: false,
     initialIndex: 0,
     defaultValue: null,

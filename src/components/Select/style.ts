@@ -47,7 +47,6 @@ export const selectStyles = (theme, disabled) => {
         }),
         menuList: base => ({
             ...base,
-            borderRadius: theme.listBorderRadius,
             border: 'none',
             paddingTop: 0,
             paddingBottom: 0,
@@ -59,8 +58,10 @@ export const selectStyles = (theme, disabled) => {
         menu: base => ({
             ...base,
             backgroundColor: theme.listBackgroundColor,
-            borderRadius: 20,
             boxShadow: theme.boxShadow,
+            borderRadius: theme.menuBorderRadius,
+            overflow: 'hidden',
+            padding: 10,
         }),
         menuPortal: base => ({
             ...base,
@@ -70,7 +71,7 @@ export const selectStyles = (theme, disabled) => {
             ...base,
         }),
         group: base => ({
-            ...base
+            ...base,
         }),
         option: (base, state) => ({
             ...base,
@@ -78,16 +79,17 @@ export const selectStyles = (theme, disabled) => {
             display: 'flex',
             alignItems: 'center',
             border: 'none',
-            paddingTop: 0,
-            paddingBottom: 0,
+            marginTop: 10,
+            marginBottom: 10,
+            borderRadius: theme.optionBorderRadius,
             fontSize: theme.itemFontSize,
             fontWeight: theme.itemFontWeight,
             backgroundColor: state.isSelected ? theme.itemSelectedBackgroundColor : theme.listBackgroundColor,
             color: state.isSelected ? theme.itemSelectedTextColor : theme.itemTextColor,
 
             '&:hover': {
-                backgroundColor: theme.itemHoverBackgroundColor,
-                color: theme.itemHoverTextColor,
+                backgroundColor: state.isSelected ? theme.itemHoverSelectedBackgroundColor : theme.itemHoverBackgroundColor,
+                color: state.isSelected ? theme.itemHoverSelectedTextColor : theme.itemHoverTextColor,
                 cursor: theme.cursorOnHover
             }
         })
