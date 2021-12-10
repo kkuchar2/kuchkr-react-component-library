@@ -8,7 +8,6 @@ import {
     LightModeContainer,
     StyleContainer
 } from "../../util/BaseComponentStory";
-import OptionsType from "react-select";
 import styled from "styled-components";
 
 
@@ -87,6 +86,7 @@ export const Select = (args) => {
                        options={items}
                        onChange={onChange}
                        triggerOnDefault={true}
+                       maxMenuHeight={400}
                        customOptionRenderer={customOptionRenderer}
                        selectFirstAfterLoad={true}
                        emptyPlaceholder={"No items loaded yet"}

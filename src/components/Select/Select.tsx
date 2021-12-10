@@ -14,7 +14,10 @@ const MenuList = (props: any) => {
         overflow: 'hidden',
         borderRadius: data.selectProps.listBorderRadius
     }}>
-        <Scrollbars renderThumbVertical={renderThumbVertical}>
+        <Scrollbars renderThumbVertical={renderThumbVertical}
+                    style={{
+                        boxSizing: 'border-box',
+                    }}>
             {props.children}
         </Scrollbars>
     </div>;
@@ -59,11 +62,6 @@ export const _Select = (props: BaseComponentProps & SelectProps) => {
     } = props;
 
     const numberOfItems = options.length;
-    let maxHeightForMenu = maxMenuHeight;
-
-    if (numberOfItems * theme.itemHeight < maxMenuHeight) {
-        maxHeightForMenu = numberOfItems * theme.itemHeight;
-    }
 
     let shouldDisable = disabled;
     let targetDefaultValue = defaultValue;
@@ -103,8 +101,8 @@ export const _Select = (props: BaseComponentProps & SelectProps) => {
             defaultValue={targetDefaultValue}
             styles={selectStyles(theme, shouldDisable)}
             menuPortalTarget={document.body}
+            maxMenuHeight={maxMenuHeight}
             placeholder={numberOfItems === 0 ? emptyPlaceholder : placeholder}
-            maxMenuHeight={maxHeightForMenu}
             isDisabled={disabled}
             isSearchable={isSearchable}
             options={options}

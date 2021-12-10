@@ -75,7 +75,6 @@ export const selectStyles = (theme, disabled) => {
         }),
         option: (base, state) => ({
             ...base,
-            height: theme.itemHeight,
             display: 'flex',
             alignItems: 'center',
             border: 'none',
