@@ -8,8 +8,9 @@ import {Text} from "../Text"
 import {default as BaseSlider} from '@material-ui/core/Slider';
 import {
     baseStyle,
-    leftCustomMarkStyle,
-    rightCustomMarkStyle,
+    CustomMarks,
+    leftCustomMarkTheme,
+    rightCustomMarkTheme,
     StyledCustomRail,
     StyledCustomTrack,
     StyledSlider
@@ -29,6 +30,7 @@ export const _Slider = (props: BaseComponentProps & SliderProps) => {
         value,
         min,
         max,
+        step,
         disabled,
         useMarks,
         displayLabel,
@@ -48,9 +50,7 @@ export const _Slider = (props: BaseComponentProps & SliderProps) => {
     }, [theme, innerModernSlider]);
 
     useEffect(() => {
-        if (value) {
-            setInternalValue(value);
-        }
+        setInternalValue(value);
     }, [value]);
 
     useEffect(() => {
@@ -80,13 +80,13 @@ export const _Slider = (props: BaseComponentProps & SliderProps) => {
 
     const renderCustomLeftMark = useCallback(() => {
         if (innerModernSlider && useMarks) {
-            return <Text style={leftCustomMarkStyle(theme)} text={min.toString()}/>
+            return <Text theme={leftCustomMarkTheme(theme)} text={min.toString()}/>
         }
     }, [innerModernSlider, theme, internalValue, min, useMarks])
 
     const renderCustomRightMark = useCallback(() => {
         if (innerModernSlider && useMarks) {
-            return <Text style={rightCustomMarkStyle(theme)} text={max.toString()}/>
+            return <Text theme={rightCustomMarkTheme(theme)} text={max.toString()}/>
         }
     }, [innerModernSlider, theme, internalValue, max, useMarks])
 
@@ -96,6 +96,7 @@ export const _Slider = (props: BaseComponentProps & SliderProps) => {
             value={internalValue}
             getAriaValueText={v => `${v}`}
             scale={(x) => x}
+            step={step}
             min={min}
             max={max}
             disabled={disabled}
@@ -103,11 +104,13 @@ export const _Slider = (props: BaseComponentProps & SliderProps) => {
             marks={useMarks && !innerModernSlider ? marks : []}
             onChange={(e, v) => onSliderChange(v)}
         />
-        {renderCustomRightMark()}
-        {renderCustomLeftMark()}
+
         {renderCustomRail()}
-    </StyledSlider>
-        ;
+        <CustomMarks>
+            {renderCustomLeftMark()}
+            {renderCustomRightMark()}
+        </CustomMarks>
+    </StyledSlider>;
 }
 
 _Slider.defaultProps = {
@@ -115,6 +118,7 @@ _Slider.defaultProps = {
     markValues: [],
     defaultValue: 0,
     value: 0,
+    step: 1,
     min: 0,
     max: 100,
     disabled: false,

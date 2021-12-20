@@ -31,35 +31,26 @@ export const StyledCustomRail = styled.div<StyledCustomRailProps>`
   z-index: 0;
 `;
 
-export const leftCustomMarkStyle = (theme: Dictionary<any>): CSSProperties => {
+export const CustomMarks = styled.div`
+  display: flex;
+  flex-direction: row;
+`
+
+export const leftCustomMarkTheme = (theme: Dictionary<any>) => {
     return {
-        position: 'absolute',
-        top: theme.modernMinMarkLabelTopMargin,
-        left: theme.modernMinMarkLabelRightMargin,
-        color: theme.markLabelFontColor,
-        zIndex: 2,
+        textColor: theme.markLabelFontColor,
         fontFamily: 'inherit',
         fontSize: theme.modernMarkLabelFontSize,
-        height: theme.height,
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
+        margin: `0px 0px 0px 0px`
     }
 }
 
-export const rightCustomMarkStyle = (theme: Dictionary<any>): CSSProperties => {
+export const rightCustomMarkTheme = (theme: Dictionary<any>) => {
     return {
-        position: 'absolute',
-        top: theme.modernMaxMarkLabelTopMargin,
-        right: theme.modernMaxMarkLabelRightMargin,
-        color: theme.markLabelFontColor,
-        zIndex: 2,
+        textColor: theme.markLabelFontColor,
         fontFamily: 'inherit',
         fontSize: theme.modernMarkLabelFontSize,
-        height: theme.height,
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
+        margin: `0px 0px 0px auto`
     }
 }
 

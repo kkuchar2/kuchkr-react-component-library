@@ -3,6 +3,7 @@ export interface SliderProps {
     markValues?: Array<number>;
     defaultValue?: number;
     value?: number;
+    step?: number;
     min?: number;
     max?: number;
     useMarks?: boolean;
