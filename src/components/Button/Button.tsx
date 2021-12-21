@@ -24,7 +24,7 @@ export const _Button = (props: BaseComponentProps & ButtonProps) => {
             return <Text text={text} disabled={disabled} theme={theme.text}/>
         }
         return children;
-    }, [text, children])
+    }, [text, children, disabled])
 
     const mergedStyles = Object.assign(style ? style : {}, theme.additionalStyles ? theme.additionalStyles : {});
 
