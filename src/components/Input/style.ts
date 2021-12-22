@@ -46,6 +46,7 @@ export const StyledInput = styled.div<StyledInputProps>`
     border-bottom: ${props => props.theme.border};
     transition: border ease-in-out 0.3s;
     line-height: ${props => props.theme.height};
+    font-weight: ${props => props.theme.inputTextTheme.fontWeight ? props.theme.inputTextTheme.fontWeight : 'inherit'};
     
     &:focus {
       border-bottom: ${props => props.theme.borderFocus};
