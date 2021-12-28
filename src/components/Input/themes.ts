@@ -54,14 +54,14 @@ export const darkTheme = {
         textColor: '#d9d9d9',
         fontSize: '0.9em',
         fontWeight: 'bold',
-        textAlign: 'left',
+        textAlign: 'center',
         margin: "0px 0px 0px 0px"
     },
 
     placeholderTextTheme: {
         textColor: '#9a9a9a',
         fontSize: '1em',
-        textAlign: 'left'
+        textAlign: 'center'
     }
 }
 
