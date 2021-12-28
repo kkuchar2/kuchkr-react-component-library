@@ -6,7 +6,7 @@ import {
     LightModeContainer,
     StyleContainer
 } from "../../util/BaseComponentStory";
-import React from "react";
+import React, {useCallback, useState} from "react";
 import {withIconTestTheme} from "./themes";
 
 export default generateStoryOptions(InputComponent);
@@ -17,9 +17,16 @@ Component1.displayName = InputComponent.displayName;
 
 export const InputStory = (args) => {
 
+    const [value, setValue] = useState("A");
+
+    const changeValue = useCallback((v) => {
+        console.log('Setting value: ' + v);
+        setValue(v);
+    }, []);
+
     return <StyleContainer>
         <DarkModeContainer padding={"50px"}>
-            <Component1 {...args} theme={InputComponent.darkTheme}/>
+            <Component1 {...args} value={value} theme={InputComponent.darkTheme} onChange={changeValue}/>
         </DarkModeContainer>
 
         <LightModeContainer padding={"50px"}>

@@ -14,7 +14,6 @@ export const _Input = (props: BaseComponentProps & InputProps) => {
         type,
         id,
         value,
-        initialValue,
         name,
         autoComplete,
         placeholder,
@@ -27,12 +26,10 @@ export const _Input = (props: BaseComponentProps & InputProps) => {
         dataTestId
     } = props;
 
-    const [inputValue, setInputValue] = useState(initialValue);
+    const [inputValue, setInputValue] = useState(value);
 
     useEffect(() => {
-        if (onChange && inputValue) {
-            onChange(inputValue);
-        }
+        onChange?.(inputValue);
     }, [inputValue]);
 
     const onInputChange = useCallback((e) => {
@@ -88,7 +85,6 @@ _Input.defaultProps = {
     type: "",
     id: "",
     value: "",
-    initialValue: "",
     name: "",
     autoComplete: "off",
     placeholder: "Aa",
