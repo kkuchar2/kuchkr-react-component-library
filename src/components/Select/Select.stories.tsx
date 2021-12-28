@@ -96,6 +96,7 @@ export const Select = (args) => {
         <LightModeContainer height={"200px"} alignItems={"center"} padding={"20px"}>
             <Component {...args}
                        options={items}
+                       disabled={false}
                        selectFirstAfterLoad={true}
                        customOptionRenderer={customOptionRenderer}
                        emptyPlaceholder={"No items loaded yet"}

@@ -21,6 +21,7 @@ export const lightTheme = {
 
     // Selected value
     selectedValueTextColor: '#2b2b2b',
+    selectedValueDisabledTextColor: 'rgba(43,43,43,0.49)',
     selectedValueFontWeight: 600,
     selectedValueFontSize: '1em',
 
@@ -73,6 +74,7 @@ export const darkTheme = {
 
     // Selected value
     selectedValueTextColor: '#858585',
+    selectedValueDisabledTextColor: 'rgba(133,133,133,0.45)',
     selectedValueFontWeight: 600,
     selectedValueFontSize: '1em',
 

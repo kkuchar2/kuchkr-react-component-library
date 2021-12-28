@@ -27,7 +27,7 @@ export const selectStyles = (theme, disabled) => {
 
         singleValue: base => ({
             ...base,
-            color: theme.selectedValueTextColor,
+            color: disabled ? theme.selectedValueDisabledTextColor : theme.selectedValueTextColor,
             fontWeight: theme.selectedValueFontWeight,
             fontSize: theme.selectedValueFontSize
         }),
