@@ -82,7 +82,6 @@ export const Select = (args) => {
         <DarkModeContainer height={"200px"} alignItems={"center"} padding={"20px"}>
             <Component {...args}
                        dataTestId={'select_test_id1'}
-                       disabled={false}
                        options={items}
                        onChange={onChange}
                        triggerOnDefault={true}
@@ -96,7 +95,6 @@ export const Select = (args) => {
         <LightModeContainer height={"200px"} alignItems={"center"} padding={"20px"}>
             <Component {...args}
                        options={items}
-                       disabled={false}
                        selectFirstAfterLoad={true}
                        customOptionRenderer={customOptionRenderer}
                        emptyPlaceholder={"No items loaded yet"}
