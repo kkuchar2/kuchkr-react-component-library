@@ -47,14 +47,14 @@ export const LightModeContainer = styled.div<ModeContainerProps>`
 
 LightModeContainer.displayName = "LightModeContainer"
 
-export const StyleContainer = styled.div`
+export const StyledContainer = styled.div`
   display: flex;
   flex-direction: column;
   overflow: hidden;
   margin-bottom: 20px;
 `
 
-StyleContainer.displayName = "StyleContainer"
+StyledContainer.displayName = "StyleContainer"
 
 export const ComponentStory = (DisplayedComponent, rest = {}, argTypes = defaultArgTypes) => {
 
@@ -64,7 +64,7 @@ export const ComponentStory = (DisplayedComponent, rest = {}, argTypes = default
 
     const ComponentWithArgs = (args) => {
 
-        return <StyleContainer>
+        return <StyledContainer>
             <DarkModeContainer>
                 <Component {...args} {...rest} theme={DisplayedComponent.darkTheme}/>
             </DarkModeContainer>
@@ -72,7 +72,7 @@ export const ComponentStory = (DisplayedComponent, rest = {}, argTypes = default
             <LightModeContainer>
                 <Component {...args} {...rest} theme={DisplayedComponent.lightTheme}/>
             </LightModeContainer>
-        </StyleContainer>
+        </StyledContainer>
     }
 
     ComponentWithArgs.args = DisplayedComponent.defaultProps

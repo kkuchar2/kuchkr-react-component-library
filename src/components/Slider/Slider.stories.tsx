@@ -4,7 +4,7 @@ import {
     defaultArgTypes,
     generateStoryOptions,
     LightModeContainer,
-    StyleContainer
+    StyledContainer
 } from "../../util/BaseComponentStory";
 import React, {useState} from "react";
 import {modernDarkTheme, modernLightTheme} from "./themes";
@@ -21,7 +21,7 @@ export const Slider = (args) => {
     const [markValues,] = useState([25, 75]);
     const [currentValue, setCurrentValue] = useState(20);
 
-    return <StyleContainer>
+    return <StyledContainer>
         <DarkModeContainer height={"200px"} padding={"30px"}>
             <Component {...args} value={currentValue} markValues={markValues} onChange={setCurrentValue}
                        theme={SliderComponent.darkTheme}/>
@@ -37,7 +37,7 @@ export const Slider = (args) => {
             <Component {...args} value={currentValue} markValues={markValues} style={{marginTop: 50}}
                        onChange={setCurrentValue} innerModernSlider={true} theme={modernLightTheme}/>
         </LightModeContainer>
-    </StyleContainer>
+    </StyledContainer>
 }
 
 Slider.args = SliderComponent.defaultProps

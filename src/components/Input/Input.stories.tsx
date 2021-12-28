@@ -4,7 +4,7 @@ import {
     defaultArgTypes,
     generateStoryOptions,
     LightModeContainer,
-    StyleContainer
+    StyledContainer
 } from "../../util/BaseComponentStory";
 import React, {useCallback, useState} from "react";
 import {withIconTestTheme} from "./themes";
@@ -24,7 +24,7 @@ export const InputStory = (args) => {
         setValue(v);
     }, []);
 
-    return <StyleContainer>
+    return <StyledContainer>
         <DarkModeContainer padding={"50px"}>
             <Component1 {...args} value={value} theme={InputComponent.darkTheme} onChange={changeValue}/>
         </DarkModeContainer>
@@ -36,7 +36,7 @@ export const InputStory = (args) => {
         <LightModeContainer padding={"50px"}>
             <Component1 {...args} theme={InputComponent.lightTheme}/>
         </LightModeContainer>
-    </StyleContainer>
+    </StyledContainer>
 }
 
 InputStory.args = InputComponent.defaultProps

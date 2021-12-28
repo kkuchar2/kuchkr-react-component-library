@@ -6,7 +6,7 @@ import {
     defaultArgTypes,
     generateStoryOptions,
     LightModeContainer,
-    StyleContainer
+    StyledContainer
 } from "../../util/BaseComponentStory";
 
 
@@ -17,7 +17,7 @@ const Component = (args) => <TextComponent {...args} />;
 Component.displayName = TextComponent.displayName;
 
 export const Text = (args) => {
-    return <StyleContainer>
+    return <StyledContainer>
         <DarkModeContainer height={"400px"} alignItems={"center"} padding={"20px"}>
             <Component text={"Some short text"} theme={TextComponent.darkTheme}/>
             <Component style={{marginTop: 20}} text={lorem.paragraph()} theme={TextComponent.darkTheme}/>
@@ -27,7 +27,7 @@ export const Text = (args) => {
             <Component text={"Some short text"} theme={TextComponent.lightTheme}/>
             <Component style={{marginTop: 20}} text={lorem.paragraph()} theme={TextComponent.lightTheme}/>
         </LightModeContainer>
-    </StyleContainer>
+    </StyledContainer>
 }
 
 Text.args = TextComponent.defaultProps

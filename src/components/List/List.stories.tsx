@@ -5,7 +5,7 @@ import {
     defaultArgTypes,
     generateStoryOptions,
     LightModeContainer,
-    StyleContainer
+    StyledContainer
 } from "../../util/BaseComponentStory";
 import React, {useCallback, useState} from "react";
 import {name} from 'faker'
@@ -43,11 +43,11 @@ export const StaticList = (args) => {
         </div>
     }, []);
 
-    return <StyleContainer>
+    return <StyledContainer>
         <DarkModeContainer>
             <Component1 {...args} items={staticItems} dataItemRenderer={provideItem} theme={ListComponent.darkTheme}/>
         </DarkModeContainer>
-    </StyleContainer>
+    </StyledContainer>
 }
 
 StaticList.args = ListComponent.defaultProps
@@ -98,7 +98,7 @@ export const ListWithInfiniteScroll = () => {
         </div>
     }, []);
 
-    return <StyleContainer>
+    return <StyledContainer>
         <DarkModeContainer>
             <Component1 items={items1}
                         fetchItems={fetch1}
@@ -114,7 +114,7 @@ export const ListWithInfiniteScroll = () => {
                         dataItemRenderer={provideItem}
                         theme={ListComponent.lightTheme}/>
         </LightModeContainer>
-    </StyleContainer>
+    </StyledContainer>
 }
 
 ListWithInfiniteScroll.args = ListComponent.defaultProps

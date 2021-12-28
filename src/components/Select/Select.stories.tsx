@@ -6,7 +6,7 @@ import {
     defaultArgTypes,
     generateStoryOptions,
     LightModeContainer,
-    StyleContainer
+    StyledContainer
 } from "../../util/BaseComponentStory";
 import styled from "styled-components";
 
@@ -78,7 +78,7 @@ export const Select = (args) => {
         }, 1000);
     }, []);
 
-    return <StyleContainer>
+    return <StyledContainer>
         <DarkModeContainer height={"200px"} alignItems={"center"} padding={"20px"}>
             <Component {...args}
                        dataTestId={'select_test_id1'}
@@ -101,7 +101,7 @@ export const Select = (args) => {
                        emptyPlaceholder={"No items loaded yet"}
                        theme={SelectComponent.lightTheme}/>
         </LightModeContainer>
-    </StyleContainer>
+    </StyledContainer>
 }
 
 Select.args = SelectComponent.defaultProps
