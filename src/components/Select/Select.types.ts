@@ -11,7 +11,8 @@ export interface SelectProps {
     maxMenuHeight?: number,
     customOptionRenderer?: (option : OptionsType) => ReactNode,
     emptyPlaceholder?: OptionsType,
-    selectFirstAfterLoad?: boolean
+    selectFirstAfterLoad?: boolean,
+    menuPortalTarget?: HTMLElement | null
 }
 
 export interface StyledSelectProps {}

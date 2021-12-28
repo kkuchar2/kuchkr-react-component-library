@@ -58,7 +58,8 @@ export const _Select = (props: BaseComponentProps & SelectProps) => {
         maxMenuHeight,
         dataTestId,
         emptyPlaceholder,
-        selectFirstAfterLoad
+        selectFirstAfterLoad,
+        menuPortalTarget
     } = props;
 
     const numberOfItems = options.length;
@@ -100,7 +101,7 @@ export const _Select = (props: BaseComponentProps & SelectProps) => {
             value={!value ? targetDefaultValue : value}
             defaultValue={targetDefaultValue}
             styles={selectStyles(theme, shouldDisable)}
-            menuPortalTarget={document.body}
+            menuPortalTarget={menuPortalTarget}
             maxMenuHeight={maxMenuHeight}
             placeholder={numberOfItems === 0 ? emptyPlaceholder : placeholder}
             isDisabled={disabled}
@@ -123,7 +124,8 @@ _Select.defaultProps = {
     triggerOnDefault: false,
     maxMenuHeight: 200,
     emptyPlaceholder: 'No items',
-    selectFirstAfterLoad: true
+    selectFirstAfterLoad: true,
+    menuPortalTarget: null
 }
 
 export const Select = BaseComponent<SelectProps>(_Select, lightTheme, darkTheme);
