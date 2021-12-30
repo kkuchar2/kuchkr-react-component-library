@@ -4,6 +4,7 @@ export interface ButtonProps extends BaseProps {
     text?: string;
     children?: object;
     title?: string;
+    type?: 'submit' | 'reset' | 'button';
     onClick?: (e: Event) => void;
 }
 

@@ -7,7 +7,7 @@ import {StyledButton} from "./style";
 
 export const _Button = (props: BaseComponentProps & ButtonProps) => {
 
-    const {style, disabled, onClick, title, text, theme, children, dataTestId} = props;
+    const {style, disabled, onClick, title, text, type, theme, children, dataTestId} = props;
 
     const onButtonClick = (e) => {
         if (disabled) {
@@ -28,7 +28,7 @@ export const _Button = (props: BaseComponentProps & ButtonProps) => {
 
     const mergedStyles = Object.assign(style ? style : {}, theme.additionalStyles ? theme.additionalStyles : {});
 
-    return <StyledButton data-testid={dataTestId} style={mergedStyles} title={title} type={"submit"}
+    return <StyledButton data-testid={dataTestId} style={mergedStyles} title={title} type={type}
                          onClick={onButtonClick} disabled={disabled}>
         {renderButtonContent()}
     </StyledButton>
@@ -38,6 +38,7 @@ _Button.defaultProps = {
     text: null,
     children: null,
     onClick: null,
+    type: 'button',
     title: ''
 };
 
