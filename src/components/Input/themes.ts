@@ -1,5 +1,6 @@
 export const lightTheme = {
     backgroundColor: "rgba(255,255,255,0)",
+    autoFillBackgroundColor: "rgba(255,255,255,0)",
     textColor: "#474747",
     border: "1px solid " + "#afafaf",
     borderFocus: "1px solid " + "#ff8e00",
@@ -34,6 +35,7 @@ export const lightTheme = {
 
 export const darkTheme = {
     backgroundColor: "rgba(31,31,31,0)",
+    autoFillBackgroundColor: "rgb(82,82,82, 0)",
     border: "1px solid " + "#666666",
     borderFocus: "1px solid " + "#ff8e00",
     borderRadius: "0",
@@ -54,14 +56,14 @@ export const darkTheme = {
         textColor: '#d9d9d9',
         fontSize: '0.9em',
         fontWeight: 'bold',
-        textAlign: 'center',
+        textAlign: 'left',
         margin: "0px 0px 0px 0px"
     },
 
     placeholderTextTheme: {
         textColor: '#9a9a9a',
         fontSize: '1em',
-        textAlign: 'center'
+        textAlign: 'left'
     }
 }
 

@@ -1,4 +1,4 @@
-import { Input as InputComponent } from './Input';
+import {Input as InputComponent} from './Input';
 import {
     DarkModeContainer,
     defaultArgTypes,
@@ -8,6 +8,7 @@ import {
 } from "../../util/BaseComponentStory";
 import React, {useCallback, useState} from "react";
 import {withIconTestTheme} from "./themes";
+import {Text} from "../Text";
 
 export default generateStoryOptions(InputComponent);
 
@@ -17,7 +18,7 @@ Component1.displayName = InputComponent.displayName;
 
 export const InputStory = (args) => {
 
-    const [value, setValue] = useState("A");
+    const [value, setValue] = useState("");
 
     const changeValue = useCallback((v) => {
         console.log('Setting value: ' + v);
@@ -27,6 +28,32 @@ export const InputStory = (args) => {
     return <StyledContainer>
         <DarkModeContainer padding={"50px"}>
             <Component1 {...args} value={value} theme={InputComponent.darkTheme} onChange={changeValue}/>
+        </DarkModeContainer>
+
+        <DarkModeContainer padding={"50px"}>
+            <Text theme={Text.darkTheme} text={'Form with autocomplete'}/>
+            <Component1 {...args}
+                        theme={InputComponent.darkTheme}
+                        placeholder={'Enter First Name'}
+                        style={{marginTop: 30}}
+                        type={"text"}
+                        autoComplete={'off'}
+                        id={"exampleInputFirst"}
+                        title={''}/>
+            <Component1 {...args}
+                        theme={InputComponent.darkTheme}
+                        placeholder={'Enter Last Name'}
+                        style={{marginTop: 30}}
+                        type={"text"}
+                        id={"exampleInputLast"}
+                        title={''}/>
+            <Component1 {...args}
+                        theme={InputComponent.darkTheme}
+                        placeholder={'Enter E-mail'}
+                        style={{marginTop: 30}}
+                        type={"email"}
+                        id="exampleInputEmail"
+                        title={''}/>
         </DarkModeContainer>
 
         <LightModeContainer padding={"50px"}>

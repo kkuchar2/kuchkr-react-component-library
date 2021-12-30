@@ -53,10 +53,6 @@ export const StyledInput = styled.div<StyledInputProps>`
       border-bottom: ${props => props.theme.borderFocus};
     }
 
-    .title {
-      width: 150px;
-    }
-
     &::placeholder {
       color: ${props => props.theme.placeholderTextTheme.textColor};
       font-size: ${props => props.theme.placeholderTextTheme.fontSize};
@@ -78,15 +74,15 @@ export const StyledInput = styled.div<StyledInputProps>`
       font-weight: ${props => props.theme.placeholderTextTheme.fontWeight};
     }
 
-    input:focus::placeholder {
+    &:focus::placeholder {
       color: transparent;
     }
 
-    * input:-webkit-autofill,
-    * input:-webkit-autofill:hover,
-    * input:-webkit-autofill:focus,
-    * input:-webkit-autofill:first-line {
-      -webkit-box-shadow: 0 0 0 50px ${props => props.theme.backgroundColor} inset;
+    &:-webkit-autofill,
+    &:-webkit-autofill:hover,
+    &:-webkit-autofill:focus,
+    &:-webkit-autofill:first-line {
+      -webkit-box-shadow: 0 0 0 50px ${props => props.theme.autoFillBackgroundColor} inset;
       -webkit-text-fill-color: ${props => props.theme.inputTextTheme.textColor};
       font-size: ${props => props.theme.inputTextTheme.fontSize};
       border-radius: ${props => props.theme.borderRadius};
