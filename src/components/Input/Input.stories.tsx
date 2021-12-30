@@ -26,7 +26,7 @@ export const InputStory = (args) => {
 
     return <StyledContainer>
         <DarkModeContainer padding={"50px"}>
-            <Component1 {...args} value={value} theme={InputComponent.darkTheme} onChange={changeValue}/>
+            <Component1 {...args} autoFocus={true} value={value} theme={InputComponent.darkTheme} onChange={changeValue}/>
         </DarkModeContainer>
 
         <LightModeContainer padding={"50px"}>

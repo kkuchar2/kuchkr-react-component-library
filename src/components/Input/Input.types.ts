@@ -12,6 +12,7 @@ export interface InputProps extends BaseProps {
     onEnter?: () => void;
     required?: boolean;
     withIcon?: boolean;
+    autoFocus?: boolean;
 }
 
 export interface StyledInputProps {

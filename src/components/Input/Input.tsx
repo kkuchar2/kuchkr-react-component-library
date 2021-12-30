@@ -23,6 +23,7 @@ export const _Input = (props: BaseComponentProps & InputProps) => {
         required,
         withIcon,
         theme,
+        autoFocus,
         dataTestId
     } = props;
 
@@ -63,6 +64,7 @@ export const _Input = (props: BaseComponentProps & InputProps) => {
         <StyledInput>
             {renderIcon()}
             <input
+                autoFocus={autoFocus}
                 className={"inputField"}
                 spellCheck="false"
                 type={type}
@@ -91,7 +93,8 @@ _Input.defaultProps = {
     onChange: null,
     onEnter: null,
     required: false,
-    withIcon: false
+    withIcon: false,
+    autoFocus: false
 }
 
 export const Input = BaseComponent<InputProps>(_Input, lightTheme, darkTheme);
