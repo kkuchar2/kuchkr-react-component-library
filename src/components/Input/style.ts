@@ -82,22 +82,18 @@ export const StyledInput = styled.div<StyledInputProps>`
       color: transparent;
     }
 
-    input:-webkit-autofill,
-    input:-webkit-autofill:hover,
-    input:-webkit-autofill:focus,
-    input:-webkit-autofill:active {
+    * input:-webkit-autofill,
+    * input:-webkit-autofill:hover,
+    * input:-webkit-autofill:focus,
+    * input:-webkit-autofill:first-line {
+      -webkit-box-shadow: 0 0 0 50px ${props => props.theme.backgroundColor} inset;
+      -webkit-text-fill-color: ${props => props.theme.inputTextTheme.textColor};
       font-size: ${props => props.theme.inputTextTheme.fontSize};
-      color: #ffffff;
-      -webkit-text-fill-color: inherit;
-      -webkit-transition-delay: 9999s;
-      -webkit-box-shadow: 0 0 0 10px #3b3bb4 inset !important;
-    }
-
-    input:-webkit-autofill::first-line {
-      font-size: ${props => props.theme.inputTextTheme.fontSize};
-      outline: 0;
-      font-family: ${props => props.theme.inputTextTheme.fontFamily ? props.theme.inputTextTheme.fontFamily : 'inherit'};
-      color: #ffffff;
+      border-radius: ${props => props.theme.borderRadius};
+      transition: background-color 5000s ease-in-out 0s;
+      line-height: ${props => props.theme.height};
+      font-weight: ${props => props.theme.inputTextTheme.fontWeight ? props.theme.inputTextTheme.fontWeight : 'inherit'};
+      text-align: ${props => props.theme.inputTextTheme.textAlign};
     }
   }
 `
