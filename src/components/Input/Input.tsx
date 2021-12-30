@@ -59,8 +59,6 @@ export const _Input = (props: BaseComponentProps & InputProps) => {
         return null;
     }, [withIcon, theme]);
 
-    console.log(`Autocomplete: ${autoComplete}`);
-
     return <StyledInputWrapper data-testid={dataTestId} style={style}>
         {renderTitle()}
         <StyledInput>
