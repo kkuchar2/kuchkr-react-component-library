@@ -59,6 +59,10 @@ export const _Input = (props: BaseComponentProps & InputProps) => {
         return null;
     }, [withIcon, theme]);
 
+    useEffect(() => {
+        setInputValue(value);
+    }, [value])
+
     return <StyledInputWrapper data-testid={dataTestId} style={style}>
         {renderTitle()}
         <StyledInput>
@@ -69,7 +73,7 @@ export const _Input = (props: BaseComponentProps & InputProps) => {
                 spellCheck="false"
                 type={type}
                 id={id}
-                value={value ? value : inputValue}
+                value={inputValue}
                 name={name}
                 autoComplete={autoComplete}
                 placeholder={placeholder}
