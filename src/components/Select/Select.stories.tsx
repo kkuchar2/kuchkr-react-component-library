@@ -1,5 +1,4 @@
 import React, {useCallback, useEffect, useState} from "react";
-import {name} from 'faker'
 import {Select as SelectComponent} from './Select';
 import {
     DarkModeContainer,
@@ -9,7 +8,9 @@ import {
     StyledContainer
 } from "../../util/BaseComponentStory";
 import styled from "styled-components";
+import Chance from 'chance';
 
+let chance = new Chance()
 
 export default generateStoryOptions(SelectComponent);
 
@@ -18,7 +19,7 @@ const Component = (args) => <SelectComponent {...args} />;
 Component.displayName = SelectComponent.displayName;
 
 const staticItems = Array.from({length: 120}).map(() => {
-    return {value: name.firstName(), label: name.lastName()};
+    return {value: chance.first(), label: chance.last()};
 });
 
 const StyledOption = styled.div`

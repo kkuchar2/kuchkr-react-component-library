@@ -8,17 +8,19 @@ import {
     StyledContainer
 } from "../../util/BaseComponentStory";
 import React, {useCallback, useState} from "react";
-import {name} from 'faker'
 import {Text} from "../Text";
+import Chance from 'chance';
 
 export default generateStoryOptions(ListComponent);
 
 const Component1 = (args) => <ListComponent {...args} />;
 
+let chance = new Chance()
+
 Component1.displayName = ListComponent.displayName;
 
 const staticItems = Array.from({length: 50}).map(() => ({
-    value: name.findName()
+    value: chance.name()
 }));
 
 const getRandomHeight = (min, max) => {
@@ -66,7 +68,7 @@ export const ListWithInfiniteScroll = () => {
 
         setTimeout(() => {
             const fetchedItems = Array.from({length: 5}).map(() => ({
-                value: name.findName()
+                value: chance.name()
             }));
 
             setFetching1(false);
@@ -79,7 +81,7 @@ export const ListWithInfiniteScroll = () => {
 
         setTimeout(() => {
             const fetchedItems = Array.from({length: 5}).map(() => ({
-                value: name.findName()
+                value: chance.name()
             }));
 
             setFetching2(false);
