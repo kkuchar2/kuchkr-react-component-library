@@ -29,6 +29,10 @@ export const _Input = (props: BaseComponentProps & InputProps) => {
 
     const [inputValue, setInputValue] = useState(value);
 
+    useEffect(() => {
+        onChange?.(inputValue);
+    }, [inputValue]);
+
     const onInputChange = useCallback((e) => {
         setInputValue(e.target.value);
     }, [])
