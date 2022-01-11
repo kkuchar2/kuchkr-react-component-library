@@ -7,6 +7,9 @@ import {
     LightModeContainer,
     StyledContainer
 } from "../../util/BaseComponentStory";
+
+import {Text} from '../Text';
+
 import styled from "styled-components";
 import Chance from 'chance';
 
@@ -21,6 +24,17 @@ Component.displayName = SelectComponent.displayName;
 const staticItems = Array.from({length: 120}).map(() => {
     return {value: chance.first(), label: chance.last()};
 });
+
+const smallTitleTheme = {
+    textColor: "#d0d0d0",
+    disabledTextColor: "#9e9e9e",
+    fontSize: "15px",
+    hoverColor: '#d0d0d0',
+    margin: "10px 0px 20px 0px",
+    maxWidth: '300px',
+    maxHeight: '300px',
+    textAlign: 'left'
+}
 
 const StyledOption = styled.div`
   display: flex;
@@ -76,7 +90,7 @@ export const Select = (args) => {
     useEffect(() => {
         setTimeout(() => {
             setItems(staticItems);
-        }, 1000);
+        }, 10);
     }, []);
 
     return <StyledContainer>
@@ -87,6 +101,23 @@ export const Select = (args) => {
                        onChange={onChange}
                        triggerOnDefault={true}
                        maxMenuHeight={400}
+                       customOptionRenderer={customOptionRenderer}
+                       selectFirstAfterLoad={true}
+                       emptyPlaceholder={"No items loaded yet"}
+                       theme={SelectComponent.darkTheme}/>
+        </DarkModeContainer>
+
+        <DarkModeContainer marginTop={20} alignItems={"center"} padding={"20px"}>
+
+            <Text theme={smallTitleTheme} text={"Small number of items:"} />
+
+            <Component {...args}
+                       dataTestId={'select_test_id1'}
+                       options={items}
+                       onChange={onChange}
+                       triggerOnDefault={true}
+                       maxMenuHeight={400}
+                       menuPortalTarget={document.body}
                        customOptionRenderer={customOptionRenderer}
                        selectFirstAfterLoad={true}
                        emptyPlaceholder={"No items loaded yet"}

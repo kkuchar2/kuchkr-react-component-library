@@ -1,70 +1,42 @@
+import {motion, MotionProps} from "framer-motion";
 import styled from "styled-components";
+import {StyledSwitchProps} from "./Switch.types";
+import {BaseComponentProps} from "../../hoc";
 
-export const StyledSwitch = styled.div`
+export const StyledSwitch = styled(motion.div)<StyledSwitchProps & MotionProps & BaseComponentProps>`
+  width: ${props => `${props.theme.trackWidth}px`};
+  height: ${props => `${props.theme.trackHeight}px`};
+  background-color: ${props => {
+    return props.disabled ? props.theme.trackColorDisabledOff : props.theme.trackColorOff;
+  }};
   display: flex;
+  justify-content: flex-start;
   align-items: center;
-  justify-content: center;
-  width: 150px;
-  transform: scale(1.5);
-  color: white;
-  margin: ${props => props.theme.margin ? props.theme.margin : "0 0 0 0"};
-  
-  .react-switch-checkbox {
-    height: 0;
-    width: 0;
-    display: none;
-    margin: 0;
-  }
+  border-radius: ${props => `${props.theme.trackBorderRadius}px`};
+  padding: ${props => `${props.theme.trackPadding}px`};
+  cursor: ${props => props.theme.cursor};
+  margin: ${props => props.theme.margin};
 
-  .react-switch-label {
-    margin-left: 5px;
-    margin-right: 5px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    width: 32px;
-    height: 16px;
-    background: ${props => props.theme.trackBackgroundOff};
-    border-radius: 50px;
-    position: relative;
+  &[data-isOn="true"] {
+    justify-content: flex-end;
+    background-color: ${props => {
+      return props.disabled ? props.theme.trackColorDisabledOn : props.theme.trackColorOn;
+    }};
+`
 
-    &.switched {
-      transition: all 0.4s ease-in-out;
-      background: ${props => props.theme.trackBackgroundOn};
-    }
-  }
+export const StyledHandle = styled(motion.div)<StyledSwitchProps & MotionProps & BaseComponentProps>`
+  width: ${props => `${props.theme.knobWidth}px`};
+  height: ${props => `${props.theme.knobHeight}px`};
+  background-color: ${props => {
+      return props.disabled ? props.theme.knobColorDisabledOff : props.theme.knobColorOff;
+  }};
+  border-radius: ${props => `${props.theme.knobBorderRadius}px`};
+  margin-left: ${props => `${-props.theme.knobOffset}px`};
+  margin-right: ${props => `${-props.theme.knobOffset}px`};
 
-  .react-switch-label .react-switch-button {
-    content: '';
-    margin-left: -50%;
-    width: 12px;
-    height: 12px;
-    border-radius: 15px;
-    background: ${props => props.theme.knobBackground};
-  }
-
-  .react-switch-checkbox:checked + .react-switch-label .react-switch-button {
-    margin-left: 50%;
-    background: ${props => props.theme.knobBackgroundOn};
-  }
-
-  .right {
-  @include theme-aware('color', 'text-color');
-    opacity: 0.3;
-
-    &.switched {
-      opacity: 1;
-    }
-  }
-
-  .left {
-  @include theme-aware('color', 'text-color');
-    opacity: 1;
-
-    &.switched {
-      opacity: 0.3;
-    }
+  &[data-isOn="true"] {
+    background-color: ${props => {
+      return props.disabled ? props.theme.knobColorDisabledOn : props.theme.knobColorOn;
+    }};
   }
 `

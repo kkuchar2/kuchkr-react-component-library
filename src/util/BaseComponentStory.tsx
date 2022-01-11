@@ -16,6 +16,7 @@ interface ModeContainerProps {
     readonly height?: string;
     readonly alignItems?: string;
     readonly padding?: string;
+    readonly marginTop?: number;
 }
 
 export const DarkModeContainer = styled.div<ModeContainerProps>`
@@ -28,6 +29,7 @@ export const DarkModeContainer = styled.div<ModeContainerProps>`
   border-radius: 10px;
   padding: ${props => props.padding};
   height: ${props => props.height};
+  margin-top: ${props => `${props.marginTop}px`};
 `
 
 DarkModeContainer.displayName = "DarkModeContainer"
