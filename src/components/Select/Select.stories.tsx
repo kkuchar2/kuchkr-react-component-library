@@ -25,6 +25,10 @@ const staticItems = Array.from({length: 120}).map(() => {
     return {value: chance.first(), label: chance.last()};
 });
 
+const smallItems = Array.from({length: 3}).map(() => {
+    return {value: chance.first(), label: chance.last()};
+});
+
 const smallTitleTheme = {
     textColor: "#d0d0d0",
     disabledTextColor: "#9e9e9e",
@@ -100,7 +104,7 @@ export const Select = (args) => {
                        options={items}
                        onChange={onChange}
                        triggerOnDefault={true}
-                       maxMenuHeight={400}
+                       maxMenuHeight={200}
                        customOptionRenderer={customOptionRenderer}
                        selectFirstAfterLoad={true}
                        emptyPlaceholder={"No items loaded yet"}
@@ -113,10 +117,10 @@ export const Select = (args) => {
 
             <Component {...args}
                        dataTestId={'select_test_id1'}
-                       options={items}
+                       options={smallItems}
                        onChange={onChange}
                        triggerOnDefault={true}
-                       maxMenuHeight={400}
+                       maxMenuHeight={200}
                        menuPortalTarget={document.body}
                        customOptionRenderer={customOptionRenderer}
                        selectFirstAfterLoad={true}
@@ -128,6 +132,7 @@ export const Select = (args) => {
             <Component {...args}
                        options={items}
                        selectFirstAfterLoad={true}
+                       menuPortalTarget={document.body}
                        customOptionRenderer={customOptionRenderer}
                        emptyPlaceholder={"No items loaded yet"}
                        theme={SelectComponent.lightTheme}/>

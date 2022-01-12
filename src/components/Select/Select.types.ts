@@ -10,7 +10,7 @@ export interface SelectProps {
     triggerOnDefault?: boolean,
     maxMenuHeight?: number,
     customOptionRenderer?: (option : OptionsType) => ReactNode,
-    emptyPlaceholder?: OptionsType,
+    emptyPlaceholder?: string,
     selectFirstAfterLoad?: boolean,
     menuPortalTarget?: HTMLElement | null
 }

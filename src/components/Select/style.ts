@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import Select from "react-select";
 
-import {styledSelectDefaultProps, StyledSelectProps} from "./Select.types";
+import {SelectProps, styledSelectDefaultProps, StyledSelectProps} from "./Select.types";
 
 export const selectStyles = (theme, disabled) => {
     return {
@@ -61,7 +61,10 @@ export const selectStyles = (theme, disabled) => {
             boxShadow: theme.boxShadow,
             borderRadius: theme.menuBorderRadius,
             overflow: 'hidden',
-            padding: 10,
+            paddingTop: theme.menuPaddingTop,
+            paddingBottom: theme.menuPaddingBottom,
+            paddingLeft: theme.menuPaddingLeft,
+            paddingRight: theme.menuPaddingRight,
         }),
         menuPortal: base => ({
             ...base,
@@ -78,12 +81,12 @@ export const selectStyles = (theme, disabled) => {
             display: 'flex',
             alignItems: 'center',
             border: 'none',
-            marginTop: 10,
-            marginBottom: 10,
+            marginTop: theme.itemMarginTop,
+            marginBottom: theme.itemMarginBottom,
             borderRadius: theme.optionBorderRadius,
             fontSize: theme.itemFontSize,
             fontWeight: theme.itemFontWeight,
-            backgroundColor: state.isSelected ? theme.itemSelectedBackgroundColor : theme.listBackgroundColor,
+            backgroundColor: state.isSelected ? theme.itemSelectedBackgroundColor : theme.itemBackgroundColor,
             color: state.isSelected ? theme.itemSelectedTextColor : theme.itemTextColor,
 
             '&:hover': {
@@ -95,7 +98,7 @@ export const selectStyles = (theme, disabled) => {
     }
 }
 
-export const StyledSelect = styled(Select)<StyledSelectProps>`
+export const StyledSelect = styled(Select)<StyledSelectProps & SelectProps>`
   width: ${props => props.theme.width};
   border: none;
 `

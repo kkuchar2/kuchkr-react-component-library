@@ -9,12 +9,14 @@ import {darkTheme, lightTheme} from "./themes";
 const MenuList = (props: any) => {
     const {...data} = props;
 
+    console.log('Max height: ' + data.selectProps.maxMenuHeight);
+    console.log('Preferred height: ' + data.selectProps.maxMenuHeight);
+
     return <div style={{
-        height: data.selectProps.maxMenuHeight,
-        overflow: 'hidden',
+        maxHeight: data.selectProps.maxMenuHeight,
         borderRadius: data.selectProps.listBorderRadius
     }}>
-        <Scrollbars renderThumbVertical={renderThumbVertical}
+        <Scrollbars autoHeight renderThumbVertical={renderThumbVertical}
                     style={{
                         boxSizing: 'border-box',
                     }}>
@@ -122,7 +124,7 @@ _Select.defaultProps = {
     initialIndex: 0,
     defaultValue: null,
     triggerOnDefault: false,
-    maxMenuHeight: 200,
+    maxMenuHeight: 300,
     emptyPlaceholder: 'No items',
     selectFirstAfterLoad: true,
     menuPortalTarget: null
