@@ -76,6 +76,8 @@ export const _Input = (props: BaseComponentProps & InputProps) => {
                 type={type}
                 id={id}
                 value={inputValue}
+                min={min}
+                max={max}
                 name={name}
                 autoComplete={autoComplete}
                 placeholder={placeholder}
@@ -94,6 +96,8 @@ _Input.defaultProps = {
     id: "",
     value: "",
     name: "",
+    min: "0",
+    max: "10000",
     autoComplete: "off",
     placeholder: "Aa",
     onChange: null,
