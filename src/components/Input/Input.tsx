@@ -20,7 +20,7 @@ export const _Input = (props: BaseComponentProps & InputProps) => {
         disabled,
         onChange,
         onEnter,
-        srequired,
+        required,
         withIcon,
         min,
         max,
