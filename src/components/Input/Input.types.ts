@@ -12,6 +12,7 @@ export interface InputProps extends BaseProps {
     onEnter?: () => void;
     required?: boolean;
     withIcon?: boolean;
+    IconComponent?: JSX.Element;
     autoFocus?: boolean;
 }
 
