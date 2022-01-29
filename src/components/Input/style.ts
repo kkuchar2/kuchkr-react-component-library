@@ -82,10 +82,15 @@ export const StyledInput = styled.div<StyledInputProps>`
       color: white;
     }
 
+    &:invalid::placeholder {
+      color: rgba(255, 255, 255, 0.62);
+    }
+
     &:invalid:focus {
       background: rgba(255, 0, 0, 0.5);
       color: white;
     }
+
 
     &:-webkit-autofill,
     &:-webkit-autofill:hover,
