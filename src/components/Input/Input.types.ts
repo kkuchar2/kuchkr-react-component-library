@@ -6,6 +6,7 @@ export interface InputProps extends BaseProps {
     id?: string;
     value?: string;
     name?: string;
+    minLength?: number | undefined;
     min?: string;
     max?: string;
     autoComplete?: string;

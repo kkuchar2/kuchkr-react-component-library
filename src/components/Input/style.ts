@@ -47,7 +47,7 @@ export const StyledInput = styled.div<StyledInputProps>`
     transition: border ease-in-out 0.3s;
     font-weight: ${props => props.theme.inputTextTheme.fontWeight ? props.theme.inputTextTheme.fontWeight : 'inherit'};
     text-align: ${props => props.theme.inputTextTheme.textAlign};
-    
+
     &:focus {
       border-bottom: ${props => props.theme.borderFocus};
     }
@@ -75,6 +75,16 @@ export const StyledInput = styled.div<StyledInputProps>`
 
     &:focus::placeholder {
       color: transparent;
+    }
+
+    &:invalid {
+      background: rgba(255, 0, 0, 0.5);
+      color: white;
+    }
+
+    &:invalid:focus {
+      background: rgba(255, 0, 0, 0.5);
+      color: white;
     }
 
     &:-webkit-autofill,

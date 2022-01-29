@@ -57,7 +57,7 @@ export const InputStory = (args) => {
         </DarkModeContainer>
 
         <LightModeContainer padding={"50px"}>
-            <Component1 {...args} theme={withIconTestTheme} withIcon={true}/>
+            <Component1 {...args} type="text" minLength={5} theme={withIconTestTheme} withIcon={true}/>
         </LightModeContainer>
 
         <LightModeContainer padding={"50px"}>

@@ -22,6 +22,7 @@ export const _Input = (props: BaseComponentProps & InputProps) => {
         onEnter,
         required,
         withIcon,
+        minLength,
         min,
         max,
         theme,
@@ -76,6 +77,7 @@ export const _Input = (props: BaseComponentProps & InputProps) => {
                 type={type}
                 id={id}
                 value={inputValue}
+                minLength={minLength}
                 min={min}
                 max={max}
                 name={name}
@@ -96,6 +98,7 @@ _Input.defaultProps = {
     id: "",
     value: "",
     name: "",
+    minLength: undefined,
     min: "0",
     max: "10000",
     autoComplete: "off",
