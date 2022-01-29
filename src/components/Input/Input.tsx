@@ -20,8 +20,10 @@ export const _Input = (props: BaseComponentProps & InputProps) => {
         disabled,
         onChange,
         onEnter,
-        required,
+        srequired,
         withIcon,
+        min,
+        max,
         theme,
         autoFocus,
         dataTestId

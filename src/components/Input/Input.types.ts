@@ -6,6 +6,8 @@ export interface InputProps extends BaseProps {
     id?: string;
     value?: string;
     name?: string;
+    min?: string;
+    max?: string;
     autoComplete?: string;
     placeholder?: string;
     onChange?: (v: string) => void;
