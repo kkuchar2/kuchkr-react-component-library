@@ -1,107 +1,48 @@
-import React, {useCallback, useEffect, useState} from 'react'
+import React, { ComponentProps } from 'react'
 import {SelectProps} from "./Select.types";
 import {BaseComponent, BaseComponentProps} from "../../hoc";
 import {selectStyles, StyledSelect, StyledSelectWrapper} from './style';
-import {Scrollbars} from "react-custom-scrollbars";
+import {default as BaseSelect} from "react-select";
 
 import {darkTheme, lightTheme} from "./themes";
+import {MenuList} from "./SelectMenuList";
 
-const MenuList = (props: any) => {
-    const {...data} = props;
-
-    console.log('Max height: ' + data.selectProps.maxMenuHeight);
-    console.log('Preferred height: ' + data.selectProps.maxMenuHeight);
-
-    return <div style={{
-        maxHeight: data.selectProps.maxMenuHeight,
-        borderRadius: data.selectProps.listBorderRadius
-    }}>
-        <Scrollbars autoHeight renderThumbVertical={renderThumbVertical}
-                    style={{
-                        boxSizing: 'border-box',
-                    }}>
-            {props.children}
-        </Scrollbars>
-    </div>;
-};
-
-const formatOptionLabel = (customOptionRenderer) => {
-    if (!customOptionRenderer) {
-        return null;
-    }
-    return ({value, label, customAbbreviation}) => customOptionRenderer(label, value);
-}
-
-const renderThumbVertical = ({style, ...props}: { style: any }) => {
-    return <div
-        {...props}
-        style={{
-            ...style,
-            backgroundColor: "#707070",
-            width: "0.8rem",
-            opacity: "0.6",
-        }}
-    />
-}
-
-export const _Select = (props: BaseComponentProps & SelectProps) => {
+export const _Select = (props: BaseComponentProps & SelectProps & ComponentProps<typeof BaseSelect>) => {
 
     const {
         style,
         theme,
         options,
         placeholder,
+        value,
         disabled,
         isSearchable,
-        customOptionRenderer,
         onChange,
         defaultValue,
-        triggerOnDefault,
         maxMenuHeight,
         dataTestId,
         emptyPlaceholder,
-        selectFirstAfterLoad,
-        menuPortalTarget
+        menuPortalTarget,
+        formatOptionLabel,
+        selectFirstAfterLoad
     } = props;
 
     const numberOfItems = options.length;
 
-    let shouldDisable = disabled;
-    let targetDefaultValue = defaultValue;
+    let shouldDisable = disabled ? true : numberOfItems === 0;
+    let defaultSelectValue;
 
-    if (numberOfItems === 0) {
-        shouldDisable = true;
-        targetDefaultValue = null;
+    if (numberOfItems === 0 || (numberOfItems > 0 && !selectFirstAfterLoad)) {
+        defaultSelectValue = defaultValue;
     }
-
-    if (!targetDefaultValue && selectFirstAfterLoad) {
-        targetDefaultValue = options[0];
+    else if (numberOfItems > 0) {
+        defaultSelectValue = options[0];
     }
-
-    const [value, setValue] = useState(null);
-
-    // When we want to trigger on default and value is loaded with delay
-    useEffect(() => {
-        if (triggerOnDefault && !value) {
-            onChange?.(targetDefaultValue);
-        }
-    }, [options, triggerOnDefault, value, onChange]);
-
-    useEffect(() => {
-        if (triggerOnDefault) {
-            onChange?.(defaultValue);
-        }
-    }, [triggerOnDefault]);
-
-    const onSelectValue = useCallback((v) => {
-        setValue(v);
-        onChange?.(v);
-    }, [onChange]);
 
     return <StyledSelectWrapper data-testid={dataTestId} style={style}>
         <StyledSelect
-            value={!value ? targetDefaultValue : value}
-            defaultValue={targetDefaultValue}
+            value={value}
+            defaultValue={defaultSelectValue}
             styles={selectStyles(theme, shouldDisable)}
             menuPortalTarget={menuPortalTarget}
             maxMenuHeight={maxMenuHeight}
@@ -109,21 +50,14 @@ export const _Select = (props: BaseComponentProps & SelectProps) => {
             isDisabled={disabled}
             isSearchable={isSearchable}
             options={options}
-            formatOptionLabel={formatOptionLabel(customOptionRenderer)}
+            formatOptionLabel={formatOptionLabel}
             components={{MenuList}}
-            onChange={onSelectValue} />
+            onChange={onChange}/>
     </StyledSelectWrapper>
 }
 
 _Select.defaultProps = {
     placeholder: 'Select value',
-    options: [],
-    fetchItems: null,
-    customOptionRenderer: null,
-    isSearchable: false,
-    initialIndex: 0,
-    defaultValue: null,
-    triggerOnDefault: false,
     maxMenuHeight: 300,
     emptyPlaceholder: 'No items',
     selectFirstAfterLoad: true,

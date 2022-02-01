@@ -1,18 +1,7 @@
-import OptionsType from "react-select";
-import {ReactNode} from "react";
-
 export interface SelectProps {
-    placeholder?: string,
-    options?: any,
-    isSearchable?: boolean,
-    defaultValue?: OptionsType,
-    onChange?: (v: OptionsType) => void,
-    triggerOnDefault?: boolean,
     maxMenuHeight?: number,
-    customOptionRenderer?: (option : OptionsType) => ReactNode,
     emptyPlaceholder?: string,
-    selectFirstAfterLoad?: boolean,
-    menuPortalTarget?: HTMLElement | null
+    selectFirstAfterLoad?: boolean
 }
 
 export interface StyledSelectProps {}

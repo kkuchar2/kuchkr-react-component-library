@@ -70,7 +70,7 @@ const StyledValue = styled.div`
 `;
 
 
-const customOptionRenderer = (label: string, value: any) => {
+const formatOptionLabel = ({value, label, customAbbreviation}) => {
     return <StyledOption>
         <StyledOptionIcon>
             🎅
@@ -86,26 +86,30 @@ export const Select = (args) => {
 
     const [items, setItems] = useState([]);
 
-    const onChange = useCallback((v) => {
-        if (!v) return;
-        console.log('Value changed to: ' + v.label);
+    const [value, setValue] = useState(null);
+
+    const onChange = useCallback((newValue, actionMeta) => {
+        if (!newValue) return;
+        setValue(newValue);
     }, []);
 
     useEffect(() => {
         setTimeout(() => {
             setItems(staticItems);
-        }, 10);
+        }, 1000);
     }, []);
+
+    useEffect(() => setValue(items[0]), [items]);
 
     return <StyledContainer>
         <DarkModeContainer height={"200px"} alignItems={"center"} padding={"20px"}>
             <Component {...args}
                        dataTestId={'select_test_id1'}
+                       value={value}
                        options={items}
                        onChange={onChange}
-                       triggerOnDefault={true}
                        maxMenuHeight={200}
-                       customOptionRenderer={customOptionRenderer}
+                       formatOptionLabel={formatOptionLabel}
                        selectFirstAfterLoad={true}
                        emptyPlaceholder={"No items loaded yet"}
                        theme={SelectComponent.darkTheme}/>
@@ -119,10 +123,9 @@ export const Select = (args) => {
                        dataTestId={'select_test_id1'}
                        options={smallItems}
                        onChange={onChange}
-                       triggerOnDefault={true}
                        maxMenuHeight={200}
                        menuPortalTarget={document.body}
-                       customOptionRenderer={customOptionRenderer}
+                       customOptionRenderer={formatOptionLabel}
                        selectFirstAfterLoad={true}
                        emptyPlaceholder={"No items loaded yet"}
                        theme={SelectComponent.darkTheme}/>
@@ -133,7 +136,7 @@ export const Select = (args) => {
                        options={items}
                        selectFirstAfterLoad={true}
                        menuPortalTarget={document.body}
-                       customOptionRenderer={customOptionRenderer}
+                       customOptionRenderer={formatOptionLabel}
                        emptyPlaceholder={"No items loaded yet"}
                        theme={SelectComponent.lightTheme}/>
         </LightModeContainer>
