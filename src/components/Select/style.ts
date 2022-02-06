@@ -81,6 +81,7 @@ export const selectStyles = (theme, disabled) => {
             display: 'flex',
             alignItems: 'center',
             border: 'none',
+            height: theme.itemHeight,
             marginTop: theme.itemMarginTop,
             marginBottom: theme.itemMarginBottom,
             borderRadius: theme.optionBorderRadius,

@@ -130,16 +130,6 @@ export const Select = (args) => {
                        emptyPlaceholder={"No items loaded yet"}
                        theme={SelectComponent.darkTheme}/>
         </DarkModeContainer>
-
-        <LightModeContainer height={"200px"} alignItems={"center"} padding={"20px"}>
-            <Component {...args}
-                       options={items}
-                       selectFirstAfterLoad={true}
-                       menuPortalTarget={document.body}
-                       customOptionRenderer={formatOptionLabel}
-                       emptyPlaceholder={"No items loaded yet"}
-                       theme={SelectComponent.lightTheme}/>
-        </LightModeContainer>
     </StyledContainer>
 }
 

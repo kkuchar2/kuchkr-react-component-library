@@ -83,14 +83,14 @@ export const darkTheme = {
     itemMarginBottom: 0,
 
     // Selected value
-    selectedValueTextColor: '#858585',
+    selectedValueTextColor: '#cecece',
     selectedValueDisabledTextColor: 'rgba(133,133,133,0.45)',
     selectedValueFontWeight: 600,
     selectedValueFontSize: '1em',
 
     // Arrow
-    arrowColor: '#b6b6b6',
-    arrowColorHover: '#b6b6b6',
+    arrowColor: '#cecece',
+    arrowColorHover: '#cecece',
     arrowColorDisabled: 'rgba(182,182,182,0.4)',
 
     // Separator line
@@ -105,7 +105,7 @@ export const darkTheme = {
 
     // Other
     border: 'none',
-    backgroundColor: '#1c1c1c',
+    backgroundColor: '#363636',
     backgroundColorDisabled: 'rgba(28,28,28,0.42)',
     borderRadius: 10,
     menuBorderRadius: 5,
