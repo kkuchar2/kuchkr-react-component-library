@@ -73,8 +73,8 @@ export const darkTheme = {
     itemBackgroundColor: "#3b3b3b",
     itemSelectedTextColor: "#ffffff",
     itemHoverBackgroundColor: '#252525',
-    itemSelectedBackgroundColor: '#26561b',
-    itemHoverSelectedBackgroundColor: '#26561b',
+    itemSelectedBackgroundColor: '#5827d0',
+    itemHoverSelectedBackgroundColor: '#5827d0',
     itemHoverSelectedTextColor: '#ffffff',
     itemHoverTextColor:  '#ffffff',
     itemFontSize: '0.9em',
@@ -105,7 +105,7 @@ export const darkTheme = {
 
     // Other
     border: 'none',
-    backgroundColor: '#363636',
+    backgroundColor: '#2c2c2c',
     backgroundColorDisabled: 'rgba(28,28,28,0.42)',
     borderRadius: 10,
     menuBorderRadius: 5,

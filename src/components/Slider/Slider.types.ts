@@ -1,3 +1,5 @@
+import React from "react";
+
 export interface SliderProps {
     logarithmic?: boolean;
     markValues?: Array<number>;
@@ -9,7 +11,7 @@ export interface SliderProps {
     useMarks?: boolean;
     displayLabel?: boolean;
     innerModernSlider?: boolean;
-    onChange?: (v) => void;
+    onChange?: (event: React.ChangeEvent<{}>, value: number) => void;
 }
 
 export interface StyledCustomRailProps {

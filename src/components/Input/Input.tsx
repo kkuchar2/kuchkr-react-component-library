@@ -1,4 +1,4 @@
-import React, {useCallback, useEffect, useState} from "react";
+import React, {ChangeEvent, ChangeEventHandler, useCallback, useEffect, useState} from "react";
 import {InputProps} from "./Input.types";
 import {darkTheme, lightTheme} from "./themes";
 import {BaseComponent, BaseComponentProps} from "../../hoc";
@@ -30,16 +30,6 @@ export const _Input = (props: BaseComponentProps & InputProps) => {
         dataTestId
     } = props;
 
-    const [inputValue, setInputValue] = useState(value);
-
-    useEffect(() => {
-        onChange?.(inputValue);
-    }, [inputValue]);
-
-    const onInputChange = useCallback((e) => {
-        setInputValue(e.target.value);
-    }, [])
-
     const renderTitle = useCallback(() => {
         if (title) {
             return <Text theme={theme.titleTextTheme} text={title}/>;
@@ -62,10 +52,6 @@ export const _Input = (props: BaseComponentProps & InputProps) => {
         return null;
     }, [withIcon, theme]);
 
-    useEffect(() => {
-        setInputValue(value);
-    }, [value])
-
     return <StyledInputWrapper data-testid={dataTestId} style={style}>
         {renderTitle()}
         <StyledInput>
@@ -76,7 +62,7 @@ export const _Input = (props: BaseComponentProps & InputProps) => {
                 spellCheck="false"
                 type={type}
                 id={id}
-                value={inputValue}
+                value={value}
                 minLength={minLength}
                 min={min}
                 max={max}
@@ -84,7 +70,7 @@ export const _Input = (props: BaseComponentProps & InputProps) => {
                 autoComplete={autoComplete}
                 placeholder={placeholder}
                 disabled={disabled}
-                onChange={onInputChange}
+                onChange={onChange}
                 onKeyDown={onKeyDown}
                 required={required}
             />
@@ -103,7 +89,7 @@ _Input.defaultProps = {
     max: "10000",
     autoComplete: "off",
     placeholder: "Aa",
-    onChange: null,
+    onChange: e => {},
     onEnter: null,
     required: false,
     withIcon: false,

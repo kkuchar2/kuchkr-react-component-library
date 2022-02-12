@@ -68,7 +68,7 @@ export const darkTheme = {
 }
 
 export const withIconTestTheme = {
-    backgroundColor: "rgb(255,255,255)",
+    backgroundColor: "rgb(30,30,30)",
     textColor: "#474747",
     border: 'none',
     borderFocus: "none",
@@ -78,19 +78,19 @@ export const withIconTestTheme = {
     padding: "0px 0px 0px 40px",
     caretColor: "#646464",
     iconPositionLeft: 10,
-    iconColor: "rgba(0,102,255,0.44)",
+    iconColor: "rgb(190,190,190)",
     iconFontSize: 'small',
 
     titleTextTheme: {
-        textColor: '#2f2f2f',
+        textColor: '#e0e0e0',
         fontSize: '0.9em',
         fontWeight: '500',
         textAlign: 'left',
-        margin: "0px 0px 0px 0px"
+        margin: "0px 0px 10px 0px"
     },
 
     inputTextTheme: {
-        textColor: '#2f2f2f',
+        textColor: '#e0e0e0',
         fontSize: '0.9em',
         fontWeight: 'bold',
         textAlign: 'left',

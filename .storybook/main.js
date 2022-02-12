@@ -8,6 +8,9 @@ module.exports = {
     addons: [
         '@storybook/addon-actions',
         '@storybook/addon-docs',
+        "@storybook/addon-essentials",
+        "@storybook/addon-a11y",
+        "storybook-addon-designs",
         "./addons/preset.js"
     ],
     webpackFinal: async (config) => {

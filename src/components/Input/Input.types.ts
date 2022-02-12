@@ -1,4 +1,5 @@
 import { BaseProps } from "../../hoc";
+import {ChangeEvent} from "react";
 
 export interface InputProps extends BaseProps {
     title?: string;
@@ -11,7 +12,7 @@ export interface InputProps extends BaseProps {
     max?: string;
     autoComplete?: string;
     placeholder?: string;
-    onChange?: (v: string) => void;
+    onChange?: (e: ChangeEvent<any>) => void;
     onEnter?: () => void;
     required?: boolean;
     withIcon?: boolean;

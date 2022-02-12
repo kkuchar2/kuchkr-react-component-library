@@ -41,7 +41,7 @@ export const _Slider = (props: BaseComponentProps & SliderProps) => {
     } = props;
 
     const [marks, setMarks] = useState([]);
-    const [internalValue, setInternalValue] = useState(defaultValue);
+    const [internalValue, setInternalValue] = useState<number>(defaultValue);
 
     const customRailRef = useRef(null)
 
@@ -62,11 +62,11 @@ export const _Slider = (props: BaseComponentProps & SliderProps) => {
         setMarks(m);
     }, [markValues]);
 
-    const onSliderChange = useCallback((v) => {
-        if (onChange) {
-            onChange(v);
+    const onSliderChange = useCallback((event: React.ChangeEvent<{}>, value: number | number[]) => {
+        if (typeof value === 'number') {
+            onChange?.(event, value);
+            setInternalValue(value);
         }
-        setInternalValue(v);
     }, [onChange])
 
     const renderCustomRail = useCallback(() => {
@@ -102,7 +102,7 @@ export const _Slider = (props: BaseComponentProps & SliderProps) => {
             disabled={disabled}
             valueLabelDisplay={displayLabel ? 'on' : 'off'}
             marks={useMarks && !innerModernSlider ? marks : []}
-            onChange={(e, v) => onSliderChange(v)}
+            onChange={onSliderChange}
         />
 
         {renderCustomRail()}
@@ -125,8 +125,7 @@ _Slider.defaultProps = {
     displayLabel: false,
     innerModernSlider: false,
     useMarks: true,
-    onChange: v => {
-    }
+    onChange: (event: React.ChangeEvent<{}>, value: number) => {}
 };
 
 export const Slider = BaseComponent<SliderProps>(_Slider, lightTheme, darkTheme);

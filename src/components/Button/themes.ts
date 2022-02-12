@@ -1,15 +1,16 @@
 export const lightTheme = {
     width: "150px",
     height: "40px",
-    background: "#d2d2d2",
-    disabledBackground: "rgba(210,210,210,0.37)",
+    background: "#4387ff",
+    disabledBackground: "rgb(92,131,199)",
     hoverBackground: "#c6c6c6",
     border: "none",
     borderRadius: "3px",
 
     text: {
-        textColor: "#4e4e4e",
-        disabledTextColor: "rgba(78,78,78,0.2)",
+        textColor: "#ffffff",
+        fontWeight: 600,
+        disabledTextColor: "rgba(255,255,255,0.6)",
     },
 
     additionalStyles: {
@@ -20,14 +21,15 @@ export const lightTheme = {
 export const darkTheme = {
     width: "150px",
     height: "40px",
-    background: "#323232",
-    disabledBackground: "rgba(47,47,47,0.43)",
-    hoverBackground: "#393939",
+    background: "#232323",
+    disabledBackground: "rgba(30,30,30,0.43)",
+    hoverBackground: "#1f1f1f",
     border: "none",
     borderRadius: "3px",
 
     text: {
-        textColor: "#e5e5e5",
-        disabledTextColor: "rgba(255,255,255,0.20)"
+        textColor: "#a2a2a2",
+        fontWeight: 600,
+        disabledTextColor: "rgba(169,169,169,0.2)"
     }
 }

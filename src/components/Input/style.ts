@@ -78,7 +78,8 @@ export const StyledInput = styled.div<StyledInputProps>`
     }
 
     &:invalid {
-      background: rgba(255, 0, 0, 0.5);
+      background: rgb(255, 51, 51);
+      border-radius: ${props => props.theme.borderRadius};
       color: white;
     }
 
@@ -87,7 +88,7 @@ export const StyledInput = styled.div<StyledInputProps>`
     }
 
     &:invalid:focus {
-      background: rgba(255, 0, 0, 0.5);
+      background: rgb(255, 75, 75);
       color: white;
     }
 

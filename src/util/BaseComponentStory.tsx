@@ -20,7 +20,7 @@ interface ModeContainerProps {
 }
 
 export const DarkModeContainer = styled.div<ModeContainerProps>`
-  background: #282828;
+  background: none;
   display: flex;
   align-items: ${props => props.alignItems ? props.alignItems : 'center'};
   justify-content: center;
@@ -36,7 +36,7 @@ DarkModeContainer.displayName = "DarkModeContainer"
 
 export const LightModeContainer = styled.div<ModeContainerProps>`
   margin-top: 20px;
-  background: #e8e8e8;
+  background: none;
   display: flex;
   align-items: ${props => props.alignItems ? props.alignItems : 'center'};
   justify-content: center;
