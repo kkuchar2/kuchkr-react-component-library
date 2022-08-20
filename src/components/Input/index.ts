@@ -1,1 +1,0 @@
-export { _Input, Input } from "./Input";

@@ -1,14 +1,7 @@
 import {Slider as SliderComponent} from './Slider';
-import {
-    DarkModeContainer,
-    defaultArgTypes,
-    generateStoryOptions,
-    LightModeContainer,
-    StyledContainer
-} from "../../util/BaseComponentStory";
+import {DarkModeContainer, defaultArgTypes, generateStoryOptions, StyledContainer} from "../../util/BaseComponentStory";
 import React, {useCallback, useState} from "react";
-import {modernDarkTheme, modernLightTheme} from "./themes";
-import {Text} from "../Text";
+import {modernDarkTheme} from "./themes";
 
 export default generateStoryOptions(SliderComponent);
 
@@ -33,12 +26,12 @@ export const Slider = (args) => {
                        onChange={onChange}
                        theme={SliderComponent.darkTheme}/>
 
-            <Text style={{marginTop: 50, color: '#337dff'}} text={`Value: ${currentValue.toString()}`}/>
-
+            <div style={{ marginTop: 50, color: '#337dff' }}>{`Value: ${currentValue.toString()}`}</div>
+            
             <Component {...args}
                        value={currentValue}
                        markValues={markValues}
-                       style={{marginTop: 50}}
+                       style={{ marginTop: 50 }}
                        onChange={onChange}
                        innerModernSlider={true}
                        theme={modernDarkTheme}/>

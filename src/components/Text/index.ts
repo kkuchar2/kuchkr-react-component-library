@@ -1,1 +1,0 @@
-export { _Text, Text } from "./Text";

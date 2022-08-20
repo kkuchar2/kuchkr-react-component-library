@@ -1,16 +1,17 @@
-import React, { useCallback} from "react";
-import { ListItemProps} from "./ListItem.types";
-import { darkTheme, lightTheme } from "./themes";
-import { BaseComponent, BaseComponentProps } from "../../hoc";
-import { StyledListItem } from "./style";
+import React from "react";
+import {ListItemProps} from "./ListItem.types";
+import {darkTheme, lightTheme} from "./themes";
+import {BaseComponent, BaseComponentProps} from "../../hoc";
+import {StyledListItem} from "./style";
 
 const _ListItem = (props: BaseComponentProps & ListItemProps) => {
 
-    const {index, children, onClick, disabled, style} = props;
+    const { index, children, onClick, disabled, style } = props;
 
-    const onItemClick = useCallback(() => onClick?.(index), [onClick, index])
-
-    return <StyledListItem style={style} className={"styledListItem"} disabled={disabled} onClick={onItemClick}>
+    return <StyledListItem style={style}
+                           className={"styledListItem"}
+                           disabled={disabled}
+                           onClick={() => onClick?.(index)}>
         {children}
     </StyledListItem>
 }

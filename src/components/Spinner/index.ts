@@ -1,1 +1,0 @@
-export { _Spinner, Spinner } from "./Spinner";

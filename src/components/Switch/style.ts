@@ -1,7 +1,7 @@
-import {motion, MotionProps} from "framer-motion";
 import styled from "styled-components";
 import {StyledSwitchProps} from "./Switch.types";
 import {BaseComponentProps} from "../../hoc";
+import {motion, MotionProps} from "framer-motion";
 
 export const StyledSwitch = styled(motion.div)<StyledSwitchProps & MotionProps & BaseComponentProps>`
   width: ${props => `${props.theme.trackWidth}px`};
@@ -28,7 +28,7 @@ export const StyledHandle = styled(motion.div)<StyledSwitchProps & MotionProps &
   width: ${props => `${props.theme.knobWidth}px`};
   height: ${props => `${props.theme.knobHeight}px`};
   background-color: ${props => {
-      return props.disabled ? props.theme.knobColorDisabledOff : props.theme.knobColorOff;
+    return props.disabled ? props.theme.knobColorDisabledOff : props.theme.knobColorOff;
   }};
   border-radius: ${props => `${props.theme.knobBorderRadius}px`};
   margin-left: ${props => `${-props.theme.knobOffset}px`};

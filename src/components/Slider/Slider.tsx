@@ -4,20 +4,11 @@ import {darkTheme, lightTheme} from "./themes";
 import {BaseComponent, BaseComponentProps} from "../../hoc";
 
 import {withStyles} from '@material-ui/core/styles';
-import {Text} from "../Text"
 import {default as BaseSlider} from '@material-ui/core/Slider';
-import {
-    baseStyle,
-    CustomMarks,
-    leftCustomMarkTheme,
-    rightCustomMarkTheme,
-    StyledCustomRail,
-    StyledCustomTrack,
-    StyledSlider
-} from "./style";
+import {baseStyle, CustomMarks, StyledCustomRail, StyledCustomTrack, StyledSlider} from "./style";
 
 const markFunc = (v) => {
-    return {value: v, label: <div className={'mark'}>{v}</div>}
+    return { value: v, label: <div className={'mark'}>{v}</div> }
 }
 
 export const _Slider = (props: BaseComponentProps & SliderProps) => {
@@ -80,13 +71,13 @@ export const _Slider = (props: BaseComponentProps & SliderProps) => {
 
     const renderCustomLeftMark = useCallback(() => {
         if (innerModernSlider && useMarks) {
-            return <Text theme={leftCustomMarkTheme(theme)} text={min.toString()}/>
+            return <div>{min.toString()}</div>;
         }
     }, [innerModernSlider, theme, internalValue, min, useMarks])
 
     const renderCustomRightMark = useCallback(() => {
         if (innerModernSlider && useMarks) {
-            return <Text theme={rightCustomMarkTheme(theme)} text={max.toString()}/>
+            return <div>{max.toString()}</div>;
         }
     }, [innerModernSlider, theme, internalValue, max, useMarks])
 
@@ -125,7 +116,8 @@ _Slider.defaultProps = {
     displayLabel: false,
     innerModernSlider: false,
     useMarks: true,
-    onChange: (event: React.ChangeEvent<{}>, value: number) => {}
+    onChange: (event: React.ChangeEvent<{}>, value: number) => {
+    }
 };
 
 export const Slider = BaseComponent<SliderProps>(_Slider, lightTheme, darkTheme);

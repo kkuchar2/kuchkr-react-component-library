@@ -1,14 +1,6 @@
 import React, {useCallback, useEffect, useState} from "react";
 import {Select as SelectComponent} from './Select';
-import {
-    DarkModeContainer,
-    defaultArgTypes,
-    generateStoryOptions,
-    LightModeContainer,
-    StyledContainer
-} from "../../util/BaseComponentStory";
-
-import {Text} from '../Text';
+import {DarkModeContainer, defaultArgTypes, generateStoryOptions, StyledContainer} from "../../util/BaseComponentStory";
 
 import styled from "styled-components";
 import Chance from 'chance';
@@ -21,12 +13,12 @@ const Component = (args) => <SelectComponent {...args} />;
 
 Component.displayName = SelectComponent.displayName;
 
-const staticItems = Array.from({length: 120}).map(() => {
-    return {value: chance.first(), label: chance.last()};
+const staticItems = Array.from({ length: 120 }).map(() => {
+    return { value: chance.first(), label: chance.last() };
 });
 
-const smallItems = Array.from({length: 3}).map(() => {
-    return {value: chance.first(), label: chance.last()};
+const smallItems = Array.from({ length: 3 }).map(() => {
+    return { value: chance.first(), label: chance.last() };
 });
 
 const smallTitleTheme = {
@@ -70,7 +62,7 @@ const StyledValue = styled.div`
 `;
 
 
-const formatOptionLabel = ({value, label, customAbbreviation}) => {
+const formatOptionLabel = ({ value, label, customAbbreviation }) => {
     return <StyledOption>
         <StyledOptionIcon>
             🎅
@@ -89,7 +81,9 @@ export const Select = (args) => {
     const [value, setValue] = useState(null);
 
     const onChange = useCallback((newValue, actionMeta) => {
-        if (!newValue) return;
+        if (!newValue) {
+            return;
+        }
         setValue(newValue);
     }, []);
 
@@ -116,8 +110,7 @@ export const Select = (args) => {
         </DarkModeContainer>
 
         <DarkModeContainer marginTop={20} alignItems={"center"} padding={"20px"}>
-
-            <Text theme={smallTitleTheme} text={"Small number of items:"} />
+            <div>{"Small number of items:"}</div>
 
             <Component {...args}
                        dataTestId={'select_test_id1'}

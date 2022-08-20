@@ -8,7 +8,6 @@ import {
     StyledContainer
 } from "../../util/BaseComponentStory";
 import React, {useCallback, useState} from "react";
-import {Text} from "../Text";
 import Chance from 'chance';
 
 export default generateStoryOptions(ListComponent);
@@ -19,7 +18,7 @@ let chance = new Chance()
 
 Component1.displayName = ListComponent.displayName;
 
-const staticItems = Array.from({length: 50}).map(() => ({
+const staticItems = Array.from({ length: 50 }).map(() => ({
     value: chance.name()
 }));
 
@@ -29,7 +28,7 @@ const getRandomHeight = (min, max) => {
     return Math.floor(Math.random() * (max - min + 1)) + min + "px";
 }
 
-const staticHeights = Array.from({length: 50}).map(() => getRandomHeight(30, 200));
+const staticHeights = Array.from({ length: 50 }).map(() => getRandomHeight(30, 200));
 
 export const StaticList = (args) => {
 
@@ -41,7 +40,7 @@ export const StaticList = (args) => {
             alignItems: 'flex-start',
             boxSizing: 'border-box'
         }}>
-            <Text theme={{fontSize: "1.2em"}} text={dataItem.value}/>
+            <div style={{ fontSize: "1.2em" }}>{dataItem.value}</div>
         </div>
     }, []);
 
@@ -67,7 +66,7 @@ export const ListWithInfiniteScroll = () => {
         setFetching1(true);
 
         setTimeout(() => {
-            const fetchedItems = Array.from({length: 5}).map(() => ({
+            const fetchedItems = Array.from({ length: 5 }).map(() => ({
                 value: chance.name()
             }));
 
@@ -80,7 +79,7 @@ export const ListWithInfiniteScroll = () => {
         setFetching2(true);
 
         setTimeout(() => {
-            const fetchedItems = Array.from({length: 5}).map(() => ({
+            const fetchedItems = Array.from({ length: 5 }).map(() => ({
                 value: chance.name()
             }));
 
@@ -96,7 +95,7 @@ export const ListWithInfiniteScroll = () => {
             justifyContent: 'flex',
             alignItems: 'flex-start'
         }}>
-            <Text theme={{fontSize: "1.2em"}} text={dataItem.value}/>
+            <div style={{ fontSize: "1.2em" }}>{dataItem.value}</div>
         </div>
     }, []);
 

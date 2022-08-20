@@ -1,1 +1,0 @@
-export {_Button, Button} from "./Button";

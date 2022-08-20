@@ -1,6 +1,8 @@
+import {ReactNode} from "react";
+
 export interface ListItemProps {
     index: number;
-    children: unknown | Array<unknown>;
+    children: ReactNode;
     onClick?: (index) => void,
     disabled?: boolean
 }

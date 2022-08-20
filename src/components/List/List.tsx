@@ -3,7 +3,6 @@ import {ListProps} from "./List.types";
 import {darkTheme, lightTheme} from "./themes";
 import {BaseComponent, BaseComponentProps} from "../../hoc";
 import {StyledList} from './style';
-import {Spinner} from "../Spinner";
 import AutoSizer from 'react-virtualized/dist/commonjs/AutoSizer'
 import {CellMeasurer, CellMeasurerCache, InfiniteLoader, List as VirtualizedList} from 'react-virtualized';
 import styled from "styled-components";
@@ -18,7 +17,7 @@ const StyledSpinner = styled.div`
   pointer-events: none;
 `
 
-const cache = new CellMeasurerCache({minHeight: 50, fixedWidth: true});
+const cache = new CellMeasurerCache({ minHeight: 50, fixedWidth: true });
 
 
 export const _List = (props: BaseComponentProps & ListProps) => {
@@ -55,7 +54,7 @@ export const _List = (props: BaseComponentProps & ListProps) => {
 
     const rowRenderer = useCallback((args) => {
 
-        const {index, parent, style} = args;
+        const { index, parent, style } = args;
 
         return <CellMeasurer
             cache={cache}
@@ -75,43 +74,35 @@ export const _List = (props: BaseComponentProps & ListProps) => {
         </CellMeasurer>
     }, [items, onItemClick, theme, disabled, dataItemRenderer]);
 
-    const isRowLoaded = ({index}) => !!items[index];
+    const isRowLoaded = ({ index }) => !!items[index];
 
     const handleScroll = (e) => {
-        const {scrollTop, scrollLeft} = e.target;
+        const { scrollTop, scrollLeft } = e.target;
         if (listRef.current) {
-            const {Grid} = listRef.current;
-            Grid.handleScrollEvent({scrollTop, scrollLeft});
+            const { Grid } = listRef.current;
+            Grid.handleScrollEvent({ scrollTop, scrollLeft });
             cache.clearAll();
         }
     };
 
-    const renderSpinner = useCallback(() => {
-        if (!fetchItems) {
-            return;
-        }
-        return <StyledSpinner>
-            <Spinner visible={isFetching}/>
-        </StyledSpinner>
-    }, [isFetching, fetchItems])
-
+    
     return <StyledList data-testid={dataTestId} listHeight={fixedHeight}>
         <InfiniteLoader isRowLoaded={isRowLoaded} loadMoreRows={fetchData} rowCount={items.length + 1}>
-            {({onRowsRendered}) => {
-                return <div style={{height: fixedHeight}}>
+            {({ onRowsRendered }) => {
+                return <div style={{ height: fixedHeight }}>
                     <AutoSizer>
-                        {({height, width}) => {
+                        {({ height, width }) => {
                             return <Scrollbars
                                 onScroll={handleScroll}
-                                style={{height, width}}
-                                renderTrackHorizontal={props => <div {...props} style={{display: 'none'}}
+                                style={{ height, width }}
+                                renderTrackHorizontal={props => <div {...props} style={{ display: 'none' }}
                                                                      className="track-horizontal"/>}>
                                 <VirtualizedList
                                     ref={listRef}
                                     deferredMeasurementCache={cache}
                                     width={width}
                                     height={height}
-                                    style={{overflowX: false, overflowY: false}}
+                                    style={{ overflowX: false, overflowY: false }}
                                     onRowsRendered={onRowsRendered}
                                     rowCount={items.length}
                                     universal={true}
@@ -126,7 +117,6 @@ export const _List = (props: BaseComponentProps & ListProps) => {
                 </div>
             }}
         </InfiniteLoader>
-        {renderSpinner()}
     </StyledList>;
 }
 
